@@ -4,7 +4,7 @@ require('../dbconnect.php');
 
 $id = $_GET['id'];
 
-echo $id;
+
 
 $sql ="DELETE FROM user_role WHERE id = $id";
 $result = mysqli_query($con,$sql);

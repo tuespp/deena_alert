@@ -159,7 +159,7 @@ $result5 = mysqli_query($con, $sql5);
                                 $result_array = array_search("admin$idp", $role); //array
                                 if ($result_array !== false) {
 
-                                    echo "  <li class='nav-item'><a href='$row2[link]' class='nav-link '> <i class='$row2[icon]'></i>
+                                    echo "  <li class='nav-item'><a href='$row2[link]' class='nav-link '> &nbsp;&nbsp; <i class='$row2[icon]'></i>
                             <p>$row2[page]</p></a></li> ";
                                 }
                             }
@@ -187,7 +187,7 @@ $result5 = mysqli_query($con, $sql5);
                                 $result_array = array_search("admin$idp", $role); //array
                                 if ($result_array !== false) {
 
-                                    echo "  <li class='nav-item'><a href='$row3[link]' class='nav-link '> <i class='$row3[icon]'></i>
+                                    echo "  <li class='nav-item'><a href='$row3[link]' class='nav-link '> &nbsp;&nbsp; <i class='$row3[icon]'></i>
                             <p>$row3[page]</p></a></li> ";
                                 }
                             }
@@ -214,7 +214,7 @@ $result5 = mysqli_query($con, $sql5);
                                 $result_array = array_search("admin$idp", $role); //array
                                 if ($result_array !== false) {
 
-                                    echo "  <li class='nav-item'><a href='$row4[link]' class='nav-link '> <i class='$row4[icon]'></i>
+                                    echo "  <li class='nav-item'><a href='$row4[link]' class='nav-link '> &nbsp;&nbsp; <i class='$row4[icon]'></i>
                             <p>$row4[page]</p></a></li> ";
                                 }
                             }
@@ -241,7 +241,7 @@ $result5 = mysqli_query($con, $sql5);
                                 $result_array = array_search("admin$idp", $role); //array
                                 if ($result_array !== false) {
 
-                                    echo "  <li class='nav-item'><a href='$row5[link]' class='nav-link '> <i class='$row5[icon]'></i>
+                                    echo "  <li class='nav-item'><a href='$row5[link]' class='nav-link '> &nbsp;&nbsp; <i class='$row5[icon]'></i>
                             <p>$row5[page]</p></a></li> ";
                                 }
                             }
@@ -274,7 +274,7 @@ $result5 = mysqli_query($con, $sql5);
                                 $result_array = array_search("member$idp", $role); //array
                                 if ($result_array !== false) {
 
-                                    echo "  <li class='nav-item'><a href='$row2[link]' class='nav-link '> <i class='$row2[icon]'></i>
+                                    echo "  <li class='nav-item'><a href='$row2[link]' class='nav-link '> &nbsp;&nbsp; <i class='$row2[icon]'></i>
                             <p>$row2[page]</p></a></li> ";
                                 }
                             }
@@ -300,7 +300,7 @@ $result5 = mysqli_query($con, $sql5);
                                 $result_array = array_search("member$idp", $role); //array
                                 if ($result_array !== false) {
 
-                                    echo "  <li class='nav-item'><a href='$row3[link]' class='nav-link '> <i class='$row3[icon]'></i>
+                                    echo "  <li class='nav-item'><a href='$row3[link]' class='nav-link '> &nbsp;&nbsp; <i class='$row3[icon]'></i>
                             <p>$row3[page]</p></a></li> ";
                                 }
                             }
@@ -326,7 +326,7 @@ $result5 = mysqli_query($con, $sql5);
                                 $result_array = array_search("member$idp", $role); //array
                                 if ($result_array !== false) {
 
-                                    echo "  <li class='nav-item'><a href='$row4[link]' class='nav-link '> <i class='$row4[icon]'></i>
+                                    echo "  <li class='nav-item'><a href='$row4[link]' class='nav-link '> &nbsp;&nbsp; <i class='$row4[icon]'></i>
                             <p>$row4[page]</p></a></li> ";
                                 }
                             }
@@ -351,7 +351,7 @@ $result5 = mysqli_query($con, $sql5);
                                 $result_array = array_search("member$idp", $role); //array
                                 if ($result_array !== false) {
 
-                                    echo "  <li class='nav-item'><a href='$row5[link]' class='nav-link '> <i class='$row5[icon]'></i>
+                                    echo "  <li class='nav-item'><a href='$row5[link]' class='nav-link '> &nbsp;&nbsp; <i class='$row5[icon]'></i>
                             <p>$row5[page]</p></a></li> ";
                                 }
                             }
@@ -383,7 +383,7 @@ $result5 = mysqli_query($con, $sql5);
                                 $result_array = array_search("employee$idp", $role); //array
                                 if ($result_array !== false) {
 
-                                    echo "  <li class='nav-item'><a href='$row2[link]' class='nav-link '> <i class='$row2[icon]'></i>
+                                    echo "  <li class='nav-item'><a href='$row2[link]' class='nav-link '> &nbsp;&nbsp; <i class='$row2[icon]'></i>
         <p>$row2[page]</p></a></li> ";
                                 }
                             }
@@ -409,7 +409,7 @@ $result5 = mysqli_query($con, $sql5);
                                 $result_array = array_search("employee$idp", $role); //array
                                 if ($result_array !== false) {
 
-                                    echo "  <li class='nav-item'><a href='$row3[link]' class='nav-link '> <i class='$row3[icon]'></i>
+                                    echo "  <li class='nav-item'><a href='$row3[link]' class='nav-link '> &nbsp;&nbsp; <i class='$row3[icon]'></i>
         <p>$row3[page]</p></a></li> ";
                                 }
                             }
@@ -435,7 +435,7 @@ $result5 = mysqli_query($con, $sql5);
                                 $result_array = array_search("employee$idp", $role); //array
                                 if ($result_array !== false) {
 
-                                    echo "  <li class='nav-item'><a href='$row4[link]' class='nav-link '> <i class='$row4[icon]'></i>
+                                    echo "  <li class='nav-item'><a href='$row4[link]' class='nav-link '> &nbsp;&nbsp; <i class='$row4[icon]'></i>
         <p>$row4[page]</p></a></li> ";
                                 }
                             }
@@ -461,7 +461,7 @@ $result5 = mysqli_query($con, $sql5);
                                 $result_array = array_search("employee$idp", $role); //array
                                 if ($result_array !== false) {
 
-                                    echo "  <li class='nav-item'><a href='$row5[link]' class='nav-link '> <i class='$row5[icon]'></i>
+                                    echo "  <li class='nav-item'><a href='$row5[link]' class='nav-link '> &nbsp;&nbsp; <i class='$row5[icon]'></i>
         <p>$row5[page]</p></a></li> ";
                                 }
                             }
