@@ -165,7 +165,7 @@ if (isset($_POST['but_update'])) { //ถ้ามีการกดปุ่ม 
 
                                                     <tr>
                                                         <td><input type='checkbox' name='update1[]' value='<?= $idr ?>'></td>
-                                                        <td><?php echo $order++; ?></td>
+                                                        <td><?php echo $order++;  ;?></td>
                                                         <td><label for="page"><?php echo $rowc['page']; ?></label></td>
                                                         <?php
                                                         $role = explode(",", $rowc['role']); //array
@@ -185,8 +185,8 @@ if (isset($_POST['but_update'])) { //ถ้ามีการกดปุ่ม 
                                             </div>
                                         </tbody>
                                         <div>
-                                            <input type="submit" name="but_update" class="btn btn-warning " value="บันทึก">
-                                            <a href="tab_manage.php" name="but_update" class="btn btn-success">เพิ่มข้อมูล</a>
+                                            <input type="submit" name="but_update" class="btn btn-danger " value="บันทึก">
+                                            <a href="tab_manage.php" name="but_update" class="btn btn-warning">เพิ่มข้อมูล</a>
                                             <br> <br>
                                     </table>
                                 </div>
@@ -248,8 +248,8 @@ if (isset($_POST['but_update'])) { //ถ้ามีการกดปุ่ม 
                                             </div>
                                         </tbody>
                                         <div>
-                                            <input type="submit" name="but_update" class="btn btn-warning " value="บันทึก">
-                                            <a href="tab_manage.php" name="but_update" class="btn btn-success">เพิ่มข้อมูล</a>
+                                            <input type="submit" name="but_update" class="btn btn-danger " value="บันทึก">
+                                            <a href="tab_manage.php" name="but_update" class="btn btn-warning">เพิ่มข้อมูล</a>
                                             <br> <br>
                                     </table>
                                 </div>
@@ -311,8 +311,8 @@ if (isset($_POST['but_update'])) { //ถ้ามีการกดปุ่ม 
                                             </div>
                                         </tbody>
                                         <div>
-                                            <input type="submit" name="but_update" class="btn btn-warning " value="บันทึก">
-                                            <a href="tab_manage.php" name="but_update" class="btn btn-success">เพิ่มข้อมูล</a>
+                                            <input type="submit" name="but_update" class="btn btn-danger " value="บันทึก">
+                                            <a href="tab_manage.php" name="but_update" class="btn btn-warning">เพิ่มข้อมูล</a>
                                             <br> <br>
                                     </table>
                                 </div>
@@ -375,8 +375,8 @@ if (isset($_POST['but_update'])) { //ถ้ามีการกดปุ่ม 
                                             </div>
                                         </tbody>
                                         <div>
-                                            <input type="submit" name="but_update" class="btn btn-warning " value="บันทึก">
-                                            <a href="tab_manage.php" name="but_update" class="btn btn-success">เพิ่มข้อมูล</a>
+                                            <input type="submit" name="but_update" class="btn btn-danger " value="บันทึก">
+                                            <a href="tab_manage.php" name="but_update" class="btn btn-warning">เพิ่มข้อมูล</a>
                                             <br> <br>
                                     </table>
                                 </div>

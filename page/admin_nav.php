@@ -246,15 +246,25 @@ $result5 = mysqli_query($con, $sql5);
                                 }
                             }
                         }
-                    }
-                    echo "  </ul>
+                        echo "  </ul>
                     </li>";
-
+                    }
+                    
+                   
                     /* ----------------------  -----------  -----------  -----------  -----------  -----------  -----------  -----------  -----------   */
 
                     if ($_SESSION['level'] == 'member') {
 
-                        echo "ข้อมูลส่วนตัว <br>";
+                        echo " <li class='nav-item'>
+                        <a href='#' class='nav-link'>
+                          <i class='nav-icon fas fa-address-card'></i>
+                          <p>
+                          ข้อมูลส่วนตัว
+                            <i class='fas fa-angle-left right'></i>
+                          </p>
+                        </a>
+                        <ul class='nav nav-treeview'>
+                       ";
                         while ($row2 = mysqli_fetch_assoc($result2)) {
 
                             if ($row2['type'] == '1') {
@@ -268,9 +278,19 @@ $result5 = mysqli_query($con, $sql5);
                             <p>$row2[page]</p></a></li> ";
                                 }
                             }
-                        }
+                        }echo "  </ul>
+                        </li>";
 
-                        echo "สมาชิก <br>";
+                        echo " <li class='nav-item'>
+                        <a href='#' class='nav-link'>
+                          <i class='nav-icon fas fa-users'></i>
+                          <p>
+                          สมาชิก
+                            <i class='fas fa-angle-left right'></i>
+                          </p>
+                        </a>
+                        <ul class='nav nav-treeview'>
+                       ";
                         while ($row3 = mysqli_fetch_assoc($result3)) {
 
                             if ($row3['type'] == '2') {
@@ -284,9 +304,19 @@ $result5 = mysqli_query($con, $sql5);
                             <p>$row3[page]</p></a></li> ";
                                 }
                             }
-                        }
+                        }echo "  </ul>
+                        </li>";
 
-                        echo "ตั้งค่า <br>";
+                        echo " <li class='nav-item'>
+                         <a href='#' class='nav-link'>
+                           <i class='nav-icon fas fa-sliders-h'></i>
+                           <p>
+                           ตั้งค่า
+                             <i class='fas fa-angle-left right'></i>
+                           </p>
+                         </a>
+                         <ul class='nav nav-treeview'>
+                        ";
                         while ($row4 = mysqli_fetch_assoc($result4)) {
 
                             if ($row4['type'] == '3') {
@@ -300,8 +330,18 @@ $result5 = mysqli_query($con, $sql5);
                             <p>$row4[page]</p></a></li> ";
                                 }
                             }
-                        }
-                        echo "แจ้งเตือน <br>";
+                        }echo "  </ul>
+                        </li>";
+                        echo " <li class='nav-item'>
+                        <a href='#' class='nav-link'>
+                          <i class='nav-icon fas fa-bell'></i>
+                          <p>
+                          แจ้งเตือน
+                            <i class='fas fa-angle-left right'></i>
+                          </p>
+                        </a>
+                        <ul class='nav nav-treeview'>
+                       ";
                         while ($row5 = mysqli_fetch_assoc($result5)) {
 
                             if ($row5['type'] == '4') {
@@ -316,13 +356,24 @@ $result5 = mysqli_query($con, $sql5);
                                 }
                             }
                         }
+                        echo "  </ul>
+                    </li>";
                     }
 
                     /* ----------------------------------------------------------------------------------------------------------- */
 
                     if ($_SESSION['level'] == 'employee') {
 
-                        echo "ข้อมูลส่วนตัว <br>";
+                        echo " <li class='nav-item'>
+                        <a href='#' class='nav-link'>
+                          <i class='nav-icon fas fa-address-card'></i>
+                          <p>
+                          ข้อมูลส่วนตัว
+                            <i class='fas fa-angle-left right'></i>
+                          </p>
+                        </a>
+                        <ul class='nav nav-treeview'>
+                       ";
                         while ($row2 = mysqli_fetch_assoc($result2)) {
 
                             if ($row2['type'] == '1') {
@@ -336,9 +387,19 @@ $result5 = mysqli_query($con, $sql5);
         <p>$row2[page]</p></a></li> ";
                                 }
                             }
-                        }
+                        }echo "  </ul>
+                        </li>";
 
-                        echo "สมาชิก <br>";
+                        echo " <li class='nav-item'>
+                        <a href='#' class='nav-link'>
+                          <i class='nav-icon fas fa-users'></i>
+                          <p>
+                          สมาชิก
+                            <i class='fas fa-angle-left right'></i>
+                          </p>
+                        </a>
+                        <ul class='nav nav-treeview'>
+                       ";
                         while ($row3 = mysqli_fetch_assoc($result3)) {
 
                             if ($row3['type'] == '2') {
@@ -352,9 +413,19 @@ $result5 = mysqli_query($con, $sql5);
         <p>$row3[page]</p></a></li> ";
                                 }
                             }
-                        }
+                        }echo "  </ul>
+                        </li>";
 
-                        echo "ตั้งค่า <br>";
+                        echo " <li class='nav-item'>
+                         <a href='#' class='nav-link'>
+                           <i class='nav-icon fas fa-sliders-h'></i>
+                           <p>
+                           ตั้งค่า
+                             <i class='fas fa-angle-left right'></i>
+                           </p>
+                         </a>
+                         <ul class='nav nav-treeview'>
+                        ";
                         while ($row4 = mysqli_fetch_assoc($result4)) {
 
                             if ($row4['type'] == '3') {
@@ -368,8 +439,19 @@ $result5 = mysqli_query($con, $sql5);
         <p>$row4[page]</p></a></li> ";
                                 }
                             }
-                        }
-                        echo "แจ้งเตือน <br>";
+                        }echo "  </ul>
+                        </li>";
+
+                        echo " <li class='nav-item'>
+                        <a href='#' class='nav-link'>
+                          <i class='nav-icon fas fa-bell'></i>
+                          <p>
+                          แจ้งเตือน
+                            <i class='fas fa-angle-left right'></i>
+                          </p>
+                        </a>
+                        <ul class='nav nav-treeview'>
+                       ";
                         while ($row5 = mysqli_fetch_assoc($result5)) {
 
                             if ($row5['type'] == '4') {
@@ -384,6 +466,8 @@ $result5 = mysqli_query($con, $sql5);
                                 }
                             }
                         }
+                        echo "  </ul>
+                        </li>";
                     }
                     /* 
 

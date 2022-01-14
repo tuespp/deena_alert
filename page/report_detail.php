@@ -96,7 +96,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <?php
 
 
-                            $sql2 = "SELECT * FROM users_info WHERE sub_status = '$sub_id' ";
+                            $sql2 = "SELECT * FROM users_info WHERE sub_status = '$sub_id' AND  user_id !='' ";
                             $result2 = mysqli_query($con, $sql2);
 
 
@@ -136,7 +136,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
 
-                                                    <td><?php echo $row['name']; ?></td>
+                                                    <td ><input type="text" name="name[]" value="<?php echo $row['name']; ?>" hidden> <?php echo $row['name']; ?></td>
 
 
 
@@ -152,7 +152,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
                                 <div class="card-footer">
-                                    <button type="submit" class="btn btn-primary d-block m-auto">บันทึก</button>
+                                    <button type="submit" class="btn btn-danger d-block m-auto">บันทึก</button>
                                 </div>
 
                             </form>
@@ -247,7 +247,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                     $(document).ready(function() {
                         $('#myTextarea').emojioneArea({
-                            pickerPosition: "right"
+                            pickerPosition: "up"
                         });
                     });
                 </script>

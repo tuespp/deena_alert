@@ -48,9 +48,9 @@ if ($sub_status == ""){
         $result = curl_exec($ch);
     }
     if ($result) {
-       /*  echo " <script type='text/javascript'>alert('Send message success');
+        echo " <script type='text/javascript'>alert('Send message success');
     window.location.href='../page/report.php'
-    </script>"; */
+    </script>";
     } 
 
 }else{

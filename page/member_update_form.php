@@ -140,7 +140,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                     
                         <!-- general form elements -->
-                        <div class="card card-success">
+                        <div class="card card-warning">
                             <div class="card-header">
                                 <h3 class="card-title">อัพเดทข้อมูล</h3>
                             </div>
@@ -230,7 +230,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                                 <div class="card-footer">
 
-                                    <button type="submit" class="btn btn-primary d-block m-auto">บันทึก</button>
+                                    <button type="submit" class="btn btn-danger d-block m-auto">บันทึก</button>
 
                                 </div>
 

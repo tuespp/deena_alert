@@ -1,7 +1,7 @@
 <?php
     $ranRefNo = '000020220106'.rand(100,999);
 
-    $host_ngrok = 'https://a3c4-182-52-167-177.ngrok.io';
+    $host_ngrok = 'https://0210-125-26-219-219.ngrok.io';
 
     $path_line = $host_ngrok.'/DEENA/project/page/';
     $host = $host_ngrok.'/deena/project';

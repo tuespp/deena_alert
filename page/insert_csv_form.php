@@ -513,9 +513,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 <div class="card-header">
                                     <form class="form-horizontal" action="" method="post" name="frmCSVImport" id="frmCSVImport" enctype="multipart/form-data">
                                         <div class="input-row">
-                                            <label class="col-md-4 control-label">Choose CSV File Payment</label> <br>
+                                            <label class="col-md-4 control-label">เลือกไฟล์ที่ต้องการอัพโหลด (.CSV)</label> <br>
                                             <input type="file" name="file_payment" id="file_payment" accept=".csv">
-                                            <button type="submit" id="submit" name="import_payment" class="btn btn-primary">Import</button>
+                                            <button type="submit" id="submit" name="import_payment" class="btn btn-warning">บันทึก</button>
                                     </form>
 
                                 </div>

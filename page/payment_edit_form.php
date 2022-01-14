@@ -160,7 +160,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 <!-- /.card-body -->
 
                                 <div class="card-footer">
-                                    <button type="submit" class="btn btn-primary d-block m-auto">Submit</button>
+                                    <button type="submit" class="btn btn-danger d-block m-auto">Submit</button>
                                 </div>
                             </form>
                         </div>
