@@ -167,7 +167,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
                                         <label for="exampleInputEmail1">ชื่อ</label>
-                                        <input type="text" class="form-control" id="exampleInputEmail1" name="insurance" value="<?php echo $row['name']; ?>" placeholder="Insurance Name" required>
+                                        <input type="text" class="form-control" id="exampleInputEmail1" name="name" value="<?php echo $row['name']; ?>" placeholder="Insurance Name" required>
                                         <input type="text" class="form-control" id="exampleInputEmail1" name="ids" value="<?php echo $row['id']; ?>" hidden placeholder="Insurance Name">
 
                                     </div>
@@ -177,11 +177,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputPassword1">เมล</label>
-                                        <input type="phone" class="form-control" id="exampleInputPassword1" name="phone" value="<?php echo $row['email']; ?>" placeholder="Phone" required>
+                                        <input type="phone" class="form-control" id="exampleInputPassword1" name="email" value="<?php echo $row['email']; ?>" placeholder="email" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputPassword1">ที่อยู่</label>
-                                        <input type="phone" class="form-control" id="exampleInputPassword1" name="phone" value="<?php echo $row['address']; ?>" placeholder="Phone" required>
+                                        <input type="phone" class="form-control" id="exampleInputPassword1" name="address" value="<?php echo $row['address']; ?>" placeholder="address" required>
                                     </div>
 
                                     <div class="form-group">

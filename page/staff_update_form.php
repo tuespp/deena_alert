@@ -157,27 +157,27 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                         ?>
 
-                        <form action="../backend/member_update.php" method="POST">
+                        <form action="../backend/staff_update.php" method="POST">
                             <div class="card-body">
                                 <div class="form-group">
 
 
                                     <label for="exampleInputEmail1">ชื่อ</label>
-                                    <input type="text" class="form-control" id="exampleInputEmail1" name="insurance" value="<?php echo $row['name']; ?>" placeholder="Insurance Name" required>
+                                    <input type="text" class="form-control" id="exampleInputEmail1" name="name" value="<?php echo $row['name']; ?>" placeholder="Insurance Name" required>
                                     <input type="text" class="form-control" id="exampleInputEmail1" name="ids" value="<?php echo $row['id']; ?>" hidden placeholder="Insurance Name">
 
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">โทรศัพท์</label>
-                                    <input type="phone" class="form-control" id="exampleInputPassword1" name="phone" value="<?php echo $row['tel']; ?>" placeholder="Phone" required>
+                                    <input type="phone" class="form-control" id="exampleInputPassword1" name="tel" value="<?php echo $row['tel']; ?>" placeholder="Phone" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">เมล</label>
-                                    <input type="phone" class="form-control" id="exampleInputPassword1" name="phone" value="<?php echo $row['email']; ?>" placeholder="Phone" required>
+                                    <input type="phone" class="form-control" id="exampleInputPassword1" name="email" value="<?php echo $row['email']; ?>" placeholder="Phone" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">ที่อยู่</label>
-                                    <input type="phone" class="form-control" id="exampleInputPassword1" name="phone" value="<?php echo $row['address']; ?>" placeholder="Phone" required>
+                                    <input type="phone" class="form-control" id="exampleInputPassword1" name="address" value="<?php echo $row['address']; ?>" placeholder="Phone" required>
                                 </div>
 
 

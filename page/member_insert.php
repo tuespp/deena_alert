@@ -52,7 +52,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <div class="col-sm-6">
             <h1 style="text-transform: uppercase">เพื่มสมาชิก</h1>
           </div>
-          
+
         </div>
       </div><!-- /.container-fluid -->
     </section>
@@ -71,6 +71,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid ">
+
+
         <div class="row">
           <div class="offset-3 col-md-6">
             <!-- general form elements -->
@@ -81,7 +83,45 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <!-- /.card-header -->
               <!-- form start -->
 
-              <form action="../backend/member_insert_data.php" method="POST">
+              <form action="../backend/member_insert_data.php" method="POST" enctype="multipart/form-data">
+
+                <div class="text-center mt-2">
+                  <img class="profile-user-img img-fluid img-circle" id="imageUpload" src="../img/user.png" name="file" alt="User profile picture">
+                  <!-- Button trigger modal -->
+                  <button type="button" class="btn mx-auto d-block my-3 btn-warning" data-toggle="modal" data-target="#exampleModal">
+                    Upload Image
+                  </button>
+
+                  <!-- Modal -->
+                  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">Upload Image</h5>
+
+                        </div>
+
+                        <div class="modal-body">
+                          <div class="custom-file">
+                            <input type="file" class="custom-file-input" name="file" id="customFile" aria-describedby="inputGroupFileAddon01">
+                            <label class="custom-file-label" for="customFile">Choose file</label>
+                          </div>
+                          <!-- figure ฟังก์ชันของ bootstrap -->
+                          <figure class="figure text-center d-none mt-2">
+                            <!--d-none ซ่อนรูปภาพ -->
+                            <img id="imageUpload2" class="figure-img img-fluid rounded" alt="">
+                          </figure>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+                        </div>
+
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
                 <div class="card-body">
                   <div class="form-group">
 
@@ -130,7 +170,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <!-- /.card-body -->
 
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-danger d-block m-auto">บันทึก</button>
+                  <button type="submit" name="submit" class="btn btn-danger d-block m-auto">บันทึก</button>
                 </div>
               </form>
             </div>
@@ -226,22 +266,39 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
 
-                var id = $(this).val();
-                $.ajax({
-                  type: "post",
-                  url: "../backend/select_status.php",
-                  data: {
-                    status_id: id
-                  },
+            var id = $(this).val();
+            $.ajax({
+              type: "post",
+              url: "../backend/select_status.php",
+              data: {
+                status_id: id
+              },
 
-                  success: function(data) {
+              success: function(data) {
 
-                    $('#sub_status').html(data);
+                $('#sub_status').html(data);
 
-                  }
-                }); 
-              
-              });
+              }
+            });
+
+          });
+        </script>
+
+        <script>
+          $('.custom-file-input').on('change', function() { //selecter class custom และ ดักจับ event(change)
+            var fileName = $(this).val().split('\\').pop(); //ดึงค่าข้อมูลของตัว path และแยกข้อมูลด้วย split และใช้ pop ในการแยกข้อมูลด้านหลังสุดของ array
+            $(this).siblings('.custom-file-label').html(fileName) //siblings(เลือกทุกอย่างยกเว้นตัวเอง แต่จะเลือกตัวlabel) html(แสดงในส่วนของข้อความออกมา)
+            if (this.files[0]) { //ถ้ามีการรับค่าจาก array ของ file
+              var reader = new FileReader() //สร้างฟังก์ชันขึ้นใหม่
+              $('.figure').addClass('d-block') //selecter ไปที่ class figure , add class 'd-block' เพื่อโชว์รูปภาพ
+              reader.onload = function(e) { //เรียกค่าข้อมูลของ file
+                $('#imageUpload').attr('src', e.target.result).width(240) //selecter id ของ img และเซ็ต attr ของข้อมูล
+                $('#imageUpload2').attr('src', e.target.result).width(240) //selecter id ของ img และเซ็ต attr ของข้อมูล
+
+              }
+              reader.readAsDataURL(this.files[0]) //อ่านค่าของ array file
+            }
+          })
         </script>
 </body>
 

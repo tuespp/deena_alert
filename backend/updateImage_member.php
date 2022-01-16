@@ -18,7 +18,7 @@ if(isset($_POST['submit'])){
      if($result){
          $_SESSION['img'] = $new_name;
          echo '<script> alert("อัพเดตรูปภาพสำเร็จ") </script>';
-         header('Refresh:0; url=../page/member.php');
+         header('Refresh:0; url=../page/member_update_form.php?id='.$id);
      }
    } 
 
