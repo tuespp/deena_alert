@@ -64,7 +64,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <section class="content">
             <div class="container-fluid ">
                 <div class="row">
-                    <div class="offset-3 col-md-6">
+                <div class="offset-sm-3 col-md-6">
                         <!-- general form elements -->
                         <div class="card card-warning">
                             <div class="card-header">

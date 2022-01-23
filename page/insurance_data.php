@@ -88,14 +88,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                             <tr>
                                                 <th>ลำกับ</th>
                                                 <th>ผู้เอาประกัน</th>
-                                                <th>โทรศัพท์</th>
-                                                <th>ประเภท</th>
+                                                
+                                                
                                                 <th>ทะเบียนรถ</th>
                                                 <th>วันหมดอายุ</th>
                                                 <th>เบี้ยรวม</th>
                                                 <th>แจ้งเตือน Line</th>
                                                 <th>แจ้งเตือน SMS</th>
-                                                <th>วันแจ้งเตือน</th>
                                                 <th>หมายเเหตุ</th>
                                                 <th>จัดการ</th>
 
@@ -108,8 +107,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                 <tr>
                                                     <td><?php echo $row['id']; ?></td>
                                                     <td><?php echo $row['insurance']; ?></td>
-                                                    <td><?php echo $row['phone']; ?></td>
-                                                    <td><?php echo $row['type']; ?></td>
+                                                    
+                                                    
                                                     <td><?php echo $row['car_license']; ?></td>
                                                     <td><?php echo $row['exp']; ?></td>
                                                     <td><?php echo $row['interest']; ?></td>
@@ -149,10 +148,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                                                     </td>
 
-                                                    <td><?php echo $row['date_send']; ?></td>
+                                                   
                                                     <td><?php echo $row['note']; ?></td>
 
-                                                    <td><a href="insurance_edit.php?id=<?php echo $row['id']; ?>"><i class="far fa-edit"></a></i>&nbsp;&nbsp;&nbsp;<a href="../backend/insurabce_delete.php?id=<?php echo $row['id']; ?>" onclick="return confirm('Are you sure to delete ?')"><i class="far fa-trash-alt"></i></a></td>
+                                                    <td><a href="insurance_edit.php?id=<?php echo $row['id']; ?>" class="btn btn-warning"><i class="far fa-edit"></a></i>&nbsp;&nbsp;&nbsp;
+                                                    <a href="../backend/insurabce_delete.php?id=<?php echo $row['id']; ?>" class="btn btn-danger" onclick="return confirm('Are you sure to delete ?')"><i class="far fa-trash-alt"></i></a></td>
 
                                                 </tr>
 

@@ -52,7 +52,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <div class="col-sm-6">
                         <h1 style="text-transform: uppercase">กำหนดสิทธิ์ผู้ใช้</h1>
                     </div>
-                    
+
                 </div>
             </div><!-- /.container-fluid -->
         </section>
@@ -74,7 +74,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
         $sql2 = "SELECT * FROM user_role_type";
         $result2 = mysqli_query($con, $sql2);
-        
+
 
 
         ?>
@@ -84,9 +84,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <section class="content">
             <div class="container-fluid ">
                 <div class="row">
-                    <div class="offset-3 col-md-6">
+                <div class="offset-sm-3 col-md-6">
                         <!-- general form elements -->
-                        <div class="card card-success">
+                        <div class="card card-warning">
                             <div class="card-header">
                                 <h3 class="card-title">อัพเดทข้อมูล</h3>
                             </div>
@@ -153,6 +153,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         </div>
                     </aside>
                     <!-- /.control-sidebar -->
+                </div>
+            </div>
+        </section>
+    </div>
 
                     <!-- Main Footer -->
                 </div>

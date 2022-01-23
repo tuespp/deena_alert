@@ -115,7 +115,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                 
 
 
-                                                <td><a href="staff_update_form.php?id=<?php echo $value['id']; ?>"><i class="far fa-edit"></a></i>&nbsp;&nbsp;&nbsp;<a href="../backend/staff_delete.php?id=<?php echo $value['id']; ?>" onclick="return confirm('Are you sure to delete ?')"><i class="far fa-trash-alt"></i></a></td>
+                                                <td><a href="staff_update_form.php?id=<?php echo $value['id']; ?>" class="btn btn-warning"><i class="far fa-edit"></a></i>&nbsp;&nbsp;&nbsp;
+                                                <a href="../backend/staff_delete.php?id=<?php echo $value['id']; ?>" class="btn btn-danger" onclick="return confirm('Are you sure to delete ?')"><i class="far fa-trash-alt"></i></a></td>
 
                                             </tr>
 

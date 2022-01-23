@@ -1,0 +1,13 @@
+FTP 
+host 119.59.97.17
+
+Login: pond@cod-fin.com
+Password: 1ADtyA3gQr
+Path: /home/fininsure/domains/cod-fin.com
+
+DATAABASE
+Database: fininsure_pond
+Host: localhost
+Username: fininsure_pond
+Password: gU7kxBrBX9
+link: www.cod-fin.com/phpmyadmin

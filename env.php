@@ -1,8 +1,8 @@
 <?php
 
 
-$host_ngrok = 'https://593c-223-206-189-114.ngrok.io';
+$host_ngrok = 'https://www.cod-fin.com/';
 
-$path_line = $host_ngrok . '/DEENA/project/page/';
+$path_line = $host_ngrok . 'pond/page/';
 
 ?>

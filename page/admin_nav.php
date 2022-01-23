@@ -21,11 +21,15 @@ $line = $_SESSION['user_id'];
 
 
 
-$sql2 = "SELECT * FROM user_role  ";
+$sql_ur = "SELECT * FROM user_role  ";
 
-$result2 = mysqli_query($con, $sql2);
+$result_ur = mysqli_query($con, $sql_ur);
 
-$sql3 = "SELECT * FROM user_role  ";
+$sql_urt = "SELECT * FROM user_role_type  ";
+
+$result_urt = mysqli_query($con, $sql_urt);
+
+/* $sql3 = "SELECT * FROM user_role  ";
 
 $result3 = mysqli_query($con, $sql3);
 
@@ -36,7 +40,7 @@ $result4 = mysqli_query($con, $sql4);
 $sql5 = "SELECT * FROM user_role  ";
 
 $result5 = mysqli_query($con, $sql5);
-
+ */
 
 
 
@@ -90,7 +94,7 @@ $result5 = mysqli_query($con, $sql5);
     <!-- /.navbar -->
 
     <!-- Main Sidebar Container -->
-    <aside class="main-sidebar sidebar-light-primary elevation-4" style="position: fixed;">
+    <aside class="main-sidebar sidebar-light-primary elevation-4">
         <!-- Brand Logo -->
         <a href="index.php" class="brand-link">
             <span class="brand-text font-weight-light" style="margin-left: 20px; text-transform: uppercase;"><?php echo $row['level']; ?> Managment</span>
@@ -101,7 +105,7 @@ $result5 = mysqli_query($con, $sql5);
         <div class="sidebar">
             <!-- Sidebar user panel (optional) -->
             <div class="user-panel mt-3 mb-3 d-block">
-           
+
                 <?php
                 if ($_SESSION['user_id'] !== '5') {
                 ?>
@@ -139,365 +143,85 @@ $result5 = mysqli_query($con, $sql5);
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                     <?php
 
+
                     if ($_SESSION['level'] == 'admin') {
-                        echo " <li class='nav-item'>
-                        <a href='#' class='nav-link'>
-                          <i class='nav-icon fas fa-address-card'></i>
-                          <p>
-                          ข้อมูลส่วนตัว
-                            <i class='fas fa-angle-left right'></i>
-                          </p>
-                        </a>
-                        <ul class='nav nav-treeview'>
-                       ";
-                        while ($row2 = mysqli_fetch_assoc($result2)) {
 
-                            if ($row2['type'] == '1') {
-                                $idp = $row2['id'];
+                        while ($row2 = mysqli_fetch_array($result_urt)) {
 
-                                $role = explode(",", $row2['role']); //array
-                                $result_array = array_search("admin$idp", $role); //array
-                                if ($result_array !== false) {
 
-                                    echo "  <li class='nav-item'><a href='$row2[link]' class='nav-link '> &nbsp;&nbsp; <i class='$row2[icon]'></i>
-                            <p>$row2[page]</p></a></li> ";
+                            echo "  <li class='nav-item nav-link'>
+                                    <p>$row2[name]</p></li> ";
+
+
+                            foreach ($result_ur as $vale_ur) {
+
+
+
+                                if ($row2['id'] == $vale_ur['type']) {
+
+                                    if ($vale_ur['admin'] == '1') {
+
+
+                                        echo "  <li class='nav-item'><a href='$vale_ur[link]' class='nav-link '><i class='$vale_ur[icon]'></i>
+                                        <p>$vale_ur[page]</p></a></li> ";
+                                    }
                                 }
                             }
                         }
-                        echo "  </ul>
-                        </li>";
-
-                        /* ------------------------------------------------------------------------------------ */
-                        echo " <li class='nav-item'>
-                        <a href='#' class='nav-link'>
-                          <i class='nav-icon fas fa-users'></i>
-                          <p>
-                          สมาชิก
-                            <i class='fas fa-angle-left right'></i>
-                          </p>
-                        </a>
-                        <ul class='nav nav-treeview'>
-                       ";
-                        while ($row3 = mysqli_fetch_assoc($result3)) {
-
-                            if ($row3['type'] == '2') {
-                                $idp = $row3['id'];
-
-                                $role = explode(",", $row3['role']); //array
-                                $result_array = array_search("admin$idp", $role); //array
-                                if ($result_array !== false) {
-
-                                    echo "  <li class='nav-item'><a href='$row3[link]' class='nav-link '> &nbsp;&nbsp; <i class='$row3[icon]'></i>
-                            <p>$row3[page]</p></a></li> ";
-                                }
-                            }
-                        }echo "  </ul>
-                        </li>";
-
-                         /* ------------------------------------------------------------------------------------ */
-                         echo " <li class='nav-item'>
-                         <a href='#' class='nav-link'>
-                           <i class='nav-icon fas fa-sliders-h'></i>
-                           <p>
-                           ตั้งค่า
-                             <i class='fas fa-angle-left right'></i>
-                           </p>
-                         </a>
-                         <ul class='nav nav-treeview'>
-                        ";
-                        while ($row4 = mysqli_fetch_assoc($result4)) {
-
-                            if ($row4['type'] == '3') {
-                                $idp = $row4['id'];
-
-                                $role = explode(",", $row4['role']); //array
-                                $result_array = array_search("admin$idp", $role); //array
-                                if ($result_array !== false) {
-
-                                    echo "  <li class='nav-item'><a href='$row4[link]' class='nav-link '> &nbsp;&nbsp; <i class='$row4[icon]'></i>
-                            <p>$row4[page]</p></a></li> ";
-                                }
-                            }
-                        }echo "  </ul>
-                        </li>";
-                        /* ------------------------------------------------------------------------------------ */
-                        echo " <li class='nav-item'>
-                        <a href='#' class='nav-link'>
-                          <i class='nav-icon fas fa-bell'></i>
-                          <p>
-                          แจ้งเตือน
-                            <i class='fas fa-angle-left right'></i>
-                          </p>
-                        </a>
-                        <ul class='nav nav-treeview'>
-                       ";
-                       
-                        while ($row5 = mysqli_fetch_assoc($result5)) {
-
-                            if ($row5['type'] == '4') {
-                                $idp = $row5['id'];
-
-                                $role = explode(",", $row5['role']); //array
-                                $result_array = array_search("admin$idp", $role); //array
-                                if ($result_array !== false) {
-
-                                    echo "  <li class='nav-item'><a href='$row5[link]' class='nav-link '> &nbsp;&nbsp; <i class='$row5[icon]'></i>
-                            <p>$row5[page]</p></a></li> ";
-                                }
-                            }
-                        }
-                        echo "  </ul>
-                    </li>";
-                    }
-                    
-                   
-                    /* ----------------------  -----------  -----------  -----------  -----------  -----------  -----------  -----------  -----------   */
-
-                    if ($_SESSION['level'] == 'member') {
-
-                        echo " <li class='nav-item'>
-                        <a href='#' class='nav-link'>
-                          <i class='nav-icon fas fa-address-card'></i>
-                          <p>
-                          ข้อมูลส่วนตัว
-                            <i class='fas fa-angle-left right'></i>
-                          </p>
-                        </a>
-                        <ul class='nav nav-treeview'>
-                       ";
-                        while ($row2 = mysqli_fetch_assoc($result2)) {
-
-                            if ($row2['type'] == '1') {
-                                $idp = $row2['id'];
-
-                                $role = explode(",", $row2['role']); //array
-                                $result_array = array_search("member$idp", $role); //array
-                                if ($result_array !== false) {
-
-                                    echo "  <li class='nav-item'><a href='$row2[link]' class='nav-link '> &nbsp;&nbsp; <i class='$row2[icon]'></i>
-                            <p>$row2[page]</p></a></li> ";
-                                }
-                            }
-                        }echo "  </ul>
-                        </li>";
-
-                        echo " <li class='nav-item'>
-                        <a href='#' class='nav-link'>
-                          <i class='nav-icon fas fa-users'></i>
-                          <p>
-                          สมาชิก
-                            <i class='fas fa-angle-left right'></i>
-                          </p>
-                        </a>
-                        <ul class='nav nav-treeview'>
-                       ";
-                        while ($row3 = mysqli_fetch_assoc($result3)) {
-
-                            if ($row3['type'] == '2') {
-                                $idp = $row3['id'];
-
-                                $role = explode(",", $row3['role']); //array
-                                $result_array = array_search("member$idp", $role); //array
-                                if ($result_array !== false) {
-
-                                    echo "  <li class='nav-item'><a href='$row3[link]' class='nav-link '> &nbsp;&nbsp; <i class='$row3[icon]'></i>
-                            <p>$row3[page]</p></a></li> ";
-                                }
-                            }
-                        }echo "  </ul>
-                        </li>";
-
-                        echo " <li class='nav-item'>
-                         <a href='#' class='nav-link'>
-                           <i class='nav-icon fas fa-sliders-h'></i>
-                           <p>
-                           ตั้งค่า
-                             <i class='fas fa-angle-left right'></i>
-                           </p>
-                         </a>
-                         <ul class='nav nav-treeview'>
-                        ";
-                        while ($row4 = mysqli_fetch_assoc($result4)) {
-
-                            if ($row4['type'] == '3') {
-                                $idp = $row4['id'];
-
-                                $role = explode(",", $row4['role']); //array
-                                $result_array = array_search("member$idp", $role); //array
-                                if ($result_array !== false) {
-
-                                    echo "  <li class='nav-item'><a href='$row4[link]' class='nav-link '> &nbsp;&nbsp; <i class='$row4[icon]'></i>
-                            <p>$row4[page]</p></a></li> ";
-                                }
-                            }
-                        }echo "  </ul>
-                        </li>";
-                        echo " <li class='nav-item'>
-                        <a href='#' class='nav-link'>
-                          <i class='nav-icon fas fa-bell'></i>
-                          <p>
-                          แจ้งเตือน
-                            <i class='fas fa-angle-left right'></i>
-                          </p>
-                        </a>
-                        <ul class='nav nav-treeview'>
-                       ";
-                        while ($row5 = mysqli_fetch_assoc($result5)) {
-
-                            if ($row5['type'] == '4') {
-                                $idp = $row5['id'];
-
-                                $role = explode(",", $row5['role']); //array
-                                $result_array = array_search("member$idp", $role); //array
-                                if ($result_array !== false) {
-
-                                    echo "  <li class='nav-item'><a href='$row5[link]' class='nav-link '> &nbsp;&nbsp; <i class='$row5[icon]'></i>
-                            <p>$row5[page]</p></a></li> ";
-                                }
-                            }
-                        }
-                        echo "  </ul>
-                    </li>";
                     }
 
-                    /* ----------------------------------------------------------------------------------------------------------- */
 
                     if ($_SESSION['level'] == 'employee') {
 
-                        echo " <li class='nav-item'>
-                        <a href='#' class='nav-link'>
-                          <i class='nav-icon fas fa-address-card'></i>
-                          <p>
-                          ข้อมูลส่วนตัว
-                            <i class='fas fa-angle-left right'></i>
-                          </p>
-                        </a>
-                        <ul class='nav nav-treeview'>
-                       ";
-                        while ($row2 = mysqli_fetch_assoc($result2)) {
+                        while ($row2 = mysqli_fetch_array($result_urt)) {
 
-                            if ($row2['type'] == '1') {
-                                $idp = $row2['id'];
 
-                                $role = explode(",", $row2['role']); //array
-                                $result_array = array_search("employee$idp", $role); //array
-                                if ($result_array !== false) {
+                            echo "  <li class='nav-item nav-link'>
+                                    <p>$row2[name]</p></li> ";
 
-                                    echo "  <li class='nav-item'><a href='$row2[link]' class='nav-link '> &nbsp;&nbsp; <i class='$row2[icon]'></i>
-        <p>$row2[page]</p></a></li> ";
-                                }
-                            }
-                        }echo "  </ul>
-                        </li>";
 
-                        echo " <li class='nav-item'>
-                        <a href='#' class='nav-link'>
-                          <i class='nav-icon fas fa-users'></i>
-                          <p>
-                          สมาชิก
-                            <i class='fas fa-angle-left right'></i>
-                          </p>
-                        </a>
-                        <ul class='nav nav-treeview'>
-                       ";
-                        while ($row3 = mysqli_fetch_assoc($result3)) {
+                            foreach ($result_ur as $vale_ur) {
 
-                            if ($row3['type'] == '2') {
-                                $idp = $row3['id'];
 
-                                $role = explode(",", $row3['role']); //array
-                                $result_array = array_search("employee$idp", $role); //array
-                                if ($result_array !== false) {
 
-                                    echo "  <li class='nav-item'><a href='$row3[link]' class='nav-link '> &nbsp;&nbsp; <i class='$row3[icon]'></i>
-        <p>$row3[page]</p></a></li> ";
-                                }
-                            }
-                        }echo "  </ul>
-                        </li>";
+                                if ($row2['id'] == $vale_ur['type']) {
 
-                        echo " <li class='nav-item'>
-                         <a href='#' class='nav-link'>
-                           <i class='nav-icon fas fa-sliders-h'></i>
-                           <p>
-                           ตั้งค่า
-                             <i class='fas fa-angle-left right'></i>
-                           </p>
-                         </a>
-                         <ul class='nav nav-treeview'>
-                        ";
-                        while ($row4 = mysqli_fetch_assoc($result4)) {
+                                    if ($vale_ur['staff'] == '1') {
 
-                            if ($row4['type'] == '3') {
-                                $idp = $row4['id'];
 
-                                $role = explode(",", $row4['role']); //array
-                                $result_array = array_search("employee$idp", $role); //array
-                                if ($result_array !== false) {
-
-                                    echo "  <li class='nav-item'><a href='$row4[link]' class='nav-link '> &nbsp;&nbsp; <i class='$row4[icon]'></i>
-        <p>$row4[page]</p></a></li> ";
-                                }
-                            }
-                        }echo "  </ul>
-                        </li>";
-
-                        echo " <li class='nav-item'>
-                        <a href='#' class='nav-link'>
-                          <i class='nav-icon fas fa-bell'></i>
-                          <p>
-                          แจ้งเตือน
-                            <i class='fas fa-angle-left right'></i>
-                          </p>
-                        </a>
-                        <ul class='nav nav-treeview'>
-                       ";
-                        while ($row5 = mysqli_fetch_assoc($result5)) {
-
-                            if ($row5['type'] == '4') {
-                                $idp = $row5['id'];
-
-                                $role = explode(",", $row5['role']); //array
-                                $result_array = array_search("employee$idp", $role); //array
-                                if ($result_array !== false) {
-
-                                    echo "  <li class='nav-item'><a href='$row5[link]' class='nav-link '> &nbsp;&nbsp; <i class='$row5[icon]'></i>
-        <p>$row5[page]</p></a></li> ";
+                                        echo "  <li class='nav-item'><a href='$vale_ur[link]' class='nav-link '><i class='$vale_ur[icon]'></i>
+                                        <p>$vale_ur[page]</p></a></li> ";
+                                    }
                                 }
                             }
                         }
-                        echo "  </ul>
-                        </li>";
                     }
-                    /* 
 
-                        if ($_SESSION['level'] == 'member') {
-                            $role = explode(",", $rowp['role']); //array
-                            $result_array = array_search("member$idp", $role); //array
-                            if ($result_array !== false) {
-                                echo " <li class='nav-item'><a href='$rowp[link]' class='nav-link '>
-          <i class='$rowp[icon]'></i>
-          <p>
-          $rowp[page]
-          </p>
-          </a>
-        </li> ";
+                    if ($_SESSION['level'] == 'member') {
+
+                        while ($row2 = mysqli_fetch_array($result_urt)) {
+
+
+                            echo "  <li class='nav-item nav-link'>
+                                    <p>$row2[name]</p></li> ";
+
+
+                            foreach ($result_ur as $vale_ur) {
+
+
+
+                                if ($row2['id'] == $vale_ur['type']) {
+
+                                    if ($vale_ur['member'] == '1') {
+
+
+                                        echo "  <li class='nav-item'><a href='$vale_ur[link]' class='nav-link '><i class='$vale_ur[icon]'></i>
+                                        <p>$vale_ur[page]</p></a></li> ";
+                                    }
+                                }
                             }
                         }
-                        if ($_SESSION['level'] == 'employee') {
-                            $role = explode(",", $rowp['role']); //array
-                            $result_array = array_search("employee$idp", $role); //array
-                            if ($result_array !== false) {
-                                echo " <li class='nav-item'><a href='$rowp[link]' class='nav-link '>
-        <i class='$rowp[icon]'></i>
-        <p>
-        $rowp[page]
-        </p>
-        </a>
-      </li> ";
-                            }
-                        }
-                    } */
+                    }
 
                     ?>
 

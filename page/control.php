@@ -43,70 +43,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <link rel="stylesheet" href="../css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="../css/responsive.bootstrap4.min.css">
     <link rel="stylesheet" href="../css/buttons.bootstrap4.min.css">
+    <link rel="stylesheet" href="../css/switch_insurance.css">
 </head>
 
 <body class="hold-transition sidebar-mini">
     <?php
-    if (isset($_POST['but_update'])) { //ถ้ามีการกดปุ่ม savedata
-        if (isset($_POST['update1'])) { //ถ้ามีการกด checkbox[]
-            foreach ($_POST['update1'] as $updateid) { //รันค่า id ที่เลือกมาจาก checkbox[] ของแต่ละตัว 
-
-                $role = implode(",", $_POST['role']); //แยกค่าข้อมูลที่อยู่ใน array ของ role 
-
-                $update = "UPDATE user_role SET 
-                        role='" . $role . "'
-                    WHERE id=" . $updateid;
-                mysqli_query($con, $update);
-                header('location:control.php');
-            }
-        }
-    }
-/* ------------------------------------------------------------------------------------------ */
-if (isset($_POST['but_update'])) { //ถ้ามีการกดปุ่ม savedata
-    if (isset($_POST['update2'])) { //ถ้ามีการกด checkbox[]
-        foreach ($_POST['update2'] as $updateid) { //รันค่า id ที่เลือกมาจาก checkbox[] ของแต่ละตัว 
-
-            $role = implode(",", $_POST['role']); //แยกค่าข้อมูลที่อยู่ใน array ของ role 
-
-            $update = "UPDATE user_role SET 
-                    role='" . $role . "'
-                WHERE id=" . $updateid;
-            mysqli_query($con, $update);
-            header('location:control.php');
-        }
-    }
-}
-/* ------------------------------------------------------------------------------------------ */
-if (isset($_POST['but_update'])) { //ถ้ามีการกดปุ่ม savedata
-    if (isset($_POST['update3'])) { //ถ้ามีการกด checkbox[]
-        foreach ($_POST['update3'] as $updateid) { //รันค่า id ที่เลือกมาจาก checkbox[] ของแต่ละตัว 
-
-            $role = implode(",", $_POST['role']); //แยกค่าข้อมูลที่อยู่ใน array ของ role 
-
-            $update = "UPDATE user_role SET 
-                    role='" . $role . "'
-                WHERE id=" . $updateid;
-            mysqli_query($con, $update);
-            header('location:control.php');
-        }
-    }
-}
-/* ------------------------------------------------------------------------------------------ */
-if (isset($_POST['but_update'])) { //ถ้ามีการกดปุ่ม savedata
-    if (isset($_POST['update4'])) { //ถ้ามีการกด checkbox[]
-        foreach ($_POST['update4'] as $updateid) { //รันค่า id ที่เลือกมาจาก checkbox[] ของแต่ละตัว 
-
-            $role = implode(",", $_POST['role']); //แยกค่าข้อมูลที่อยู่ใน array ของ role 
-
-            $update = "UPDATE user_role SET 
-                    role='" . $role . "'
-                WHERE id=" . $updateid;
-            mysqli_query($con, $update);
-            header('location:control.php');
-        }
-    }
-}
-/* ------------------------------------------------------------------------------------------ */
+   
+    /* ------------------------------------------------------------------------------------------ */
     include('admin_nav.php');
     ?>
 
@@ -126,263 +69,135 @@ if (isset($_POST['but_update'])) { //ถ้ามีการกดปุ่ม 
             </div><!-- /.container-fluid -->
         </section>
 
+
+        <?php
+
+        $sql_type = "SELECT * FROM user_role_type  ";
+
+        $result_type = mysqli_query($con, $sql_type);
+
+        ?>
         <!-- Main content -->
         <section class="content">
             <div class="container-fluid ">
                 <div class="row">
-                    <div class="offset-1 col-10">
-                        <form action="" method="post">
-                            <div class="card card-dark">
-                                <div class=" card-header">
-                                    <h3 class="card-title ">ผู้ใช้</h3>
+                <div class="offset-1 col-10 mb-2">
+                <a href="tab_manage.php" name="but_update" class="btn btn-warning">เพิ่มข้อมูล</a>
+                
+                </div>
+                    <?php
+
+                    while ($row_type = mysqli_fetch_array($result_type)) {
+
+                    ?>
+                        <div class="offset-1 col-10">
+                            <form action="" method="post">
+                                <div class="card card-dark">
+                                    <div class=" card-header">
+                                        <h3 class="card-title "><?php echo $row_type['name'] ?> </h3>
+                                    </div>
+                                    <!-- /.card-header -->
+                                    <div class="card-body">
+
+                                        <table id="example1" class="table table-bordered table-hover text-md-center">
+                                            <thead>
+                                                <tr>
+                                                    <th >ลำดับ</th>
+                                                    <th width="300">หน้า</th>
+                                                    <th>ผู้ดูแลระะบ</th>
+                                                    <th>พนักงาน</th>
+                                                    <th>ลูกค้า</th>
+                                                    <th>จัดการ</th>
+
+
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <div class="form-group">
+                                                    <?php
+
+                                                    $sqlc = "SELECT * FROM user_role WHERE type = $row_type[id]  ";
+                                                    $resultc = mysqli_query($con, $sqlc);
+                                                    while ($rowc = mysqli_fetch_assoc($resultc)) {
+                                                        $idr = $rowc['id'];
+                                                    ?>
+
+                                                        <tr>
+
+                                                            <td><?php echo $order++; ?></td>
+                                                            <td><label for="page"><?php echo $rowc['page']; ?></label></td>
+                                                            <td>
+                                                                <?php if ($rowc['admin'] == '1') {
+
+                                                                    $status = 'checked';
+                                                                } else {
+                                                                    $status = '';
+                                                                } ?>
+
+                                                                <label class="switch">
+                                                                    <input type="checkbox" name="id" class="change" <?php echo $status ?> id="<?php echo $rowc['id']; ?>">
+                                                                    <div class="slider round"> </div>
+
+                                                                </label>
+
+                                                            </td>
+                                                            <td>
+                                                                <?php if ($rowc['staff'] == '1') {
+
+                                                                    $status = 'checked';
+                                                                } else {
+                                                                    $status = '';
+                                                                } ?>
+
+                                                                <label class="switch">
+                                                                    <input type="checkbox" name="id" class="change3" <?php echo $status ?> id="<?php echo $rowc['id']; ?>">
+                                                                    <div class="slider round"> </div>
+
+                                                                </label>
+
+                                                            </td>
+                                                            <td>
+                                                                <?php if ($rowc['member'] == '1') {
+
+                                                                    $status = 'checked';
+                                                                } else {
+                                                                    $status = '';
+                                                                } ?>
+
+                                                                <label class="switch">
+                                                                    <input type="checkbox" name="id" class="change2" <?php echo $status ?> id="<?php echo $rowc['id']; ?>">
+                                                                    <div class="slider round"> </div>
+
+                                                                </label>
+
+                                                            </td>
+
+                                                            <td>
+                                                                <a href="tab_edit.php?id=<?php echo  $idr ?>" class="btn btn-warning"><i class="fas fa-edit"></a></i>&nbsp;
+                                                                <a href="../backend/tab_delete.php?id=<?php echo  $idr ?>" onclick="return confirm('Are you sure to delete ?')" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                                                            </td>
+
+                                                        </tr>
+                                                    <?php  } ?>
+                                                </div>
+                                            </tbody>
+                                            <div>
+<!--                                                 <input type="submit" name="but_update" class="btn btn-danger " value="บันทึก">
+ -->                                               
+                                                <br> <br>
+                                        </table>
+                                    </div>
                                 </div>
-                                <!-- /.card-header -->
-                                <div class="card-body">
+                            </form>
+                        </div>
 
-                                    <table id="example1" class="table table-bordered table-hover text-md-center">
-                                        <thead>
-                                            <tr>
-                                                <th><input type='checkbox' id='checkAll1'> เลือกทั้งหมด</th>
-                                                <th>ลำดับ</th>
-                                                <th>หน้า</th>
-                                                <th>ผู้ดูแลระะบ</th>
-                                                <th>พนักงาน</th>
-                                                <th>ลูกค้า</th>
-                                                <th>จัดการ</th>
+                    <?php
+
+                    }
+
+                    ?>
 
 
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <div class="form-group">
-                                                <?php
-                                                $sqlc = "SELECT * FROM user_role WHERE type ='1'  ";
-                                                $resultc = mysqli_query($con, $sqlc);
-                                                while ($rowc = mysqli_fetch_assoc($resultc)) {
-                                                    $idr = $rowc['id'];
-                                                    $role_arr = array("admin$idr", "employee$idr", "member$idr");
-                                                ?>
-
-                                                    <tr>
-                                                        <td><input type='checkbox' name='update1[]' value='<?= $idr ?>'></td>
-                                                        <td><?php echo $order++;  ;?></td>
-                                                        <td><label for="page"><?php echo $rowc['page']; ?></label></td>
-                                                        <?php
-                                                        $role = explode(",", $rowc['role']); //array
-                                                        foreach ($role_arr as $value) {
-                                                            if (in_array($value, $role)) {
-                                                                echo " <td><input  type='checkbox' name='role[]' value='$value' checked></td>";
-                                                                echo " <input type='hidden' name='role[]' value='0'>";
-                                                            } else {
-                                                                echo " <td><input  type='checkbox' name='role[]' value='$value' ></td>";
-                                                            }
-                                                        }
-                                                        ?>
-                                                        <td><a href="tab_edit.php?id=<?php echo  $idr ?>"><i class="far fa-edit"></a></i>&nbsp;&nbsp;&nbsp;<a href="../backend/tab_delete.php?id=<?php echo  $idr ?>" onclick="return confirm('Are you sure to delete ?')"><i class="far fa-trash-alt"></i></a></td>
-
-                                                    </tr>
-                                                <?php  } ?>
-                                            </div>
-                                        </tbody>
-                                        <div>
-                                            <input type="submit" name="but_update" class="btn btn-danger " value="บันทึก">
-                                            <a href="tab_manage.php" name="but_update" class="btn btn-warning">เพิ่มข้อมูล</a>
-                                            <br> <br>
-                                    </table>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-
-                    <div class="offset-1 col-10">
-                        <form action="" method="post">
-                            <div class="card card-dark">
-                                <div class=" card-header">
-                                    <h3 class="card-title ">สมาชิก</h3>
-                                </div>
-                                <!-- /.card-header -->
-                                <div class="card-body">
-                                    <table id="example3" class="table table-bordered table-hover text-md-center">
-                                        <thead>
-                                            <tr>
-                                                <th><input type='checkbox' id='checkAll2'> เลือกทั้งหมด</th>
-                                                <th>ลำดับ</th>
-                                                <th>หน้า</th>
-                                                <th>ผู้ดูแลระะบ</th>
-                                                <th>พนักงาน</th>
-                                                <th>ลูกค้า</th>
-                                                <th>จัดการ</th>
-
-
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <div class="form-group">
-                                                <?php
-                                                $sqlc = "SELECT * FROM user_role WHERE type ='2'  ";
-                                                $resultc = mysqli_query($con, $sqlc);
-                                                while ($rowc = mysqli_fetch_assoc($resultc)) {
-                                                    $idr = $rowc['id'];
-                                                    $role_arr = array("admin$idr", "employee$idr", "member$idr");
-                                                ?>
-
-                                                    <tr>
-                                                        <td><input type='checkbox' name='update2[]' value='<?= $idr ?>'></td>
-                                                        <td><?php echo $order++; ?></td>
-                                                        <td><label for="page"><?php echo $rowc['page']; ?></label></td>
-                                                        <?php
-                                                        $role = explode(",", $rowc['role']); //array
-                                                        foreach ($role_arr as $value) {
-                                                            if (in_array($value, $role)) {
-                                                                echo " <td><input  type='checkbox' name='role[]' value='$value' checked></td>";
-                                                                echo " <input type='hidden' name='role[]' value='0'>";
-                                                            } else {
-                                                                echo " <td><input  type='checkbox' name='role[]' value='$value' ></td>";
-                                                            }
-                                                        }
-                                                        ?>
-                                                        <td><a href="tab_edit.php?id=<?php echo  $idr ?>"><i class="far fa-edit"></a></i>&nbsp;&nbsp;&nbsp;<a href="../backend/tab_delete.php?id=<?php echo  $idr ?>" onclick="return confirm('Are you sure to delete ?')"><i class="far fa-trash-alt"></i></a></td>
-
-                                                    </tr>
-                                                <?php  } ?>
-                                            </div>
-                                        </tbody>
-                                        <div>
-                                            <input type="submit" name="but_update" class="btn btn-danger " value="บันทึก">
-                                            <a href="tab_manage.php" name="but_update" class="btn btn-warning">เพิ่มข้อมูล</a>
-                                            <br> <br>
-                                    </table>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-
-                    <div class="offset-1 col-10">
-                        <form action="" method="post">
-                            <div class="card card-dark">
-                                <div class=" card-header">
-                                    <h3 class="card-title ">ตั้งค่า</h3>
-                                </div>
-                                <!-- /.card-header -->
-                                <div class="card-body">
-                                    <table id="example5" class="table table-bordered table-hover text-md-center">
-                                        <thead>
-                                            <tr>
-                                                <th><input type='checkbox' id='checkAll3'> เลือกทั้งหมด</th>
-                                                <th>ลำดับ</th>
-                                                <th>หน้า</th>
-                                                <th>ผู้ดูแลระะบ</th>
-                                                <th>พนักงาน</th>
-                                                <th>ลูกค้า</th>
-                                                <th>จัดการ</th>
-
-
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <div class="form-group">
-                                                <?php
-                                                $sqlc = "SELECT * FROM user_role WHERE type ='3'  ";
-                                                $resultc = mysqli_query($con, $sqlc);
-                                                while ($rowc = mysqli_fetch_assoc($resultc)) {
-                                                    $idr = $rowc['id'];
-                                                    $role_arr = array("admin$idr", "employee$idr", "member$idr");
-                                                ?>
-
-                                                    <tr>
-                                                        <td><input type='checkbox' name='update3[]' value='<?= $idr ?>'></td>
-                                                        <td><?php echo $order++; ?></td>
-                                                        <td><label for="page"><?php echo $rowc['page']; ?></label></td>
-                                                        <?php
-                                                        $role = explode(",", $rowc['role']); //array
-                                                        foreach ($role_arr as $value) {
-                                                            if (in_array($value, $role)) {
-                                                                echo " <td><input  type='checkbox' name='role[]' value='$value' checked></td>";
-                                                                echo " <input type='hidden' name='role[]' value='0'>";
-                                                            } else {
-                                                                echo " <td><input  type='checkbox' name='role[]' value='$value' ></td>";
-                                                            }
-                                                        }
-                                                        ?>
-                                                        <td><a href="tab_edit.php?id=<?php echo  $idr ?>"><i class="far fa-edit"></a></i>&nbsp;&nbsp;&nbsp;<a href="../backend/tab_delete.php?id=<?php echo  $idr ?>" onclick="return confirm('Are you sure to delete ?')"><i class="far fa-trash-alt"></i></a></td>
-
-                                                    </tr>
-                                                <?php  } ?>
-                                            </div>
-                                        </tbody>
-                                        <div>
-                                            <input type="submit" name="but_update" class="btn btn-danger " value="บันทึก">
-                                            <a href="tab_manage.php" name="but_update" class="btn btn-warning">เพิ่มข้อมูล</a>
-                                            <br> <br>
-                                    </table>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-
-
-                    <div class="offset-1 col-10">
-                        <form action="" method="post">
-                            <div class="card card-dark">
-                                <div class=" card-header">
-                                    <h3 class="card-title ">แจ้งเตือน</h3>
-                                </div>
-                                <!-- /.card-header -->
-                                <div class="card-body">
-                                    <table id="example7" class="table table-bordered table-hover text-md-center">
-                                        <thead>
-                                            <tr>
-                                                <th><input type='checkbox' id='checkAll4'> เลือกทั้งหมด</th>
-                                                <th>ลำดับ</th>
-                                                <th>หน้า</th>
-                                                <th>ผู้ดูแลระะบ</th>
-                                                <th>พนักงาน</th>
-                                                <th>ลูกค้า</th>
-                                                <th>จัดการ</th>
-
-
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <div class="form-group">
-                                                <?php
-                                                $sqlc = "SELECT * FROM user_role WHERE type ='4'  ";
-                                                $resultc = mysqli_query($con, $sqlc);
-                                                while ($rowc = mysqli_fetch_assoc($resultc)) {
-                                                    $idr = $rowc['id'];
-                                                    $role_arr = array("admin$idr", "employee$idr", "member$idr");
-                                                ?>
-
-                                                    <tr>
-                                                        <td><input type='checkbox' name='update4[]' value='<?= $idr ?>'></td>
-                                                        <td><?php echo $order++; ?></td>
-                                                        <td><label for="page"><?php echo $rowc['page']; ?></label></td>
-                                                        <?php
-                                                        $role = explode(",", $rowc['role']); //array
-                                                        foreach ($role_arr as $value) {
-                                                            if (in_array($value, $role)) {
-                                                                echo " <td><input  type='checkbox' name='role[]' value='$value' checked></td>";
-                                                                echo " <input type='hidden' name='role[]' value='0'>";
-                                                            } else {
-                                                                echo " <td><input  type='checkbox' name='role[]' value='$value' ></td>";
-                                                            }
-                                                        }
-                                                        ?>
-                                                        <td><a href="tab_edit.php?id=<?php echo  $idr ?>"><i class="far fa-edit"></a></i>&nbsp;&nbsp;&nbsp;<a href="../backend/tab_delete.php?id=<?php echo  $idr ?>" onclick="return confirm('Are you sure to delete ?')"><i class="far fa-trash-alt"></i></a></td>
-
-                                                    </tr>
-                                                <?php  } ?>
-                                            </div>
-                                        </tbody>
-                                        <div>
-                                            <input type="submit" name="but_update" class="btn btn-danger " value="บันทึก">
-                                            <a href="tab_manage.php" name="but_update" class="btn btn-warning">เพิ่มข้อมูล</a>
-                                            <br> <br>
-                                    </table>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
 
 
                     <!-- /.card-body -->
@@ -428,9 +243,11 @@ if (isset($_POST['but_update'])) { //ถ้ามีการกดปุ่ม 
     <script src="../js/adminlte.min.js"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="../js/demo.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <!-- Page specific script -->
     <script>
-        $(function() {
+        /* $(function() {
             $("#example1").DataTable({
                 "responsive": true,
                 "lengthChange": false,
@@ -446,64 +263,64 @@ if (isset($_POST['but_update'])) { //ถ้ามีการกดปุ่ม 
                 "autoWidth": false,
                 "responsive": true,
             });
-        });
+        }); */
 
-        $(function() {
-            $("#example3").DataTable({
-                "responsive": true,
-                "lengthChange": false,
-                "autoWidth": false,
-                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-            }).buttons().container().appendTo('#example3_wrapper .col-md-6:eq(0)');
-            $('#example4').DataTable({
-                "paging": true,
-                "lengthChange": false,
-                "searching": false,
-                "ordering": true,
-                "info": true,
-                "autoWidth": false,
-                "responsive": true,
-            });
-        });
+        /*  $(function() {
+             $("#example3").DataTable({
+                 "responsive": true,
+                 "lengthChange": false,
+                 "autoWidth": false,
+                 "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+             }).buttons().container().appendTo('#example3_wrapper .col-md-6:eq(0)');
+             $('#example4').DataTable({
+                 "paging": true,
+                 "lengthChange": false,
+                 "searching": false,
+                 "ordering": true,
+                 "info": true,
+                 "autoWidth": false,
+                 "responsive": true,
+             });
+         });
 
-        $(function() {
-            $("#example5").DataTable({
-                "responsive": true,
-                "lengthChange": false,
-                "autoWidth": false,
-                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-            }).buttons().container().appendTo('#example4_wrapper .col-md-6:eq(0)');
-            $('#example6').DataTable({
-                "paging": true,
-                "lengthChange": false,
-                "searching": false,
-                "ordering": true,
-                "info": true,
-                "autoWidth": false,
-                "responsive": true,
-            });
-        });
+         $(function() {
+             $("#example5").DataTable({
+                 "responsive": true,
+                 "lengthChange": false,
+                 "autoWidth": false,
+                 "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+             }).buttons().container().appendTo('#example4_wrapper .col-md-6:eq(0)');
+             $('#example6').DataTable({
+                 "paging": true,
+                 "lengthChange": false,
+                 "searching": false,
+                 "ordering": true,
+                 "info": true,
+                 "autoWidth": false,
+                 "responsive": true,
+             });
+         });
 
-        $(function() {
-            $("#example7").DataTable({
-                "responsive": true,
-                "lengthChange": false,
-                "autoWidth": false,
-                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-            }).buttons().container().appendTo('#example7_wrapper .col-md-6:eq(0)');
-            $('#example8').DataTable({
-                "paging": true,
-                "lengthChange": false,
-                "searching": false,
-                "ordering": true,
-                "info": true,
-                "autoWidth": false,
-                "responsive": true,
-            });
-        });
+         $(function() {
+             $("#example7").DataTable({
+                 "responsive": true,
+                 "lengthChange": false,
+                 "autoWidth": false,
+                 "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+             }).buttons().container().appendTo('#example7_wrapper .col-md-6:eq(0)');
+             $('#example8').DataTable({
+                 "paging": true,
+                 "lengthChange": false,
+                 "searching": false,
+                 "ordering": true,
+                 "info": true,
+                 "autoWidth": false,
+                 "responsive": true,
+             });
+         }); */
     </script>
     <script>
-        $(document).ready(function() {
+        /* $(document).ready(function() {
 
             // Check/Uncheck ALl
             $('#checkAll1').change(function() {
@@ -527,37 +344,114 @@ if (isset($_POST['but_update'])) { //ถ้ามีการกดปุ่ม 
                     $('#checkAll1').prop('checked', false);
                 }
             });
+        }); */
+
+
+        $(document).on('click', '.change', function() {
+            var status_id = $(this).attr("id");
+            if (status_id != '') {
+                $.ajax({
+                    url: "../backend/control_admin.php",
+                    method: "POST",
+                    data: {
+                        status_id: status_id
+                    },
+                    success: function(data) {
+
+                        console.log(data);
+                        Swal.fire({
+                            position: 'top-center',
+                            icon: 'success',
+                            title: 'อัพเดทสำเร็จ',
+                            showConfirmButton: false,
+                            timer: 1000
+                        })
+                        setTimeout(function() {
+                            window.location = window.location;
+                        }, 1000);
+                    }
+
+                });
+            }
         });
 
-        /* -------------------------------------------------------------------------------------------- */
-        $(document).ready(function() {
-
-            // Check/Uncheck ALl
-            $('#checkAll2').change(function() {
-                if ($(this).is(':checked')) {
-                    $('input[name="update2[]"]').prop('checked', true);
-                } else {
-                    $('input[name="update2[]"]').each(function() {
-                        $(this).prop('checked', false);
-                    });
-                }
-            });
-
-            // Checkbox click
-            $('input[name="update2[]"]').click(function() {
-                var total_checkboxes = $('input[name="update2[]"]').length;
-                var total_checkboxes_checked = $('input[name="update2[]"]:checked').length;
-
-                if (total_checkboxes_checked == total_checkboxes) {
-                    $('#checkAll2').prop('checked', true);
-                } else {
-                    $('#checkAll2').prop('checked', false);
-                }
-            });
+        $(document).on('click', '.change2', function() {
+            var status_id = $(this).attr("id");
+            if (status_id != '') {
+                $.ajax({
+                    url: "../backend/control_member.php",
+                    method: "POST",
+                    data: {
+                        status_id: status_id
+                    },
+                    success: function(data) {
+                        Swal.fire({
+                            position: 'top-center',
+                            icon: 'success',
+                            title: 'อัพเดทสำเร็จ',
+                            showConfirmButton: false,
+                            timer: 1000
+                        })
+                        setTimeout(function() {
+                            window.location = window.location;
+                        }, 1000);
+                    }
+                });
+            }
         });
+        $(document).on('click', '.change3', function() {
+            var status_id = $(this).attr("id");
+            if (status_id != '') {
+                $.ajax({
+                    url: "../backend/control_staff.php",
+                    method: "POST",
+                    data: {
+                        status_id: status_id
+                    },
+                    success: function(data) {
+                        Swal.fire({
+                            position: 'top-center',
+                            icon: 'success',
+                            title: 'อัพเดทสำเร็จ',
+                            showConfirmButton: false,
+                            timer: 1000
+                        })
+                        setTimeout(function() {
+                            window.location = window.location;
+                        }, 1000);
+                    }
+                });
+            }
+        });
+        /* -------------------------------------------------------------------------------------------- */
+        /*  $(document).ready(function() {
+
+             // Check/Uncheck ALl
+             $('#checkAll2').change(function() {
+                 if ($(this).is(':checked')) {
+                     $('input[name="update2[]"]').prop('checked', true);
+                 } else {
+                     $('input[name="update2[]"]').each(function() {
+                         $(this).prop('checked', false);
+                     });
+                 }
+             });
+
+             // Checkbox click
+             $('input[name="update2[]"]').click(function() {
+                 var total_checkboxes = $('input[name="update2[]"]').length;
+                 var total_checkboxes_checked = $('input[name="update2[]"]:checked').length;
+
+                 if (total_checkboxes_checked == total_checkboxes) {
+                     $('#checkAll2').prop('checked', true);
+                 } else {
+                     $('#checkAll2').prop('checked', false);
+                 }
+             });
+         }); */
 
         /* -------------------------------------------------------------------------------------------- */
-        $(document).ready(function() {
+        /* $(document).ready(function() {
 
             // Check/Uncheck ALl
             $('#checkAll3').change(function() {
@@ -581,34 +475,34 @@ if (isset($_POST['but_update'])) { //ถ้ามีการกดปุ่ม 
                     $('#checkAll3').prop('checked', false);
                 }
             });
-        });
+        }); */
 
         /* -------------------------------------------------------------------------------------------- */
-        $(document).ready(function() {
+        /*   $(document).ready(function() {
 
-            // Check/Uncheck ALl
-            $('#checkAll4').change(function() {
-                if ($(this).is(':checked')) {
-                    $('input[name="update4[]"]').prop('checked', true);
-                } else {
-                    $('input[name="update4[]"]').each(function() {
-                        $(this).prop('checked', false);
-                    });
-                }
-            });
+              // Check/Uncheck ALl
+              $('#checkAll4').change(function() {
+                  if ($(this).is(':checked')) {
+                      $('input[name="update4[]"]').prop('checked', true);
+                  } else {
+                      $('input[name="update4[]"]').each(function() {
+                          $(this).prop('checked', false);
+                      });
+                  }
+              });
 
-            // Checkbox click
-            $('input[name="update4[]"]').click(function() {
-                var total_checkboxes = $('input[name="update4[]"]').length;
-                var total_checkboxes_checked = $('input[name="update4[]"]:checked').length;
+              // Checkbox click
+              $('input[name="update4[]"]').click(function() {
+                  var total_checkboxes = $('input[name="update4[]"]').length;
+                  var total_checkboxes_checked = $('input[name="update4[]"]:checked').length;
 
-                if (total_checkboxes_checked == total_checkboxes) {
-                    $('#checkAll4').prop('checked', true);
-                } else {
-                    $('#checkAll4').prop('checked', false);
-                }
-            });
-        });
+                  if (total_checkboxes_checked == total_checkboxes) {
+                      $('#checkAll4').prop('checked', true);
+                  } else {
+                      $('#checkAll4').prop('checked', false);
+                  }
+              });
+          }); */
 
         /* -------------------------------------------------------------------------------------------- */
     </script>

@@ -91,7 +91,7 @@ if (isset($_POST['submit'])) {
 
 			<form class="login100-form validate-form" action="" method="post">
 				<span class="login100-form-title p-b-37" >
-					Sign in 
+					Sign in
 				</span>
 				
 				<div class="wrap-input100 validate-input m-b-20" data-validate="Enter username or email" >

@@ -136,7 +136,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           </div>
                 
                 
-                <div class="offset-3 col-md-6">
+          <div class="offset-sm-3 col-md-6">
 
                     
                         <!-- general form elements -->

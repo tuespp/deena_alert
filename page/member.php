@@ -119,7 +119,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                 <td><?php echo $value['sub_name']; ?></td>
 
 
-                                                <td><a href="member_update_form.php?id=<?php echo $value['id']; ?>"><i class="far fa-edit"></a></i>&nbsp;&nbsp;&nbsp;<a href="../backend/member_delete.php?id=<?php echo $value['id']; ?>" onclick="return confirm('Are you sure to delete ?')"><i class="far fa-trash-alt"></i></a></td>
+                                                <td><a href="member_update_form.php?id=<?php echo $value['id']; ?>" class="btn btn-warning"><i class="fas fa-edit">
+
+                                                </a></i>&nbsp;&nbsp;&nbsp;<a href="../backend/member_delete.php?id=<?php echo $value['id']; ?>" class="btn btn-danger" onclick="return confirm('Are you sure to delete ?')"><i class="far fa-trash-alt"></i></a></td>
 
                                             </tr>
 

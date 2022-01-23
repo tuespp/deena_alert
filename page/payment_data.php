@@ -84,28 +84,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 <table id="example1" class="table table-bordered table-striped">
                                     <thead>
                                         <tr>
+
                                             <th>ลำดับ</th>
-                                            <th>ใบรับแจ้ง</th>
-                                            <th>วันรับแจ้ง</th>
-                                            <th>กรมธรรม์เลขที่</th>
                                             <th>บ.ประกันภัย</th>
-                                            <th>ผู้เอาประกันภัย</th>
-                                            <th>โทรศัพท์</th>
-                                            <th>ประเภท</th>
                                             <th>ทะเบียนรถ</th>
-                                            <th>เริ่มคุ้มครอง</th>
-                                            <th>เบี้ยสุทธิ</th>
                                             <th>เบี้ยรวม</th>
-                                            <th>ตัวแทน</th>
                                             <th>งวดที่</th>
-                                            <th>วันครบกำหนด</th>
-                                            <th> งวดละ </th>
+                                            <th>งวดละ</th>
                                             <th>แจ้งเตือน Line</th>
                                             <th>แจ้งเตือน SMS</th>
                                             <th>หมายเเหตุ</th>
-
-                                            <th> วันแจ้งเตือน </th>
-
                                             <th>จัดการ</th>
 
                                         </tr>
@@ -115,20 +103,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         <?php while ($row = mysqli_fetch_array($result)) { ?>
                                             <tr>
                                                 <td><?php echo $row['id']; ?></td>
-                                                <td><?php echo $row['invoice_id']; ?></td>
-                                                <td><?php echo $row['invoice_date']; ?></td>
-                                                <td><?php echo $row['insurance_id']; ?></td>
                                                 <td><?php echo $row['insurance']; ?></td>
-                                                <td><?php echo $row['name']; ?></td>
-                                                <td><?php echo $row['phone']; ?></td>
-                                                <td><?php echo $row['type']; ?></td>
                                                 <td><?php echo $row['car_license']; ?></td>
-                                                <td><?php echo $row['date_start']; ?></td>
-                                                <td><?php echo $row['premium']; ?></td>
                                                 <td><?php echo $row['premium_total']; ?></td>
-                                                <td><?php echo $row['agent']; ?></td>
                                                 <td><?php echo $row['installment_no']; ?></td>
-                                                <td><?php echo $row['date_end']; ?></td>
                                                 <td><?php echo $row['installment']; ?></td>
 
                                                 <td>
@@ -168,10 +146,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                 </td>
 
 
-                                                <td><?php echo $row['date_send']; ?></td>
                                                 <td><?php echo $row['note']; ?></td>
 
-                                                <td><a href="payment_edit_form.php?id=<?php echo $row['id']; ?>"><i class="far fa-edit"></a></i>&nbsp;&nbsp;&nbsp;<a href="../backend/payment_delete.php?id=<?php echo $row['id']; ?>" onclick="return confirm('Are you sure to delete ?')"><i class="far fa-trash-alt"></i></a></td>
+                                                <td><a href="payment_edit_form.php?id=<?php echo $row['id']; ?>" class="btn btn-warning"><i class="far fa-edit"></a></i>&nbsp;&nbsp;&nbsp;
+                                                <a href="../backend/payment_delete.php?id=<?php echo $row['id']; ?>" class="btn btn-danger" onclick="return confirm('Are you sure to delete ?')"><i class="far fa-trash-alt"></i></a></td>
 
                                             </tr>
                                         <?php  } ?>

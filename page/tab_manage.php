@@ -70,7 +70,7 @@ $result3 = mysqli_query($con, $sql3);
         <section class="content">
             <div class="container-fluid ">
                 <div class="row">
-                    <div class="offset-3 col-md-6">
+                <div class="offset-sm-3 col-md-6">
                         <!-- general form elements -->
                         <div class="card card-success">
                             <div class="card-header">
