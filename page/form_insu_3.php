@@ -71,7 +71,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 style="text-transform: uppercase">ขอสินเชื่อเบี้ยประกัน รูปแบบที่ 1</h1>
+                        <h1 style="text-transform: uppercase">ขอสินเชื่อเบี้ยประกัน รูปแบบที่ 3</h1>
                     </div>
 
                 </div>
@@ -90,7 +90,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <div class="card-header">
                                 <h3 class="card-title">รายละเอียด</h3>
                             </div>
-                            <label for="" class="mt-3 ml-3">รูปแบบที่ 1 คือ กำหนดงวดแรกเป็น % งวดที่เหลือหารกัน </label>
+                            <label for="" class="mt-3 ml-3">รูปแบบที่ 3 คือ กำหนดงวดแรกเป็นจำนวน งวดที่เหลือหารเท่ากัน </label>
                     </div>
                         <!-- general form elements -->
                         <div class="card card-warning">
@@ -110,7 +110,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                 <div class="col-md-4">
                                                     <label for="">วันที่เขียน <span class="red">*</span></label>
                                                     <input type="date" name="date_create" placeholder="วันที่เขียน" class="form-control" value="" required>
-                                                    <input type="hidden" name="ins_type" placeholder="วันที่เขียน" class="form-control" value="แบบที่ 1" >
+                                                    <input type="hidden" name="ins_type" placeholder="วันที่เขียน" class="form-control" value="แบบที่ 3" >
 
                                                 </div>
                                                 <div class="col-md-4">
@@ -324,18 +324,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
                                             <div class="row">
-                                                <div class="col-md-4 ">
-                                                    <label class="mt-3" for="exampleInputPassword1">ชำระงวดแรกเป็นเปอร์เซ็น <span class="red">*</span></label>
-
-                                                    <div class="input-group mb-2">
-
-                                                        <input type="text" name="percent" id="percent" placeholder="จำนวนเปอร์เซ็น" class="form-control" value="" required>
-                                                        <div class="input-group-prepend">
-                                                            <div class="input-group-text">%</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4 "> <label class="mt-3" for="exampleInputPassword1">ชำระงวดแรกเป็นเงิน <span class="red">*</span></label>
+                                                
+                                                <div class="col-md-6 "> <label class="mt-3" for="exampleInputPassword1">ชำระงวดแรกเป็นเงิน <span class="red">*</span></label>
 
                                                     <div class="input-group mb-2">
 
@@ -346,7 +336,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                     </div>
                                                 </div>
 
-                                                <div class="col-md-4 "> <label class="mt-3" for="exampleInputPassword1">คงเหลืองวดที่ต้องชำระ<span class="red">*</span></label>
+                                                <div class="col-md-6 "> <label class="mt-3" for="exampleInputPassword1">คงเหลืองวดที่ต้องชำระ<span class="red">*</span></label>
 
                                                     <div class="input-group mb-2">
 
@@ -573,13 +563,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                         $('#price').val(price);
                         var installment = $('#installment').val();
-                        var percent = $('#percent').val();
-                        var ins1 = (price * (percent / 100));
+
+                        var ins1 = $('#ins1').val();
+
+
                         var allins = (price - ins1) / (installment - 1);
                         var installment2 = installment - 1;
 
                         $('#installment2').val(installment2);
-                        $('#ins1').val(ins1.toFixed(0));
 
                         var i = '';
 

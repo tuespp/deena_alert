@@ -71,7 +71,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 style="text-transform: uppercase">ขอสินเชื่อเบี้ยประกัน รูปแบบที่ 1</h1>
+                        <h1 style="text-transform: uppercase">ขอสินเชื่อเบี้ยประกัน รูปแบบที่ 2</h1>
                     </div>
 
                 </div>
@@ -90,7 +90,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <div class="card-header">
                                 <h3 class="card-title">รายละเอียด</h3>
                             </div>
-                            <label for="" class="mt-3 ml-3">รูปแบบที่ 1 คือ กำหนดงวดแรกเป็น % งวดที่เหลือหารกัน </label>
+                            <label for="" class="mt-3 ml-3">รูปแบบที่ 2 คือ กำหนดงวดแรกเป็น % งวดที่เหลือกำหนดเป็น % แต่ละงวด </label>
                     </div>
                         <!-- general form elements -->
                         <div class="card card-warning">
@@ -110,7 +110,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                 <div class="col-md-4">
                                                     <label for="">วันที่เขียน <span class="red">*</span></label>
                                                     <input type="date" name="date_create" placeholder="วันที่เขียน" class="form-control" value="" required>
-                                                    <input type="hidden" name="ins_type" placeholder="วันที่เขียน" class="form-control" value="แบบที่ 1" >
+                                                    <input type="hidden" name="ins_type" placeholder="วันที่เขียน" class="form-control" value="แบบที่ 2" >
 
                                                 </div>
                                                 <div class="col-md-4">
@@ -360,8 +360,18 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
 
+                                                <div class="col-md-4 mt-2 ">
+                                                    <label class="mt-3" for="exampleInputPassword1">คิดเป็นเปอร์เซ็น<span class="red">*</span></label>
 
-                                                <div class="col-md-6 mt-2">
+                                                    <div class="input-group mb-2">
+
+                                                        <input type="text" name="percent2" id="percent2" placeholder="จำนวนเปอร์เซ็น" class="form-control" value="" >
+                                                        <div class="input-group-prepend">
+                                                            <div class="input-group-text">%</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4 mt-2">
                                                     <label class="mt-3" for="exampleInputPassword1">ชำระงวดที่ 2 เป็นจำนวนเงิน</label>
                                                     <div class="input-group mb-2">
 
@@ -371,7 +381,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-6 mt-2">
+                                                
+                                                <div class="col-md-4 mt-2">
                                                     <label class="mt-3" for="exampleInputPassword1">ชำระไม่เกินวันที่</label>
 
                                                     <div class="input-group mb-2">
@@ -382,7 +393,20 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-6 mt-2">
+
+
+                                                <div class="col-md-4 mt-2 ">
+                                                    <label class="mt-3" for="exampleInputPassword1">คิดเป็นเปอร์เซ็น</label>
+
+                                                    <div class="input-group mb-2">
+
+                                                        <input type="text" name="percent3" id="percent3" placeholder="จำนวนเปอร์เซ็น" class="form-control" value="" >
+                                                        <div class="input-group-prepend">
+                                                            <div class="input-group-text">%</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4 mt-2">
                                                     <label class="mt-3" for="exampleInputPassword1">ชำระงวดที่ 3 เป็นจำนวนเงิน</label>
 
                                                     <div class="input-group mb-2">
@@ -393,7 +417,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-6 mt-2">
+                                                <div class="col-md-4 mt-2">
                                                     <label class="mt-3" for="exampleInputPassword1">ชำระไม่เกินวันที่</label>
 
                                                     <div class="input-group mb-2">
@@ -404,7 +428,20 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-6 mt-2">
+
+
+                                                <div class="col-md-4 mt-2 ">
+                                                    <label class="mt-3" for="exampleInputPassword1">คิดเป็นเปอร์เซ็น</label>
+
+                                                    <div class="input-group mb-2">
+
+                                                        <input type="text" name="percent4" id="percent4" placeholder="จำนวนเปอร์เซ็น" class="form-control" value="" >
+                                                        <div class="input-group-prepend">
+                                                            <div class="input-group-text">%</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4 mt-2">
                                                     <label class="mt-3" for="exampleInputPassword1">ชำระงวดที่ 4 เป็นจำนวนเงิน</label>
 
                                                     <div class="input-group mb-2">
@@ -415,7 +452,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-6 mt-2">
+                                                <div class="col-md-4 mt-2">
                                                     <label class="mt-3" for="exampleInputPassword1">ชำระไม่เกินวันที่</label>
 
                                                     <div class="input-group mb-2">
@@ -426,7 +463,20 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-6 mt-2">
+
+
+                                                <div class="col-md-4 mt-2 ">
+                                                    <label class="mt-3" for="exampleInputPassword1">คิดเป็นเปอร์เซ็น</label>
+
+                                                    <div class="input-group mb-2">
+
+                                                        <input type="text" name="percent5" id="percent5" placeholder="จำนวนเปอร์เซ็น" class="form-control" value="" >
+                                                        <div class="input-group-prepend">
+                                                            <div class="input-group-text">%</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4 mt-2">
                                                     <label class="mt-3" for="exampleInputPassword1">ชำระงวดที่ 5 เป็นจำนวนเงิน</label>
 
                                                     <div class="input-group mb-2">
@@ -437,7 +487,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-6 mt-2">
+                                                <div class="col-md-4 mt-2">
                                                     <label class="mt-3" for="exampleInputPassword1">ชำระไม่เกินวันที่</label>
 
                                                     <div class="input-group mb-2">
@@ -448,7 +498,21 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-6 mt-2">
+
+
+
+                                                <div class="col-md-4 mt-2 ">
+                                                    <label class="mt-3" for="exampleInputPassword1">คิดเป็นเปอร์เซ็น</label>
+
+                                                    <div class="input-group mb-2">
+
+                                                        <input type="text" name="percent6" id="percent6" placeholder="จำนวนเปอร์เซ็น" class="form-control" value="" >
+                                                        <div class="input-group-prepend">
+                                                            <div class="input-group-text">%</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4 mt-2">
                                                     <label class="mt-3" for="exampleInputPassword1">ชำระงวดที่ 6 เป็นจำนวนเงิน</label>
 
                                                     <div class="input-group mb-2">
@@ -459,7 +523,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-6 mt-2">
+                                                <div class="col-md-4 mt-2">
                                                     <label class="mt-3" for="exampleInputPassword1">ชำระไม่เกินวันที่</label>
 
                                                     <div class="input-group mb-2">
@@ -571,23 +635,46 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                         var price = Number(ins_price) + Number(ins_price2);
 
-                        $('#price').val(price);
+                        $('#price').val(price.toFixed(0));
                         var installment = $('#installment').val();
+
                         var percent = $('#percent').val();
                         var ins1 = (price * (percent / 100));
+
                         var allins = (price - ins1) / (installment - 1);
                         var installment2 = installment - 1;
 
                         $('#installment2').val(installment2);
                         $('#ins1').val(ins1.toFixed(0));
 
-                        var i = '';
+
+                        var percent2 = $('#percent2').val();
+                        var ins2 = (price * (percent2 / 100));
+                        $('#ins2').val(ins2.toFixed(0));
+
+                        var percent3 = $('#percent3').val();
+                        var ins3 = (price * (percent3 / 100));
+                        $('#ins3').val(ins3.toFixed(0));
+
+                        var percent4 = $('#percent4').val();
+                        var ins4 = (price * (percent4 / 100));
+                        $('#ins4').val(ins4.toFixed(0));
+
+                        var percent5 = $('#percent5').val();
+                        var ins5 = (price * (percent5 / 100));
+                        $('#ins5').val(ins5.toFixed(0));
+
+                         var percent6 = $('#percent6').val();
+                        var ins6 = (price * (percent6 / 100));
+                        $('#ins6').val(ins6.toFixed(0));
+
+                       /*  var i = '';
 
                         for (i = 1; i <= installment2; i++) {
 
                             $('#ins' + (i + 1)).val(allins.toFixed(0));
 
-                        }
+                        } */
 
                     });
 

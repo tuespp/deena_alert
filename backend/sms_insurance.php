@@ -42,7 +42,7 @@ while ($row = mysqli_fetch_array($result)) {
       CURLOPT_TIMEOUT => 30,
       CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
       CURLOPT_CUSTOMREQUEST => "POST",
-      CURLOPT_POSTFIELDS => "msisdn=$phone&message=ทะเบียนรถ:%20$car_license%20ประกันรถยนต์จะหมดอายุวันที่:%20$exp%20เบี้ยต่ออายุ:%20$interest%20บ.%20โปรดติดต่อ:%082-998-5001%20จากดีน่า&sender=Demo&scheduled_delivery=$date_send" . "T" . "$hr%3A$min%3A$sec%2B07%3A00&force=standard",
+      CURLOPT_POSTFIELDS => "msisdn=0624316866&message=ทะเบียนรถ:%20$car_license%20ประกันรถยนต์จะหมดอายุวันที่:%20$exp%20เบี้ยต่ออายุ:%20$interest%20บ.%20โปรดติดต่อ:%082-998-5001%20จากดีน่า&sender=deena&force=standard",
 
       CURLOPT_HTTPHEADER => [
         "Accept: application/json",
@@ -65,7 +65,7 @@ while ($row = mysqli_fetch_array($result)) {
     }
 
 
-   /*  $sql3 = "INSERT INTO renewal_history (name,phone,type)
+    /* $sql3 = "INSERT INTO renewal_history (name,phone,type)
       VALUES ('$insurance','$phone','sms')";
       
           $result3 = mysqli_query($con, $sql3) or die;

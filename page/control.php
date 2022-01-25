@@ -48,7 +48,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 <body class="hold-transition sidebar-mini">
     <?php
-   
+
     /* ------------------------------------------------------------------------------------------ */
     include('admin_nav.php');
     ?>
@@ -81,10 +81,105 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <section class="content">
             <div class="container-fluid ">
                 <div class="row">
-                <div class="offset-1 col-10 mb-2">
-                <a href="tab_manage.php" name="but_update" class="btn btn-warning">เพิ่มข้อมูล</a>
-                
-                </div>
+                    <div class="offset-1 col-10 mb-2">
+                        <a href="tab_manage.php" name="but_update" class="btn btn-warning">เพิ่มข้อมูล</a>
+
+                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModalCenter2">
+                            หมวดหมู่
+                        </button>
+
+
+
+                        <div class="modal fade" id="exampleModalCenter2" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLongTitle">หมวดหมู่</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModalCenter">
+                                        เพิ่มหมวดหมู่
+                                    </button>
+                                    <table id="example1" class="table table-bordered table-hover text-md-center">
+                                        <thead>
+                                            <tr>
+                                                <th>ลำดับ</th>
+                                                <th width="300">หน้า</th>
+                                                <th>จัดการ</th>
+
+
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <div class="form-group">
+                                                <?php
+
+                                                $sqlrt = "SELECT * FROM user_role_type ";
+                                                $resultrt = mysqli_query($con, $sqlrt);
+                                                while ($rowrt = mysqli_fetch_assoc($resultrt)) {
+                                                    $idr = $rowrt['id'];
+                                                ?>
+
+                                                    <tr>
+
+                                                        <td><?php echo $order++; ?></td>
+                                                        <td><label for="page"><?php echo $rowrt['name']; ?></label></td>
+                                                        <td>
+                                                            <a href="role_type_edit.php?id=<?php echo  $idr ?>" class="btn btn-warning"><i class="fas fa-edit"></a></i>&nbsp;
+                                                            <a href="../backend/role_type_delete.php?id=<?php echo  $idr ?>" onclick="return confirm('Are you sure to delete ?')" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                                                        </td>
+
+                                                    </tr>
+                                                <?php  } ?>
+
+                                            </div>
+                                        </tbody>
+                                        <div>
+                                            <!--                                                 <input type="submit" name="but_update" class="btn btn-danger " value="บันทึก">
+ -->
+                                            <br> <br>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                            <div class="modal-dialog  modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLongTitle">เพิ่มหมวดหมู่</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+
+                                        <form action="" method="POST">
+                                            <div class="form-group">
+                                                <label for="exampleInputPassword1">ชื่อหมวดหมู่</label>
+                                                <input type="text" class="form-control" id="role_type" name="role_type" value="" placeholder="ชื่อหมวดหมู่" required>
+                                            </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button type="submit" name="submit" id="submit" class="btn btn-warning">Save changes</button>
+                                    </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    
                     <?php
 
                     while ($row_type = mysqli_fetch_array($result_type)) {
@@ -102,7 +197,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         <table id="example1" class="table table-bordered table-hover text-md-center">
                                             <thead>
                                                 <tr>
-                                                    <th >ลำดับ</th>
+                                                    <th>ลำดับ</th>
                                                     <th width="300">หน้า</th>
                                                     <th>ผู้ดูแลระะบ</th>
                                                     <th>พนักงาน</th>
@@ -182,8 +277,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                 </div>
                                             </tbody>
                                             <div>
-<!--                                                 <input type="submit" name="but_update" class="btn btn-danger " value="บันทึก">
- -->                                               
+                                                <!--                                                 <input type="submit" name="but_update" class="btn btn-danger " value="บันทึก">
+ -->
                                                 <br> <br>
                                         </table>
                                     </div>
@@ -423,6 +518,35 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 });
             }
         });
+
+        $(document).on('click', '#submit', function() {
+
+            var role_type = $('#role_type').val();
+
+            $.ajax({
+                url: "../backend/role_type.php",
+                method: "POST",
+                data: {
+                    role_type: role_type
+                },
+                success: function(data) {
+
+
+                    Swal.fire({
+                        position: 'top-center',
+                        icon: 'success',
+                        title: 'อัพเดทสำเร็จ',
+                        showConfirmButton: false,
+                        timer: 1000
+                    })
+                    setTimeout(function() {
+                        window.location = window.location;
+                    }, 1000);
+                }
+            });
+
+        });
+
         /* -------------------------------------------------------------------------------------------- */
         /*  $(document).ready(function() {
 
