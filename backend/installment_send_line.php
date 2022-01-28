@@ -9,7 +9,7 @@ $sql2 = "SELECT installment.ins1,installment.ins2,installment.ins3,installment.i
 
 installment.date_send2,installment.date_send3,installment.date_send4,installment.date_send5,installment.date_send6,installment.date_send7,installment.date_send8,installment.date_send9,installment.date_send10,
 
-users_info.user_id,ins_form.form_id,ins_form.car_license
+users_info.user_id,ins_form.form_id,ins_form.car_license,ins_form.ins_status
 
 FROM ((installment
 LEFT  JOIN ins_form ON installment.form_id = ins_form.form_id)
@@ -33,7 +33,7 @@ while ($row2 = mysqli_fetch_array($result2)) {
 
     $user_id = $row2['user_id'];
     $car_license = $row2['car_license'];
-
+    $ins_status = $row2['ins_status'];
     
 
     $emoji = array("\u{23F0}","\u{1F699}","\u{1F4C6}","\u{1F4B8}","\u{260E}");
@@ -48,9 +48,9 @@ while ($row2 = mysqli_fetch_array($result2)) {
         /* echo $date_now; */
         
 
-    if ($date_send == $date_now) {
+    if ($date_send == $date_now && $ins_status == '1') {
 
-        echo $user_id;
+        echo $user_id; 
 
         $access_token = 'ynU0QtbQ0RaavkO7aEfXHYEdAlpU+xzWDtyMgOI5fsQegkB+duJi6HEL1DSBwW6O09MSUsGhASBAiVEt8mhF8WV+M7S+BMJyRKnoTEqtfNDN7de82RC4p+okDUQ4YQYFH7KQsnDVTo+/eEbjQeeRawdB04t89/1O/w1cDnyilFU=';
         $userId = $user_id;

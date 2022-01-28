@@ -11,3 +11,9 @@ Host: localhost
 Username: fininsure_pond
 Password: gU7kxBrBX9
 link: www.cod-fin.com/phpmyadmin
+
+
+
+sms 0829985001
+
+pass 879282

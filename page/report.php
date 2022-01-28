@@ -89,6 +89,18 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     <div class="col-sm-12">
                                         <!-- select -->
                                         <div class="form-group">
+
+
+
+                                        <label>Line Official</label>
+                                            <select class="custom-select" name="oa_id" id="oa_id">
+                                            <option class="text-center" selected disabled>  เลือก Line Official </option>
+
+                                                <option value="1" class="text-center"> LINE OA 1 </option>
+                                                <option value="2" class="text-center"> LINE OA 2 </option>
+
+                                            </select>
+
                                             <label>ระดับหลักลูกค้า</label>
                                             <select class="custom-select" name="status" id="main_status">
                                                 <option class="text-center" selected disabled>  เลือกระดับลูกค้า </option>
@@ -258,12 +270,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
                             var id = $(this).val();
+                            var oa_id = $('#oa_id').val();
 
                             $.ajax({
                                 type: "post",
                                 url: "../backend/select_test.php",
                                 data: {
-                                    status_id: id
+                                    status_id: id,
+                                    oa_id: oa_id
+
                                 },
 
                                 success: function(data) {

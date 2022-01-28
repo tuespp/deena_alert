@@ -11,6 +11,7 @@ require('../dbconnect.php');
 require_once('../dbconnect.php');
 
 $sub_id = $_GET['id'];
+$oa_id = $_GET['oa_id'];
 
 
 
@@ -96,7 +97,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <?php
 
 
-                            $sql2 = "SELECT * FROM users_info WHERE sub_status = '$sub_id' AND  user_id !='' ";
+                            $sql2 = "SELECT * FROM users_info WHERE sub_status = '$sub_id' AND  user_id !='' AND oa_id = '$oa_id' ";
                             $result2 = mysqli_query($con, $sql2);
 
 

@@ -110,7 +110,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                 <div class="col-md-4">
                                                     <label for="">วันที่เขียน <span class="red">*</span></label>
                                                     <input type="date" name="date_create" placeholder="วันที่เขียน" class="form-control" value="" required>
-                                                    <input type="hidden" name="ins_type" placeholder="วันที่เขียน" class="form-control" value="แบบที่ 4" >
+                                                    <input type="hidden" name="ins_type" placeholder="วันที่เขียน" class="form-control" value="แบบ4 จำนวน | จำนวน" >
 
                                                 </div>
                                                 <div class="col-md-4">

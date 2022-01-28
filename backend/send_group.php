@@ -8,12 +8,13 @@ $status = $_POST['status'];
 $sub_status = $_POST['sub_status'];
 
 $text = $_POST['text'];
+$oa_id = $_POST['oa_id'];
 
 
 
 if ($sub_status == ""){
 
-    $sql = "SELECT * FROM users_info WHERE status = '$status'";
+    $sql = "SELECT * FROM users_info WHERE status = '$status' AND oa_id = '$oa_id'";
     $result = mysqli_query($con, $sql);
     
     
@@ -23,6 +24,9 @@ if ($sub_status == ""){
     
         $all_id = $id;
     };
+
+    print_r($all_id);
+    echo $text;
     
     foreach ($all_id as $user_id) {
         $access_token = 'ynU0QtbQ0RaavkO7aEfXHYEdAlpU+xzWDtyMgOI5fsQegkB+duJi6HEL1DSBwW6O09MSUsGhASBAiVEt8mhF8WV+M7S+BMJyRKnoTEqtfNDN7de82RC4p+okDUQ4YQYFH7KQsnDVTo+/eEbjQeeRawdB04t89/1O/w1cDnyilFU=';
@@ -55,7 +59,7 @@ if ($sub_status == ""){
 
 }else{
 
-    $sql = "SELECT * FROM users_info WHERE sub_status = '$sub_status'";
+    $sql = "SELECT * FROM users_info WHERE sub_status = '$sub_status' AND oa_id = '$oa_id'";
     $result = mysqli_query($con, $sql);
     
     

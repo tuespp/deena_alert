@@ -50,9 +50,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 style="text-transform: uppercase">ลูกค้า</h1>
+                        <h1 style="text-transform: uppercase">แจ้งต่ออายุ</h1>
                     </div>
-                   
+
                 </div>
             </div><!-- /.container-fluid -->
         </section>
@@ -62,14 +62,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
 
-        $sql2 = "SELECT users_info.name, users_info.id, users_info.tel, users_info.level,users_info.img, status.status_name, sub_status.sub_name
-            FROM ((users_info
-            LEFT  JOIN status ON users_info.status = status.id)
-            LEFT  JOIN sub_status ON users_info.sub_status = sub_status.id)
-            WHERE level = 'member';";
-        $result2 = mysqli_query($con, $sql2);
-
-
+        $sql = "SELECT * FROM ins_form ";
+        $result = mysqli_query($con, $sql);
 
 
         ?>
@@ -84,51 +78,77 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                         <div class="card">
                             <div class="card-header">
+                                <a href="insurance_insert_form.php" class="btn btn-warning ">เพื่มข้อมูล &nbsp; <i class="fas fa-user"></i></a>
 
                             </div>
-
                             <!-- /.card-header -->
                             <div class="card-body">
-                                <a href="member_insert.php" name="but_update" class="btn btn-warning">เพิ่มข้อมูล</a>
-                                <br><br>
                                 <table id="example1" class="table table-bordered table-striped">
                                     <thead>
                                         <tr>
-                                            <th>ลำดับ</th>
-                                            <th>รูป</th>
+                                            <th>ลำกับ</th>
+                                            <th>วิธีผ่อนชำระ</th>
 
-                                            <th>ชื่อ</th>
+
+                                            <th>ชื่อ - นามสกุล</th>
+                                            <th>ทะเบียนรถ</th>
                                             <th>โทรศัพท์</th>
-                                            <th>ระดับ</th>
-                                            <th>คลาส</th>
-                                            <th>Action</th>
+                                            <th>เบี้ยรวม</th>
+                                            <th>งวดทั้งหมด</th>
+                                            <th>สถานะ</th>
 
 
                                         </tr>
                                     </thead>
                                     <tbody>
 
-                                        <?php foreach ($result2 as $value) { ?>
+                                        <?php while ($row = mysqli_fetch_array($result)) { ?>
+
                                             <tr>
-                                                <td><?php echo $value['id']; ?></td>
-                                                <td><img src="../img/<?php echo $value['img'] ?>" alt="" width="100" class="d-block m-auto"></td>
-
-                                                <td><?php echo $value['name']; ?></td>
-                                                <td><?php echo $value['tel']; ?></td>
-                                                <td><?php echo $value['status_name']; ?></td>
-                                                <td><?php echo $value['sub_name']; ?></td>
+                                                <td><?php echo $row['form_id']; ?></td>
+                                                <td><?php echo $row['ins_type']; ?></td>
 
 
-                                                <td><a href="member_update_form.php?id=<?php echo $value['id']; ?>" class="btn btn-warning"><i class="fas fa-edit">
+                                                <td><?php echo $row['name']; ?></td>
+                                                <td><?php echo $row['car_license']; ?></td>
+                                                <td><?php echo $row['tel']; ?></td>
+                                                <td><?php echo $row['total']; ?></td>
+                                                <td><?php echo $row['installment_total']; ?></td>
 
-                                                </a></i>&nbsp;&nbsp;&nbsp;<a href="../backend/member_delete.php?id=<?php echo $value['id']; ?>" class="btn btn-danger" onclick="return confirm('Are you sure to delete ?')"><i class="far fa-trash-alt"></i></a></td>
+
+
+                                                <td>
+
+                                                    <?php if ($row['ins_status'] == '1') {
+
+                                                        $status = 'checked';
+                                                    } else {
+                                                        $status = '';
+                                                    } ?>
+
+                                                    <label class="switch">
+                                                        <input type="checkbox" name="id" class="change" <?php echo $status ?> id="<?php echo $row['form_id']; ?>">
+
+                                                        <div class="slider round"> </div>
+
+                                                    </label>
+
+                                                </td>
+
+
+
+
+
+
+
+
+
+
 
                                             </tr>
 
 
                                         <?php  } ?>
-
-
                                     </tbody>
 
                                 </table>
@@ -194,12 +214,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         });
                     });
 
-                    
                     $(document).on('click', '.change', function() {
                         var status_id = $(this).attr("id");
                         if (status_id != '') {
                             $.ajax({
-                                url: "../backend/update_status_payment_line.php",
+                                url: "../backend/update_status_ins.php",
                                 method: "POST",
                                 data: {
                                     status_id: status_id
@@ -213,22 +232,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     });
 
 
-                    $(document).on('click', '.change2', function() {
-                        var status_id = $(this).attr("id");
-                        if (status_id != '') {
-                            $.ajax({
-                                url: "../backend/update_status_payment_sms.php",
-                                method: "POST",
-                                data: {
-                                    status_id: status_id
-                                },
-                                success: function(data) {
-
-                                    console.log(data);
-                                }
-                            });
-                        }
-                    });
                 </script>
 </body>
 
