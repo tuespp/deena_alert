@@ -86,12 +86,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <div class="container-fluid ">
                 <div class="row">
                     <div class="offset-md-2 col-md-8">
-                    <div class="card card-warning">
+                        <div class="card card-warning">
                             <div class="card-header">
                                 <h3 class="card-title">รายละเอียด</h3>
                             </div>
                             <label for="" class="mt-3 ml-3">รูปแบบที่ 1 คือ กำหนดงวดแรกเป็น % งวดที่เหลือหารกัน </label>
-                    </div>
+                        </div>
                         <!-- general form elements -->
                         <div class="card card-warning">
                             <div class="card-header">
@@ -100,7 +100,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <!-- /.card-header -->
                             <!-- form start -->
 
-                            <form action="../backend/form_insu_gen.php"  method="POST">
+                            <form action="../backend/form_insu_gen.php" method="POST">
                                 <div class="card-body">
 
 
@@ -109,8 +109,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                             <div class="row">
                                                 <div class="col-md-4">
                                                     <label for="">วันที่เขียน <span class="red">*</span></label>
-                                                    <input type="date" name="date_create" placeholder="วันที่เขียน" class="form-control" value="" required>
-                                                    <input type="hidden" name="ins_type" placeholder="วันที่เขียน" class="form-control" value="แบบ1 % | หารเท่า" >
+                                                    <input type="date" name="date_create" id="date" placeholder="วันที่เขียน" class="form-control" value="" required>
+                                                    <input type="hidden" name="ins_type" placeholder="วันที่เขียน" class="form-control" value="แบบ1 (% | หารเท่า)">
 
                                                 </div>
                                                 <div class="col-md-4">
@@ -141,7 +141,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                             <div class="col-md-6">
                                                 <label for="exampleInputPassword1">บัตรประชาชน <span class="red">*</span></label>
 
-                                                <input type="text" name="id_card" placeholder="บัตรประชาชน" class="form-control" value="" required>
+                                                <input type="text" name="id_card" maxlength="13" placeholder="บัตรประชาชน" class="form-control" value="" required>
                                             </div>
                                             <div class="col-md-6">
                                                 <label for="exampleInputPassword1">วันเกิด <span class="red">*</span></label>
@@ -170,7 +170,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         <div class="row ">
                                             <div class="col-md-12">
                                                 <input type="tel" name="tel" maxlength="10" placeholder="เบอร์โทร " class="form-control" value="" required>
-                                               
+
 
                                             </div>
 
@@ -180,8 +180,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         <label for="exampleInputPassword1">โทรศัพท์ สำรอง</label>
                                         <div class="row ">
                                             <div class="col-md-12">
-                                                <input type="tel" name="tel3" maxlength="10" placeholder="เบอร์โทร " class="form-control" value="" >
-                                               
+                                                <input type="tel" name="tel3" maxlength="10" placeholder="เบอร์โทร " class="form-control" value="">
+
 
                                             </div>
 
@@ -447,6 +447,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                             <div class="input-group-text">วันที่</div>
                                                         </div>
                                                     </div>
+
                                                 </div>
                                                 <div class="col-md-6 mt-2">
                                                     <label class="mt-3" for="exampleInputPassword1">ชำระงวดที่ 6 เป็นจำนวนเงิน</label>
@@ -592,7 +593,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     });
 
 
-                    $('#date1').change(function() {
+                    $('#installment').change(function() {
 
                         $('#date2').val('');
                         $('#date3').val('');
@@ -601,7 +602,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                         var installment = $('#installment').val();
                         var installment2 = installment - 1;
-                        var date1 = $(this).val();
+                        var date1 = $('#date').val();
 
                         /* $('#date2').val(date1); */
 
@@ -610,7 +611,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                         var y = 1;
 
-                        for (var i = 1; i < installment2; i++) {
+                        for (var i = 1; i <= installment2; i++) {
 
 
                             var today = new Date(date1);
@@ -628,14 +629,20 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
                                 today_new2 = yyyy + '-' + mm + '-' + 28;
-                                $('#date' + (1 + i)).val(today_new2);
+                                $('#date' + (i)).val(today_new2);
                                 console.log(today_new2);
 
 
+                            } else if (dd >= '31' && mm == '04' || dd >= '31' && mm == '06' || dd >= '31' && mm == '09' || dd >= '31' && mm == '11') {
+
+
+
+                                today_new4 = yyyy + '-' + mm + '-' + 30;
+                                $('#date' + (i)).val(today_new4);
+
                             } else {
 
-
-                                $('#date' + (1 + i)).val(today);
+                                $('#date' + (i)).val(today);
 
                             }
 
@@ -654,15 +661,33 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 var mm2 = String(today2.getMonth() + (0 + y)).padStart(2, '0'); //January is 0!
 
 
-                                today_new = yyyy + '-' + mm2 + '-' + dd;
+                                var today_new = yyyy + '-' + mm2 + '-' + dd;
 
                                 if (mm2 == '02' && dd >= 29) {
+
+
                                     today_new3 = yyyy + '-' + mm2 + '-' + 28;
-                                    $('#date' + (1 + i)).val(today_new3);
+                                    $('#date' + (i)).val(today_new3);
+
+
+                                } else if (dd >= '31' && mm2 == '04' || dd >= '31' && mm2 == '06' || dd >= '31' && mm2 == '09' || dd >= '31' && mm2 == '11') {
+
+
+
+                                    today_new3 = yyyy + '-' + mm2 + '-' + 30;
+                                    $('#date' + (i)).val(today_new3);
+
+
+
+
+
+
 
 
                                 } else {
-                                    $('#date' + (1 + i)).val(today_new);
+
+                                    $('#date' + (i)).val(today_new);
+
                                 }
 
 
@@ -680,7 +705,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
                         }
-          
+
 
 
                     });
@@ -690,8 +715,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script type="text/javascript" src="ajax-script.js"></script>
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+                <script type="text/javascript" src="ajax-script.js"></script>
 </body>
 
 </html>

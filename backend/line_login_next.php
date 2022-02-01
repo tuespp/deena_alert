@@ -7,7 +7,7 @@
         $accessToken = $_POST['accessToken'];
         $oa_id = $_POST['oa_id'];
 
-        $sql = "SELECT * FROM users_info WHERE user_id='". $userid ."'";
+        $sql = "SELECT * FROM users_info WHERE user_id='$userid' AND oa_id='$oa_id' ";
         $result= mysqli_query($con, $sql);
         $row = mysqli_fetch_array($result);
         $Num_Rows = mysqli_num_rows($result);

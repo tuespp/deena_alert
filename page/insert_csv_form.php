@@ -424,10 +424,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         $(function() {
                             $("#example3").DataTable({
                                 "responsive": true,
-                                "lengthChange": false,
+                                "lengthChange": true,
                                 "autoWidth": false,
-                                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-                            }).buttons().container().appendTo('#example3_wrapper .col-md-6:eq(0)');
+/*                                 "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+ */                            }).buttons().container().appendTo('#example3_wrapper .col-md-6:eq(0)');
                             $('#example4').DataTable({
                                 "paging": true,
                                 "lengthChange": false,

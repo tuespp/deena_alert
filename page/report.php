@@ -81,6 +81,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             $sql = "SELECT * FROM status";
                             $result = mysqli_query($con, $sql);
 
+                            
+                            $sql_line = "SELECT * FROM line_doc";
+                            $result_line = mysqli_query($con, $sql_line);
+                            $row_line = mysqli_fetch_array($result_line);
 
                             ?>
                             <form action="../backend/send_group.php" method="POST">
@@ -95,10 +99,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         <label>Line Official</label>
                                             <select class="custom-select" name="oa_id" id="oa_id">
                                             <option class="text-center" selected disabled>  เลือก Line Official </option>
-
-                                                <option value="1" class="text-center"> LINE OA 1 </option>
-                                                <option value="2" class="text-center"> LINE OA 2 </option>
-
+                                            <?php foreach ($result_line as $value_line) { ?>
+                                                
+                                                <option value="<?php echo $value_line['oa_id'] ?>" class="text-center"><?php echo $value_line['name'] ?></option>
+                                                <?php } ?>
                                             </select>
 
                                             <label>ระดับหลักลูกค้า</label>

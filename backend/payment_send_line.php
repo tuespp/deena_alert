@@ -5,11 +5,25 @@ $date_now = date("Y-m-d");
 
 /* $sql = "SELECT * FROM users_all WHERE status = '1'"; */
 
-$sql2 = "SELECT payment.car_license ,payment.installment_no , payment.installment , payment.insurance,payment.status, payment.date_send , payment.date_end , users_info.user_id, users_info.tel
+$sql2 = "SELECT payment.car_license ,payment.installment_no , payment.installment , payment.insurance,payment.status, payment.date_send , payment.date_end , tues_chat_1.user_id, tues_chat_1.tel,line_doc.access_token
 FROM payment
-INNER JOIN users_info ON payment.phone = users_info.tel";
+INNER JOIN tues_chat_1 ON payment.phone = tues_chat_1.tel
+INNER JOIN line_doc ON tues_chat_1.oa_id = line_doc.oa_id";
 
 $result2 = mysqli_query($con, $sql2) or die(mysqli_error($con));
+
+
+$sql_txt = "SELECT * FROM text_send_payment";
+$result_txt = mysqli_query($con, $sql_txt);
+$row_txt = mysqli_fetch_array($result_txt);
+
+$text_title = $row_txt['text_title'];
+$text_license = $row_txt['text_license'];
+$text_installment = $row_txt['text_installment'];
+$text_price = $row_txt['text_price'];
+$text_date = $row_txt['text_date'];
+$text_close = $row_txt['text_close'];
+
 
 while ($row2 = mysqli_fetch_array($result2)) {
 
@@ -22,23 +36,24 @@ while ($row2 = mysqli_fetch_array($result2)) {
     $phone = $row2['tel'];
     $date_end = $row2['date_end'];
     $status = $row2['status'];
+    $access_tk = $row2['access_token'];
 
 
-    $emoji = array("\u{23F0}","\u{1F699}","\u{1F4C6}","\u{1F4B8}","\u{260E}");
+    $emoji = array("\u{23F0}", "\u{1F699}", "\u{1F4C6}", "\u{1F4B8}", "\u{260E}");
 
-  
+
 
 
 
     if ($date_send == $date_now && $status == '0') {
 
-        
-        $access_token = 'ynU0QtbQ0RaavkO7aEfXHYEdAlpU+xzWDtyMgOI5fsQegkB+duJi6HEL1DSBwW6O09MSUsGhASBAiVEt8mhF8WV+M7S+BMJyRKnoTEqtfNDN7de82RC4p+okDUQ4YQYFH7KQsnDVTo+/eEbjQeeRawdB04t89/1O/w1cDnyilFU=';
+
+        $access_token = $access_tk;
         $userId = $user_id;
         $messages = array(
             'type' => 'text',
-            'text' => 'แจ้งชำระเงิน'." ".$emoji[0]. "\n" ."------------------------------". "\n" .'ทะเบียนรถ:' . " " . $car_license ." ".$emoji[1]. "\n" . 'โปรดชำระค่าเบี้ยประกันงวดที่:' . " " . $installment_no . "\n" . 'จำนวน:' . " " . $installment . 'บ.'." ".$emoji[3] . "\n" . 'ภายในวันที่:' . " " . $date_end ." ".$emoji[2]. " ",
-            
+            'text' => $text_title . "\n" . "------------------------------" . "\n" . $text_license . " " . $car_license . "\n" . $text_installment . " " . $installment_no . "\n" . $text_price . " " . $installment . 'บาท.' . "\n" . $text_date . " " . $date_end . "\n".$text_close,
+
         );
         $post = json_encode(array(
             'to' => array($userId),
@@ -63,16 +78,11 @@ while ($row2 = mysqli_fetch_array($result2)) {
 
 
             $sql4 = "UPDATE payment
-            SET status = '1'
+            SET status = '0'
             WHERE phone = $phone ";
 
             $result4 = mysqli_query($con, $sql4) or die;
-
-            
-
         }
-
-        
     }
 }
 

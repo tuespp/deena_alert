@@ -19,7 +19,7 @@ $result2 = mysqli_query($con, $sql2);
 
 while ($row = mysqli_fetch_array($result2)) {
 
-    if ($phone == $row['tel']) {
+    if ($phone == $row['tel'] && $oa_id == $row['oa_id']) {
 
         $sql3 = "UPDATE users_info SET user_id = '$userid', access_token='$accessToken', oa_id='$oa_id' WHERE tel = '$phone' ";
         $result3 = mysqli_query($con, $sql3);
@@ -47,7 +47,7 @@ while ($row = mysqli_fetch_array($result2)) {
 
 if ($x != 1) {
 
-    $sql6 = "SELECT * FROM users_info WHERE tel='" . $phone . "'";
+    $sql6 = "SELECT * FROM users_info WHERE tel='$phone' AND oa_id='$oa_id' ";
     $result6 = mysqli_query($con, $sql6) or die(mysqli_error($con));
     $Num_Rows = mysqli_num_rows($result6);
 
@@ -86,14 +86,20 @@ if ($x != 1) {
 
 if ($oa_id == '1') {
 
-    $sql_oa = "INSERT INTO tues_chat_1 (name,email,user_id,access_token,oa_id) 
-        VALUES ('$name','$email','$userid','$accessToken','$oa_id')";
+
+
+    
+
+    $sql_oa = "INSERT INTO tues_chat_1 (name,email,tel,user_id,access_token,oa_id) 
+        VALUES ('$name','$email','$phone','$userid','$accessToken','$oa_id')";
     $result_oa = mysqli_query($con, $sql_oa);
+
+
 }
 
 if ($oa_id == '2') {
 
-    $sql_oa = "INSERT INTO tues_chat_2 (name,email,user_id,access_token,oa_id) 
-        VALUES ('$name','$email','$userid','$accessToken','$oa_id')";
+    $sql_oa = "INSERT INTO tues_chat_2 (name,email,tel,user_id,access_token,oa_id) 
+        VALUES ('$name','$email','$phone','$userid','$accessToken','$oa_id')";
     $result_oa = mysqli_query($con, $sql_oa);
 }

@@ -109,8 +109,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                             <div class="row">
                                                 <div class="col-md-4">
                                                     <label for="">วันที่เขียน <span class="red">*</span></label>
-                                                    <input type="date" name="date_create" placeholder="วันที่เขียน" class="form-control" value="" required>
-                                                    <input type="hidden" name="ins_type" placeholder="วันที่เขียน" class="form-control" value="แบบ3 จำนวน | หารเท่า" >
+                                                    <input type="date" name="date_create" id="date" placeholder="วันที่เขียน" class="form-control" value="" required>
+                                                    <input type="hidden" name="ins_type" placeholder="วันที่เขียน" class="form-control" value="แบบ3 (จำนวน | หารเท่า)" >
 
                                                 </div>
                                                 <div class="col-md-4">
@@ -141,7 +141,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                             <div class="col-md-6">
                                                 <label for="exampleInputPassword1">บัตรประชาชน <span class="red">*</span></label>
 
-                                                <input type="text" name="id_card" placeholder="บัตรประชาชน" class="form-control" value="" required>
+                                                <input type="text" name="id_card" maxlength="13" placeholder="บัตรประชาชน" class="form-control" value="" required>
                                             </div>
                                             <div class="col-md-6">
                                                 <label for="exampleInputPassword1">วันเกิด <span class="red">*</span></label>
@@ -583,95 +583,118 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     });
 
 
-                    $('#date1').change(function() {
+                    $('#installment').change(function() {
 
-                        $('#date2').val('');
-                        $('#date3').val('');
-                        $('#date4').val('');
-                        $('#date5').val('');
+$('#date2').val('');
+$('#date3').val('');
+$('#date4').val('');
+$('#date5').val('');
 
-                        var installment = $('#installment').val();
-                        var installment2 = installment - 1;
-                        var date1 = $(this).val();
+var installment = $('#installment').val();
+var installment2 = installment - 1;
+var date1 = $('#date').val();
 
-                        /* $('#date2').val(date1); */
-
-
-
-
-                        var y = 1;
-
-                        for (var i = 1; i < installment2; i++) {
-
-
-                            var today = new Date(date1);
-                            var dd = String(today.getDate()).padStart(2, '0');
-                            var mm = String(today.getMonth() + (1 + i)).padStart(2, '0'); //January is 0!
-                            var yyyy = today.getFullYear();
-
-
-
-                            today = yyyy + '-' + mm + '-' + dd;
-
-
-                            if (mm == '02' && dd >= 29) {
-
-
-
-                                today_new2 = yyyy + '-' + mm + '-' + 28;
-                                $('#date' + (1 + i)).val(today_new2);
-                                console.log(today_new2);
-
-
-                            } else {
-
-
-                                $('#date' + (1 + i)).val(today);
-
-                            }
+/* $('#date2').val(date1); */
 
 
 
 
-                            if (mm >= 13) {
+var y = 1;
 
-                                yyyy = yyyy + 1;
-
-
-
-                                var today2 = new Date("2021-01-02");
+for (var i = 1; i <= installment2; i++) {
 
 
-                                var mm2 = String(today2.getMonth() + (0 + y)).padStart(2, '0'); //January is 0!
-
-
-                                today_new = yyyy + '-' + mm2 + '-' + dd;
-
-                                if (mm2 == '02' && dd >= 29) {
-                                    today_new3 = yyyy + '-' + mm2 + '-' + 28;
-                                    $('#date' + (1 + i)).val(today_new3);
-
-
-                                } else {
-                                    $('#date' + (1 + i)).val(today_new);
-                                }
-
-
-                                /*  $('#date' + (1 + i)).val(today_new);
-                                 */
-                                y = y + 1;
+    var today = new Date(date1);
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + (1 + i)).padStart(2, '0'); //January is 0!
+    var yyyy = today.getFullYear();
 
 
 
+    today = yyyy + '-' + mm + '-' + dd;
 
 
-                            } else {
-                                /* $('#date' + (1 + i)).val(today); */
-                            }
+    if (mm == '02' && dd >= 29) {
 
 
-                        }
-          
+
+        today_new2 = yyyy + '-' + mm + '-' + 28;
+        $('#date' + (i)).val(today_new2);
+        console.log(today_new2);
+
+
+    } else if (dd >= '31' && mm == '04' || dd >= '31' && mm == '06' || dd >= '31' && mm == '09' || dd >= '31' && mm == '11') {
+
+
+
+        today_new4 = yyyy + '-' + mm + '-' + 30;
+        $('#date' + (i)).val(today_new4);
+
+    } else {
+
+        $('#date' + (i)).val(today);
+
+    }
+
+
+
+
+    if (mm >= 13) {
+
+        yyyy = yyyy + 1;
+
+
+
+        var today2 = new Date("2021-01-02");
+
+
+        var mm2 = String(today2.getMonth() + (0 + y)).padStart(2, '0'); //January is 0!
+
+
+        var today_new = yyyy + '-' + mm2 + '-' + dd;
+
+        if (mm2 == '02' && dd >= 29) {
+
+
+            today_new3 = yyyy + '-' + mm2 + '-' + 28;
+            $('#date' + (i)).val(today_new3);
+
+
+        } else if (dd >= '31' && mm2 == '04' || dd >= '31' && mm2 == '06' || dd >= '31' && mm2 == '09' || dd >= '31' && mm2 == '11') {
+
+
+
+            today_new3 = yyyy + '-' + mm2 + '-' + 30;
+            $('#date' + (i)).val(today_new3);
+
+
+
+
+
+
+
+
+        } else {
+
+            $('#date' + (i)).val(today_new);
+
+        }
+
+
+        /*  $('#date' + (1 + i)).val(today_new);
+         */
+        y = y + 1;
+
+
+
+
+
+    } else {
+        /* $('#date' + (1 + i)).val(today); */
+    }
+
+
+}
 
 
                     });

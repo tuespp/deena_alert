@@ -47,12 +47,13 @@ $result5 = mysqli_query($con, $sql5);
 ?>
 
 <style>
+
     @import url('https://fonts.googleapis.com/css2?family=Prompt:wght@300&display=swap');
 
     * {
         font-family: 'Prompt', sans-serif;
+      }
 
-    }
 </style>
 
 
@@ -60,7 +61,7 @@ $result5 = mysqli_query($con, $sql5);
 
     <!-- Navbar -->
 
-    <nav class="main-header navbar navbar-expand navbar-indigo ">
+    <nav class="main-header navbar navbar-expand navbar-info ">
         <!-- Left navbar links -->
         <ul class="navbar-nav">
             <li class="nav-item">
@@ -79,15 +80,38 @@ $result5 = mysqli_query($con, $sql5);
                     <!-- Message End -->
             </li>
             <!-- Notifications Dropdown Menu -->
-            <li class="nav-item">
-                <a class="nav-link" data-widget="fullscreen" href="#" role="button">
-                    <i class="fas fa-expand-arrows-alt" style="color: white;"></i>
-                </a>
+
+
+           
+
+            <li class="nav-item  nav-link" style="border-right: 1px solid white;">
+
+                <div class="btn-group ">
+                    <img class="d-block m-auto " style="border-radius:50%; width:2rem;" src="../img/<?php echo $row['img'] ?>" width="100" alt="img">
+                    &nbsp;
+                    <span type="button" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <b >  <?php echo $row['name']; ?></b>
+                    </span>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="profile.php">ข้อมูลส่วนตัว</a>
+
+                        <!-- <a class="dropdown-item" href="#">Another action</a>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Separated link</a> -->
+
+                    </div>
+                </div>
             </li>
+
+
+
             <li class="nav-item">
-                <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
-                    <i class="fas fa-th-large" style="color: white;"></i>
+
+                <a href="logout.php" type="button" class="nav-link" id="btnLogOut" onclick="logOut();" style="text-decoration: none; color:white;">
+                    <h6> <b> log out</b></h6>
                 </a>
+
             </li>
         </ul>
     </nav>

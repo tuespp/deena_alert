@@ -30,7 +30,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Users</title>
- 
+
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome Icons -->
@@ -56,7 +56,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <div class="col-sm-6">
             <h1 style="text-transform: uppercase"> ข้อมูลส่วนตัว</h1>
           </div>
-          
+
         </div>
       </div><!-- /.container-fluid -->
     </section>
@@ -82,7 +82,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   ?>
 
                   <?php
-                 if ($_SESSION['level'] == 'member' && $_SESSION['user_id'] == '5') {
+                  if ($_SESSION['level'] == 'member' && $_SESSION['user_id'] == '5') {
                   ?>
 
                     <img class="d-block m-auto" style="border-radius:50%" src="../img/<?php echo $row['img'] ?>" width="100" alt="img">
@@ -157,6 +157,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <br>
               <!-- /.card-body -->
             </div>
+
+            <!-- ------------------------------------------------------------------- -->
 
 
             <!-- /.card -->

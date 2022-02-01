@@ -6,12 +6,8 @@ require('../dbconnect.php');
                 $id = $_GET['id'];
                 $api = $_POST['api'];
                 $auth = $_POST['auth'];
-               
 
                 
-               
-
-
                 $sql2 = "UPDATE sms_doc
                 SET api = '$api', auth= '$auth'
                  WHERE id = '$id' ";

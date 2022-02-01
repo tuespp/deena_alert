@@ -50,7 +50,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 style="text-transform: uppercase">แจ้งต่ออายุ</h1>
+                        <h1 style="text-transform: uppercase">สินเชื่อประกันภัย</h1>
                     </div>
 
                 </div>
@@ -199,10 +199,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     $(function() {
                         $("#example1").DataTable({
                             "responsive": true,
-                            "lengthChange": false,
+                            "lengthChange": true,
                             "autoWidth": false,
-                            "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-                        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+/*                             "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+ */                        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
                         $('#example2').DataTable({
                             "paging": true,
                             "lengthChange": false,

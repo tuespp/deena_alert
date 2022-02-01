@@ -1,15 +1,34 @@
 
 <?php
 require('../dbconnect.php');
-$date_now = date("Y-m-d");
+ $date_now = date("Y-m-d");
 
 
 
-$sql2 = "SELECT data_insurance.car_license ,data_insurance.insurance , data_insurance.date_send, data_insurance.exp , data_insurance.interest , data_insurance.status , data_insurance.phone , users_info.user_id
+$sql2 = "SELECT data_insurance.car_license ,data_insurance.insurance , data_insurance.date_send, data_insurance.exp , data_insurance.interest , data_insurance.status , data_insurance.phone , tues_chat_1.user_id,line_doc.access_token
 FROM data_insurance
-INNER JOIN users_info ON data_insurance.phone = users_info.tel";
+INNER JOIN tues_chat_1 ON data_insurance.phone = tues_chat_1.tel
+INNER JOIN line_doc ON tues_chat_1.oa_id = line_doc.oa_id";
+
 
 $result2 = mysqli_query($con, $sql2) or die(mysqli_error($con));
+
+
+
+$sql_txt = "SELECT * FROM text_sent_ins ";
+$result_txt = mysqli_query($con, $sql_txt);
+$row_txt = mysqli_fetch_array($result_txt);
+
+ $text_title = $row_txt['text_title'];
+$text_license = $row_txt['text_license'];
+
+ $text_price = $row_txt['text_price'];
+ $text_date = $row_txt['text_date'];
+ $text_close = $row_txt['text_close'];
+
+
+
+
 
 while ($row2 = mysqli_fetch_array($result2)) {
 
@@ -21,7 +40,7 @@ while ($row2 = mysqli_fetch_array($result2)) {
     $insurance = $row2['insurance'];
     $exp = $row2['exp'];
     $status = $row2['status'];
-
+    $access_tk = $row2['access_token'];
     $emoji = array("\u{23F0}","\u{1F699}","\u{1F4C6}","\u{1F4B8}","\u{260E}");
 
 
@@ -30,13 +49,14 @@ while ($row2 = mysqli_fetch_array($result2)) {
 
     if ($date_send == $date_now && $status == '0' ) {
 
-
-        $access_token = 'ynU0QtbQ0RaavkO7aEfXHYEdAlpU+xzWDtyMgOI5fsQegkB+duJi6HEL1DSBwW6O09MSUsGhASBAiVEt8mhF8WV+M7S+BMJyRKnoTEqtfNDN7de82RC4p+okDUQ4YQYFH7KQsnDVTo+/eEbjQeeRawdB04t89/1O/w1cDnyilFU=';
+        
+        $access_token = $access_tk;
         $userId = $user_id;
         $messages = array(
             'type' => 'text',
-            'text' => 'แจ้งเตือนต่ออายุ'." ".$emoji[0]. "\n" ."------------------------------". "\n".'ทะเบียนรถ:' . " " . $car_license ." ".$emoji[1]. "\n" . 'ประกันรถยนต์จะหมดอายุวันที่:' . " " . $exp ." ".$emoji[2]. "\n" . 'เบี้ยต่ออายุ:' . " " . $interest . 'บ.' ." ".$emoji[3]. "\n" . 'โปรดติดต่อ:' . " " . $phone . " " . 'จากดีน่า'." ".$emoji[4],
-             
+/*             'text' => ' $text_title'." ".$emoji[0]. "\n" ."------------------------------". "\n".'ทะเบียนรถ:' . " " . $car_license ." ".$emoji[1]. "\n" . 'ประกันรถยนต์จะหมดอายุวันที่:' . " " . $exp ." ".$emoji[2]. "\n" . 'เบี้ยต่ออายุ:' . " " . $interest . 'บ.' ." ".$emoji[3]. "\n" . 'โปรดติดต่อ:' . " " . $phone . " " . 'จากดีน่า'." ".$emoji[4],
+ */            'text' => $text_title."\n"."------------------------------"."\n".$text_license . " " . $car_license ."\n" . $text_date . " " . $exp ."\n" . $text_price . " " . $interest . "\n" . $text_close,
+
             
 
         );
@@ -63,7 +83,7 @@ while ($row2 = mysqli_fetch_array($result2)) {
             $result3 = mysqli_query($con, $sql3) or die;
 
             $sql4 = "UPDATE data_insurance
-            SET status = '1'
+            SET status = '0'
             WHERE phone = $phone ";
 
             $result4 = mysqli_query($con, $sql4) or die;

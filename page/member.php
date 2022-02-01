@@ -66,7 +66,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             FROM ((users_info
             LEFT  JOIN status ON users_info.status = status.id)
             LEFT  JOIN sub_status ON users_info.sub_status = sub_status.id)
-            WHERE level = 'member';";
+            WHERE level = 'member'AND oa_id = '1' ";
         $result2 = mysqli_query($con, $sql2);
 
 
@@ -179,9 +179,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     $(function() {
                         $("#example1").DataTable({
                             "responsive": true,
-                            "lengthChange": false,
+                            "lengthChange": true,
                             "autoWidth": false,
-                            "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+                           /*  "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"] */
                         }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
                         $('#example2').DataTable({
                             "paging": true,

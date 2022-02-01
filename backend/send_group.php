@@ -8,9 +8,13 @@ $status = $_POST['status'];
 $sub_status = $_POST['sub_status'];
 
 $text = $_POST['text'];
-$oa_id = $_POST['oa_id'];
+$access = $_POST['oa_id'];
 
+$sql_line = "SELECT * FROM line_doc WHERE access_token = '$access' ";
+$result_line = mysqli_query($con, $sql_line);
+$row_line = mysqli_fetch_array($result_line);
 
+$oa_id =$row_line['oa_id'];
 
 if ($sub_status == ""){
 
@@ -25,11 +29,10 @@ if ($sub_status == ""){
         $all_id = $id;
     };
 
-    print_r($all_id);
-    echo $text;
+  
     
     foreach ($all_id as $user_id) {
-        $access_token = 'ynU0QtbQ0RaavkO7aEfXHYEdAlpU+xzWDtyMgOI5fsQegkB+duJi6HEL1DSBwW6O09MSUsGhASBAiVEt8mhF8WV+M7S+BMJyRKnoTEqtfNDN7de82RC4p+okDUQ4YQYFH7KQsnDVTo+/eEbjQeeRawdB04t89/1O/w1cDnyilFU=';
+        $access_token = $access;
           $userId = $id; 
     
          $messages = array(

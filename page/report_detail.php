@@ -1,13 +1,6 @@
 <?php
 
-require('../dbconnect.php');
 
-
-
-?>
-
-
-<?php
 require_once('../dbconnect.php');
 
 $sub_id = $_GET['id'];
@@ -137,7 +130,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
 
-                                                    <td ><input type="text" name="name[]" value="<?php echo $row['name']; ?>" hidden> <?php echo $row['name']; ?></td>
+                                                    <td><input type="text" name="name[]" value="<?php echo $row['name']; ?>" hidden> <?php echo $row['name']; ?></td>
 
 
 

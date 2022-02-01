@@ -9,11 +9,12 @@ $sql2 = "SELECT installment.ins1,installment.ins2,installment.ins3,installment.i
 
 installment.date_send2,installment.date_send3,installment.date_send4,installment.date_send5,installment.date_send6,installment.date_send7,installment.date_send8,installment.date_send9,installment.date_send10,
 
-users_info.user_id,ins_form.form_id,ins_form.car_license,ins_form.ins_status
+tues_chat_1.user_id,ins_form.form_id,ins_form.car_license,ins_form.ins_status,line_doc.access_token
 
 FROM ((installment
 LEFT  JOIN ins_form ON installment.form_id = ins_form.form_id)
-LEFT  JOIN users_info ON ins_form.tel = users_info.tel)"
+LEFT  JOIN tues_chat_1 ON ins_form.tel = tues_chat_1.tel)
+INNER JOIN line_doc ON tues_chat_1.oa_id = line_doc.oa_id";
 ;
 
 $result2 = mysqli_query($con, $sql2) or die(mysqli_error($con));
@@ -34,7 +35,7 @@ while ($row2 = mysqli_fetch_array($result2)) {
     $user_id = $row2['user_id'];
     $car_license = $row2['car_license'];
     $ins_status = $row2['ins_status'];
-    
+    $access_tk = $row2['access_token'];
 
     $emoji = array("\u{23F0}","\u{1F699}","\u{1F4C6}","\u{1F4B8}","\u{260E}");
 
@@ -52,7 +53,7 @@ while ($row2 = mysqli_fetch_array($result2)) {
 
         echo $user_id; 
 
-        $access_token = 'ynU0QtbQ0RaavkO7aEfXHYEdAlpU+xzWDtyMgOI5fsQegkB+duJi6HEL1DSBwW6O09MSUsGhASBAiVEt8mhF8WV+M7S+BMJyRKnoTEqtfNDN7de82RC4p+okDUQ4YQYFH7KQsnDVTo+/eEbjQeeRawdB04t89/1O/w1cDnyilFU=';
+        $access_token = $access_tk;
         $userId = $user_id;
         $messages = array(
             'type' => 'text',
