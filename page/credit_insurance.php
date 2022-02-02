@@ -96,7 +96,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                             <th>เบี้ยรวม</th>
                                             <th>งวดทั้งหมด</th>
                                             <th>สถานะ</th>
-
+                                            <th>จัดการ</th>
 
                                         </tr>
                                     </thead>
@@ -135,6 +135,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                                                 </td>
 
+                                                <td>
+
+                                                    <div class="">
+
+                                                        <button title='ไฟล์' type=button class="btn btn-info btn-sm file" name="file" id="file_credit" value="<?php echo $row['form_id']; ?>" >
+                                                            <i class="fas fa-folder"></i>
+                                                            ไฟล์</button>
+                                                    </div>
+                                                </td>
 
 
 
@@ -172,7 +181,23 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <!-- Main Footer -->
                 </div>
                 <!-- ./wrapper -->
+                <div id="dataModal2" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+                    <div class="modal-dialog modal-lg" role="document">>
 
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5>ไฟล์<h5>
+                            </div>
+                            <div class="modal-body" id="File_detail">
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
                 <!-- REQUIRED SCRIPTS -->
 
                 <!-- jQuery -->
@@ -196,13 +221,31 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <script src="../js/buttons.colVis.min.js"></script>
 
                 <script>
+                    $(document).on('click', '#file_credit', function() {
+                        var Report_ID = $(this).val();
+                        if (Report_ID != '') {
+                            $.ajax({
+                                url: "showfile.php",
+                                method: "POST",
+                                data: {
+                                    Report_ID: Report_ID
+                                },
+                                success: function(data) {
+                                    $('#File_detail').html(data);
+                                    $('#dataModal2').modal('show');
+                                }
+                            });
+                        }
+                    });
+
                     $(function() {
                         $("#example1").DataTable({
                             "responsive": true,
                             "lengthChange": true,
                             "autoWidth": false,
-/*                             "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
- */                        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+                            /*                             "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+                             */
+                        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
                         $('#example2').DataTable({
                             "paging": true,
                             "lengthChange": false,
@@ -230,8 +273,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             });
                         }
                     });
-
-
                 </script>
 </body>
 

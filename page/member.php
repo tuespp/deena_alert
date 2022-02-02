@@ -62,11 +62,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
 
-        $sql2 = "SELECT users_info.name, users_info.id, users_info.tel, users_info.level,users_info.img, status.status_name, sub_status.sub_name
+        $sql2 = "SELECT users_info.name, users_info.id, users_info.tel, users_info.level,users_info.img, users_info.oa_id, status.status_name, sub_status.sub_name
             FROM ((users_info
             LEFT  JOIN status ON users_info.status = status.id)
             LEFT  JOIN sub_status ON users_info.sub_status = sub_status.id)
-            WHERE level = 'member'AND oa_id = '1' ";
+            ";
         $result2 = mysqli_query($con, $sql2);
 
 
@@ -101,6 +101,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                             <th>โทรศัพท์</th>
                                             <th>ระดับ</th>
                                             <th>คลาส</th>
+                                            <th>Line OA</th>
+
                                             <th>Action</th>
 
 
@@ -117,7 +119,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                 <td><?php echo $value['tel']; ?></td>
                                                 <td><?php echo $value['status_name']; ?></td>
                                                 <td><?php echo $value['sub_name']; ?></td>
-
+                                                <td><?php echo $value['oa_id']; ?></td>
 
                                                 <td><a href="member_update_form.php?id=<?php echo $value['id']; ?>" class="btn btn-warning"><i class="fas fa-edit">
 

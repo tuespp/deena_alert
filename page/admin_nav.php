@@ -24,6 +24,7 @@ $line = $_SESSION['user_id'];
 $sql_ur = "SELECT * FROM user_role  ";
 
 $result_ur = mysqli_query($con, $sql_ur);
+$row_ur = mysqli_fetch_array($result_ur);
 
 $sql_urt = "SELECT * FROM user_role_type  ";
 
@@ -172,10 +173,11 @@ $result5 = mysqli_query($con, $sql5);
 
                         while ($row2 = mysqli_fetch_array($result_urt)) {
 
+                            
 
                             echo "  <li class='nav-item nav-link'>
                                     <p>$row2[name]</p></li> ";
-
+                            
 
                             foreach ($result_ur as $vale_ur) {
 

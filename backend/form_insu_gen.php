@@ -353,9 +353,10 @@ if (isset($_POST['submit'])) {
         }
         return $ret_char;
     }
-
+    $random = random_char(5);
     imagepng($dest, '../img/test-form1.png');
-    $random = random_char(2);
+    imagepng($dest, '../page/myFile/'.$fullname.$random.'no1.png');
+    
     /*  $_SESSION['name'] =   $img_name;
     imagepng($dest, 'img/'.$img_name . '.png'); */
 
@@ -375,7 +376,7 @@ if (isset($_POST['submit'])) {
     imagettftext($dest2, $size, 0, 480, 1607, $text_color, $font, $fullname);
 
     imagepng($dest2, '../img/test-form2.png');
-
+    imagepng($dest2, '../page/myFile/'.$fullname.$random.'no2.png');
 
 
 
@@ -397,6 +398,7 @@ if (isset($_POST['submit'])) {
 
 
     imagepng($dest3, '../img/test-form3.png');
+    imagepng($dest3, '../page/myFile/'.$fullname.$random.'no3.png');
 
 
 
@@ -410,6 +412,8 @@ if (isset($_POST['submit'])) {
 
     imagepng($dest4, '../img/test-form4.png');
     imagepng($dest4, '../img/test-form5.png');
+    imagepng($dest4, '../page/myFile/'.$fullname.$random.'no4.png');
+    imagepng($dest4, '../page/myFile/'.$fullname.$random.'no5.png');
 
     $date_zip = date("Y-m-d");
     $zip = new ZipArchive;
@@ -432,7 +436,19 @@ if (isset($_POST['submit'])) {
         $zip->close();
     }
 
+
+
+ $date_img = date("Y-m-d h:i:sa");
+
+  for($i = 1 ; $i <= 5 ; $i ++){
+
+    $file_name = $fullname.$random.'no'.$i.'.png';
+    $sql_img = "INSERT INTO `file`(`File_Name`, `File_Date`, `form_id`) 
+    VALUES ('$file_name','$date_img','$form_id')";
+    $result_name = mysqli_query($con,$sql_img);
+  }
     header('Location: ../page/generate_form.php?name=' . $fullname . $date_zip);
+  
 }
 
 
