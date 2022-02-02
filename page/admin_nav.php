@@ -61,7 +61,7 @@ $result5 = mysqli_query($con, $sql5);
 
     <!-- Navbar -->
 
-    <nav class="main-header navbar navbar-expand navbar-info ">
+    <nav class="main-header navbar navbar-expand navbar-red ">
         <!-- Left navbar links -->
         <ul class="navbar-nav">
             <li class="nav-item">

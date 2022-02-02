@@ -37,9 +37,6 @@ while ($row = mysqli_fetch_array($result2)) {
             echo "<script> window.location.href='../page/index.php'</script>";
             $x = 1;
         }
-
-        
-
     } else {
     }
 }
@@ -56,7 +53,7 @@ if ($x != 1) {
         $sql = "INSERT INTO users_info (tel,level,name,user_id,access_token,email,oa_id) 
                         VALUES ('$phone','member','$name','$userid','$accessToken','$email','$oa_id')";
         $result = mysqli_query($con, $sql);
-        
+
 
         if ($result) {
 
@@ -84,17 +81,32 @@ if ($x != 1) {
 
 
 
-if ($oa_id == '1') {
+
+$sql_line = "SELECT * FROM line_doc";
+$result_line = mysqli_query($con, $sql_line);
+
+while ($row_line = mysqli_fetch_array($result_line)) {
+
+
+    if ($row_line['oa_id'] == $oa_id) {
+
+        $oa_name  =  $row_line['name'];
+
+        $sql_oa = "INSERT INTO $oa_name (name,email,tel,user_id,access_token,oa_id) 
+        VALUES ('$name','$email','$phone','$userid','$accessToken','$oa_id')";
+        $result_oa = mysqli_query($con, $sql_oa);
+    }
+}
+
+/* if ($oa_id == '1') {
 
 
 
-    
+
 
     $sql_oa = "INSERT INTO tues_chat_1 (name,email,tel,user_id,access_token,oa_id) 
         VALUES ('$name','$email','$phone','$userid','$accessToken','$oa_id')";
     $result_oa = mysqli_query($con, $sql_oa);
-
-
 }
 
 if ($oa_id == '2') {
@@ -102,4 +114,4 @@ if ($oa_id == '2') {
     $sql_oa = "INSERT INTO tues_chat_2 (name,email,tel,user_id,access_token,oa_id) 
         VALUES ('$name','$email','$phone','$userid','$accessToken','$oa_id')";
     $result_oa = mysqli_query($con, $sql_oa);
-}
+} */
