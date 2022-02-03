@@ -23,8 +23,8 @@ $num_row = mysqli_num_rows($result2);
 
 if ($num_row == 0) {
 
-    $sql = "INSERT INTO users_info (username, password, name, tel, email, address,img,level)
-    VALUES ('$username', '$password', '$name', '$tel', '$email', '$address','$new_name','employee')";
+    $sql = "INSERT INTO users_info (username, password, name, tel,tel_keep, email, address,img,level)
+    VALUES ('$username', '$password', '$name', '$tel','$tel', '$email', '$address','$new_name','employee')";
 
     $result = mysqli_query($con, $sql) ;
 

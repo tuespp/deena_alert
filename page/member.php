@@ -123,7 +123,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                                                 <td><a href="member_update_form.php?id=<?php echo $value['id']; ?>" class="btn btn-warning"><i class="fas fa-edit">
 
-                                                </a></i>&nbsp;&nbsp;&nbsp;<a href="../backend/member_delete.php?id=<?php echo $value['id']; ?>" class="btn btn-danger" onclick="return confirm('Are you sure to delete ?')"><i class="far fa-trash-alt"></i></a></td>
+                                                </a></i>&nbsp;&nbsp;&nbsp;<a href="../backend/member_delete.php?id=<?php echo $value['id']; ?>&oa_id=<?php echo $value['oa_id']; ?>" class="btn btn-danger" onclick="return confirm('Are you sure to delete ?')"><i class="far fa-trash-alt"></i></a></td>
 
                                             </tr>
 

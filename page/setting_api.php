@@ -28,9 +28,12 @@ if (isset($_POST['add_line'])) {
         `name` varchar(255) NOT NULL,
         `email` varchar(255) NOT NULL,
         `tel` varchar(255) NOT NULL,
+        `tel_keep` varchar(255) NOT NULL,
         `user_id` varchar(255) NOT NULL,
         `access_token` varchar(255) NOT NULL,
-        `oa_id` varchar(255) NOT NULL
+        `oa_id` varchar(255) NOT NULL,
+        `u_info_id` varchar(255) NOT NULL
+
       ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4";
       $result_table = mysqli_query($con, $sql_table);
 }

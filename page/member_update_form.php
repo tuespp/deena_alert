@@ -66,7 +66,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
         $id = $_GET['id'];
 
-        $sql2 = "SELECT users_info.name, users_info.id, users_info.tel,users_info.email,users_info.address,users_info.img, status.status_name, sub_status.sub_name,sub_status.status
+        $sql2 = "SELECT users_info.name, users_info.id, users_info.tel,users_info.email,users_info.address,users_info.img,users_info.oa_id, status.status_name, sub_status.sub_name,sub_status.status
             FROM ((users_info
             LEFT  JOIN status ON users_info.status = status.id)
             LEFT  JOIN sub_status ON users_info.sub_status = sub_status.id)
@@ -169,6 +169,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         <label for="exampleInputEmail1">ชื่อ</label>
                                         <input type="text" class="form-control" id="exampleInputEmail1" name="name" value="<?php echo $row['name']; ?>" placeholder="Insurance Name" required>
                                         <input type="text" class="form-control" id="exampleInputEmail1" name="ids" value="<?php echo $row['id']; ?>" hidden placeholder="Insurance Name">
+                                        <input type="text" class="form-control" id="exampleInputEmail1" name="oa_id" value="<?php echo $row['oa_id']; ?>" hidden placeholder="Insurance Name">
 
                                     </div>
                                     <div class="form-group">

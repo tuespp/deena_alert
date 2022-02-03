@@ -30,8 +30,8 @@ require('../dbconnect.php');
 
         if ($num_row == 0) {
 
-            $sql = "INSERT INTO users_info (username, password, name, tel, email, address,img,level,status,sub_status)
-    VALUES ('$username', '$password', '$name', '$tel', '$email', '$address','$new_name','member','$status','$sub_status')";
+            $sql = "INSERT INTO users_info (username, password, name, tel, tel_keep, email, address,img,level,status,sub_status)
+    VALUES ('$username', '$password', '$name', '$tel', '$tel','$email', '$address','$new_name','member','$status','$sub_status')";
 
             $result = mysqli_query($con, $sql) or die(mysqli_errno($con));
 

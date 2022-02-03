@@ -41,7 +41,6 @@ while ($row2 = mysqli_fetch_array($result2)) {
     $exp = $row2['exp'];
     $status = $row2['status'];
     $access_tk = $row2['access_token'];
-    $emoji = array("\u{23F0}","\u{1F699}","\u{1F4C6}","\u{1F4B8}","\u{260E}");
 
 
  
