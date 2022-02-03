@@ -26,6 +26,12 @@ $sql_ur = "SELECT * FROM user_role  ";
 $result_ur = mysqli_query($con, $sql_ur);
 $row_ur = mysqli_fetch_array($result_ur);
 
+
+$sql_ur2 = "SELECT * FROM user_role  ";
+
+$result_ur2 = mysqli_query($con, $sql_ur2);
+
+
 $sql_urt = "SELECT * FROM user_role_type  ";
 
 $result_urt = mysqli_query($con, $sql_urt);
@@ -48,13 +54,11 @@ $result5 = mysqli_query($con, $sql5);
 ?>
 
 <style>
-
     @import url('https://fonts.googleapis.com/css2?family=Prompt:wght@300&display=swap');
 
     * {
         font-family: 'Prompt', sans-serif;
-      }
-
+    }
 </style>
 
 
@@ -62,7 +66,7 @@ $result5 = mysqli_query($con, $sql5);
 
     <!-- Navbar -->
 
-    <nav class="main-header navbar navbar-expand navbar-red ">
+    <nav class="main-header navbar navbar-expand navbar-purple ">
         <!-- Left navbar links -->
         <ul class="navbar-nav">
             <li class="nav-item">
@@ -83,7 +87,7 @@ $result5 = mysqli_query($con, $sql5);
             <!-- Notifications Dropdown Menu -->
 
 
-           
+
 
             <li class="nav-item  nav-link" style="border-right: 1px solid white;">
 
@@ -91,7 +95,7 @@ $result5 = mysqli_query($con, $sql5);
                     <img class="d-block m-auto " style="border-radius:50%; width:2rem;" src="../img/<?php echo $row['img'] ?>" width="100" alt="img">
                     &nbsp;
                     <span type="button" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <b >  <?php echo $row['name']; ?></b>
+                        <b> <?php echo $row['name']; ?></b>
                     </span>
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="profile.php">ข้อมูลส่วนตัว</a>
@@ -173,11 +177,28 @@ $result5 = mysqli_query($con, $sql5);
 
                         while ($row2 = mysqli_fetch_array($result_urt)) {
 
-                            
+                            $x = 0;
 
-                            echo "  <li class='nav-item nav-link'>
+                            foreach ($result_ur2 as $vale_ur2) {
+
+
+
+                                if ($row2['id'] == $vale_ur2['type']) {
+
+                                    if ($vale_ur2['admin'] == '1') {
+
+                                        
+                                        $x = 1;
+                                    }
+                                }
+                            }
+
+                            if ($x == 1) {
+                                echo "  <li class='nav-item nav-link'>
                                     <p>$row2[name]</p></li> ";
-                            
+                            }
+
+
 
                             foreach ($result_ur as $vale_ur) {
 
@@ -202,8 +223,28 @@ $result5 = mysqli_query($con, $sql5);
                         while ($row2 = mysqli_fetch_array($result_urt)) {
 
 
-                            echo "  <li class='nav-item nav-link'>
+                           
+                            $x = 0;
+
+                            foreach ($result_ur2 as $vale_ur2) {
+
+
+
+                                if ($row2['id'] == $vale_ur2['type']) {
+
+                                    if ($vale_ur2['staff'] == '1') {
+
+                                        
+                                        $x = 1;
+                                    }
+                                }
+                            }
+
+                            if ($x == 1) {
+                                echo "  <li class='nav-item nav-link'>
                                     <p>$row2[name]</p></li> ";
+                            }
+
 
 
                             foreach ($result_ur as $vale_ur) {
@@ -228,9 +269,26 @@ $result5 = mysqli_query($con, $sql5);
                         while ($row2 = mysqli_fetch_array($result_urt)) {
 
 
-                            echo "  <li class='nav-item nav-link'>
-                                    <p>$row2[name]</p></li> ";
+                            $x = 0;
 
+                            foreach ($result_ur2 as $vale_ur2) {
+
+
+
+                                if ($row2['id'] == $vale_ur2['type']) {
+
+                                    if ($vale_ur2['member'] == '1') {
+
+                                        
+                                        $x = 1;
+                                    }
+                                }
+                            }
+
+                            if ($x == 1) {
+                                echo "  <li class='nav-item nav-link'>
+                                    <p>$row2[name]</p></li> ";
+                            }
 
                             foreach ($result_ur as $vale_ur) {
 
