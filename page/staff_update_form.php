@@ -14,6 +14,36 @@ $resultp = mysqli_query($con, $sqlp);
 
 
 
+if(isset($_POST['reset_pass'])){
+   
+    $new_pass = $_POST['new_pass'];
+    $new_pass2 = $_POST['new_pass2'];
+  
+    $id = $_POST['ids'];
+
+   if($new_pass == $new_pass2){
+       $sql = "SELECT * FROM users_info WHERE id = '".$id."'";
+       $result = $con->query($sql);
+       $row = $result->fetch_assoc();
+
+     
+          $sql_pw = "UPDATE users_info SET password = '$new_pass' WHERE id = $id "; 
+
+          $result_pw = $con->query($sql_pw) or die($con->error);
+          if($result_pw){
+            echo'<script> alert("เปลี่ยนรหัสผ่านใหม่สำเร็จ")</script>';
+            header('Refresh:0; url= ../page/staff.php');
+          }
+
+
+   }else{
+       echo'<script> alert("รหัสผ่านใหม่ไม่ตรงกัน")</script>';
+       header('Refresh:0; url= ../page/staff.php');
+   }
+
+}
+
+
 ?>
 
 <!DOCTYPE html>
@@ -52,7 +82,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <div class="col-sm-6">
                         <h1 style="text-transform: uppercase">พนักงาน</h1>
                     </div>
-                    
+
                 </div>
             </div><!-- /.container-fluid -->
         </section>
@@ -85,7 +115,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <div class="container-fluid ">
                 <div class="row">
 
-                <div class="offset-sm-3 col-md-6">
+                    <div class="offset-sm-3 col-md-6">
 
                         <!-- Profile Image -->
                         <div class="card card-pink card-outline">
@@ -197,21 +227,76 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <!-- /.card -->
                 </div>
 
+
+
                 </form>
+                <!-- -------------------------------------------------------------------------------------------------------------------------------- -->
+
+                <?php if ($_SESSION["level"] == 'admin') { ?>
+
+
+                    <div class="offset-3 col-md-6">
+                        <div class="card card-warning">
+                            <div class="card-header ">
+                                <h3 class="card-title">แก้ไขข้อรหัสผ่าน</li>
+                            </div><!-- /.card-header -->
+                            <div class="card-body">
+                                <div class="tab-content">
+                                    <div class="active tab-pane" id="activity">
+                                        <!-- Post -->
+
+                                        <div class="tab-pane" id="settings">
+                                            <form class="form-horizontal" action="" method="post">
+                                            <input type="text" class="form-control" id="exampleInputEmail1" name="ids" value="<?php echo $row['id']; ?>" hidden placeholder="Insurance Name">
+
+                                                <div class="form-group row">
+                                                    <label for="inputEmail" class="col-sm-3 col-form-label"><strong>รหัสผ่านใหม่</strong></label>
+                                                    <div class="col-sm-9">
+                                                        <input type="password" class="form-control" name="new_pass" id="new_pass" value="">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="inputEmail" class="col-sm-3 col-form-label"><strong> ยืนยันรหัสผ่านใหม่</strong></label>
+                                                    <div class="col-sm-9">
+                                                        <input type="password" class="form-control" name="new_pass2" id="new_pass2" value="">
+                                                    </div>
+                                                </div>
+
+
+
+                                                <div class="form-group row">
+                                                    <div class="offset-5 col-6">
+                                                        <button type="submit" name="reset_pass" class="btn btn-danger">Submit</button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <!-- /.tab-pane -->
+                                    </div>
+                                    <!-- /.tab-content -->
+                                </div><!-- /.card-body -->
+                            </div>
+                            <!-- /.card -->
+                        </div>
+                        <!-- /.col -->
+                    </div>
             </div>
-            <!-- /.content-wrapper -->
 
-            <!-- Control Sidebar -->
-            <aside class="control-sidebar control-sidebar-dark">
-                <!-- Control sidebar content goes here -->
-                <div class="p-3">
-                    <h5>Title</h5>
-                    <p>Sidebar content</p>
-                </div>
-            </aside>
-            <!-- /.control-sidebar -->
+        <?php } ?>
 
-            <!-- Main Footer -->
+        <!-- /.content-wrapper -->
+
+        <!-- Control Sidebar -->
+        <aside class="control-sidebar control-sidebar-dark">
+            <!-- Control sidebar content goes here -->
+            <div class="p-3">
+                <h5>Title</h5>
+                <p>Sidebar content</p>
+            </div>
+        </aside>
+        <!-- /.control-sidebar -->
+
+        <!-- Main Footer -->
     </div>
     <!-- ./wrapper -->
 

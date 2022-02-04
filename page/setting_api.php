@@ -23,8 +23,10 @@ if (isset($_POST['add_line'])) {
     $result_add_line = mysqli_query($con, $sql_add_line);
 
 
-    $sql_table = "  CREATE TABLE `$name_line` (
-        `id` int(10) NOT NULL PRIMARY KEY,
+    
+
+    $sql_table = "CREATE TABLE `$name_line` (
+        `id` int(10) NOT NULL PRIMARY KEY AUTO_INCREMENT,
         `name` varchar(255) NOT NULL,
         `email` varchar(255) NOT NULL,
         `tel` varchar(255) NOT NULL,
