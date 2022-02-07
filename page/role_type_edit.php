@@ -96,7 +96,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <form action="../backend/role_type_update.php" method="POST">
                                 <div class="card-body">
                                     <div class="form-group">
-                                        <label for="exampleInputEmail1" name="id">ลำดับที่ <?php echo $row['id']; ?> </label><br>
+                                        <label for="exampleInputEmail1" name="id">ลำดับที่ <?php echo $row['no']; ?> </label><br>
+                                        <input type="text" class="form-control" id="exampleInputEmail1" name="no" value="<?php echo $row['no']; ?>"  placeholder="Insurance Name">
 
                                         <label for="exampleInputEmail1">ชื่อรายการ</label>
                                         <input type="text" class="form-control" id="exampleInputEmail1" name="name" value="<?php echo $row['name']; ?>" placeholder="Insurance Name" required>
@@ -162,48 +163,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <script src="../js/buttons.colVis.min.js"></script>
 
                 <script>
-                    $(function() {
-                        $("#example1").DataTable({
-                            "responsive": true,
-                            "lengthChange": false,
-                            "autoWidth": false,
-                            "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-                        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-                        $('#example2').DataTable({
-                            "paging": true,
-                            "lengthChange": false,
-                            "searching": false,
-                            "ordering": true,
-                            "info": true,
-                            "autoWidth": false,
-                            "responsive": true,
-                        });
-                    });
+                    
 
-                    function updateTextView(_obj) {
-                        var num = getNumber(_obj.val());
-                        if (num == 0) {
-                            _obj.val('');
-                        } else {
-                            _obj.val(num.toLocaleString());
-                        }
-                    }
-
-                    function getNumber(_str) {
-                        var arr = _str.split('');
-                        var out = new Array();
-                        for (var cnt = 0; cnt < arr.length; cnt++) {
-                            if (isNaN(arr[cnt]) == false) {
-                                out.push(arr[cnt]);
-                            }
-                        }
-                        return Number(out.join(''));
-                    }
-                    $(document).ready(function() {
-                        $('#interest').on('keyup', function() {
-                            updateTextView($(this));
-                        });
-                    });
+                    
                 </script>
 </body>
 

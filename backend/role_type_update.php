@@ -5,14 +5,15 @@ require('../dbconnect.php');
 
                 $ids = $_POST['ids'];
                 $name = $_POST['name'];
-            
+                $no = $_POST['no'];
+
 
                 
                
 
 
                 $sql2 = "UPDATE user_role_type
-                SET name = '$name'
+                SET no = '$no',name = '$name'
                  WHERE id = '$ids' ";
                 $result2 = mysqli_query($con, $sql2);
 

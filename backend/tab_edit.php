@@ -8,10 +8,11 @@ require('../dbconnect.php');
                 $link = $_POST['link'];
                 $icon = $_POST['icon'];
                 $type = $_POST['type'];
+                $no = $_POST['no'];
 
 
                 $sql2 = "UPDATE user_role
-                SET page = '$name',type = '$type', link= '$link',icon = '$icon'
+                SET no = '$no',page = '$name',type = '$type', link= '$link',icon = '$icon'
                  WHERE id = '$ids' ";
                 $result2 = mysqli_query($con, $sql2);
 

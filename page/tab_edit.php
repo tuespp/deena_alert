@@ -96,7 +96,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <form action="../backend/tab_edit.php" method="POST">
                                 <div class="card-body">
                                     <div class="form-group">
-                                        <label for="exampleInputEmail1" name="id">ลำดับที่ <?php echo $row['id']; ?> </label><br>
+                                        <label for="exampleInputEmail1" name="id">ลำดับที่ <?php echo $row['no']; ?> </label><br>
+                                        <input type="text" class="form-control" id="exampleInputEmail1" name="no" value="<?php echo $row['no']; ?>" placeholder="Insurance Name" required>
 
                                         <label for="exampleInputEmail1">ชื่อรายการ</label>
                                         <input type="text" class="form-control" id="exampleInputEmail1" name="name" value="<?php echo $row['page']; ?>" placeholder="Insurance Name" required>

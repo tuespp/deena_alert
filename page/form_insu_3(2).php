@@ -585,7 +585,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
                 <script>
-                    $('#installment').change(function() {
+                    $('#installment').keyup(function() {
                         $('#ins2').val('');
                         $('#ins3').val('');
                         $('#ins4').val('');
@@ -595,7 +595,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                     });
 
-                    $('#divv').change(function() {
+                    $('#divv').keyup(function() {
 
                         var ins_price = $('#ins_price').val();
                         var ins_price2 = $('#ins_price2').val();
@@ -624,7 +624,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     });
 
 
-                    $('#date').change(function() {
+                    $('#date').keyup(function() {
 
                         $('#date2').val('');
                         $('#date3').val('');

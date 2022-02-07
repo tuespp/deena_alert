@@ -77,10 +77,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <!-- /.card -->
 
                         <div class="card">
-                            <div class="card-header">
-                                <a href="insurance_insert_form.php" class="btn btn-warning ">เพื่มข้อมูล &nbsp; <i class="fas fa-user"></i></a>
 
-                            </div>
                             <!-- /.card-header -->
                             <div class="card-body">
                                 <table id="example1" class="table table-bordered table-striped">
@@ -137,11 +134,81 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                                                 <td>
 
-                                                    <div class="">
+                                                    <div class="mb-2">
+                                                        <div class="row">
+                                                            <div class="col-md-4">
 
-                                                        <button title='ไฟล์' type=button class="btn btn-info btn-sm file" name="file" id="file_credit" value="<?php echo $row['form_id']; ?>" >
-                                                            <i class="fas fa-folder"></i>
-                                                            ไฟล์</button>
+                                                                <button title='ไฟล์' type=button class="btn btn-sm btn-info  file" name="file" id="file_credit" value="<?php echo $row['form_id']; ?>">
+                                                                    <i class="fas fa-folder"></i>
+                                                                    ไฟล์</button>
+
+                                                            </div>
+
+
+
+                                                            <div class="col-md-4">
+                                                                <?php if ($row['ins_type'] == 'แบบ1 (% | หารเท่า)') { ?>
+                                                                    <a href="form_edit_insu.php?form_id=<?php echo $row['form_id']; ?>&type=edit" class="btn btn-sm btn-danger"><i class="fas fa-edit">
+                                                                            แก้ไข </a></i>
+                                                                <?php } ?>
+                                                                <?php if ($row['ins_type'] == "แบบ2 (% | กำหนด %)") { ?>
+                                                                    <a href="form_edit_insu2.php?form_id=<?php echo $row['form_id']; ?>&type=edit" class="btn btn-sm btn-danger"><i class="fas fa-edit">
+                                                                    แก้ไข </a></i>
+                                                                <?php } ?>
+
+                                                                <?php if ($row['ins_type'] == "แบบ3 (จำนวน | หารเท่า)") { ?>
+                                                                    <a href="form_edit_insu3.php?form_id=<?php echo $row['form_id']; ?>&type=edit" class="btn btn-sm btn-danger"><i class="fas fa-edit">
+                                                                    แก้ไข </a></i>
+                                                                <?php } ?>
+                                                                <?php if ($row['ins_type'] == "แบบ3 (เขียวเหลือง)") { ?>
+                                                                    <a href="form_edit_insu3(2).php?form_id=<?php echo $row['form_id']; ?>&type=edit" class="btn btn-sm btn-danger"><i class="fas fa-edit">
+                                                                    แก้ไข </a></i>
+                                                                <?php } ?>
+                                                                <?php if ($row['ins_type'] == "แบบ3 (สหกรณ์)") { ?>
+                                                                    <a href="form_edit_insu3(3).php?form_id=<?php echo $row['form_id']; ?>&type=edit" class="btn btn-sm btn-danger"><i class="fas fa-edit">
+                                                                    แก้ไข </a></i>
+                                                                <?php } ?>
+                                                                <?php if ($row['ins_type'] == "แบบ4 (จำนวน | จำนวน)") { ?>
+                                                                    <a href="form_edit_insu4.php?form_id=<?php echo $row['form_id']; ?>&type=edit" class="btn btn-sm btn-danger"><i class="fas fa-edit">
+                                                                    แก้ไข </a></i>
+                                                                <?php } ?>
+                                                            </div>
+
+                                                            <div class="col-md-4">
+                                                                <?php if ($row['ins_type'] == 'แบบ1 (% | หารเท่า)') { ?>
+                                                                    <a href="form_edit_insu.php?form_id=<?php echo $row['form_id']; ?>&type=copy" class="btn btn-sm btn-success"><i class="fas fa-copy">
+                                                                            คัดลอก </a></i>
+                                                                <?php } ?>
+                                                                <?php if ($row['ins_type'] == "แบบ2 (% | กำหนด %)") { ?>
+                                                                    <a href="form_edit_insu2.php?form_id=<?php echo $row['form_id']; ?>&type=copy" class="btn btn-sm btn-success"><i class="fas fa-edit">
+                                                                            คัดลอก </a></i>
+                                                                <?php } ?>
+
+                                                                <?php if ($row['ins_type'] == "แบบ3 (จำนวน | หารเท่า)") { ?>
+                                                                    <a href="form_edit_insu3.php?form_id=<?php echo $row['form_id']; ?>&type=copy" class="btn btn-sm btn-success"><i class="fas fa-edit">
+                                                                            คัดลอก </a></i>
+                                                                <?php } ?>
+                                                                <?php if ($row['ins_type'] == "แบบ3 (เขียวเหลือง)") { ?>
+                                                                    <a href="form_edit_insu3(2).php?form_id=<?php echo $row['form_id']; ?>&type=copy" class="btn btn-sm btn-success"><i class="fas fa-edit">
+                                                                            คัดลอก </a></i>
+                                                                <?php } ?>
+                                                                <?php if ($row['ins_type'] == "แบบ3 (สหกรณ์)") { ?>
+                                                                    <a href="form_edit_insu3(3).php?form_id=<?php echo $row['form_id']; ?>&type=copy" class="btn btn-sm btn-success"><i class="fas fa-edit">
+                                                                            คัดลอก </a></i>
+                                                                <?php } ?>
+                                                                <?php if ($row['ins_type'] == "แบบ4 (จำนวน | จำนวน)") { ?>
+                                                                    <a href="form_edit_insu4.php?form_id=<?php echo $row['form_id']; ?>&type=copy" class="btn btn-sm btn-success"><i class="fas fa-edit">
+                                                                            คัดลอก </a></i>
+                                                                <?php } ?>
+                                                            </div>
+
+
+
+
+                                                            
+
+
+                                                        </div>
                                                     </div>
                                                 </td>
 

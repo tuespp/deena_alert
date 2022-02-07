@@ -20,7 +20,7 @@ if (isset($_POST['submit'])) {
     $row = $result->fetch_assoc();
 
     if (!empty($row)) {
-
+        $_SESSION['last_login_timestamp'] = time();
         $_SESSION["id"] = $row["id"];
         $_SESSION["username"] = $row["username"];
         $_SESSION["name"] = $row["name"];

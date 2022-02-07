@@ -118,7 +118,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                             <div class="form-group">
                                                 <?php
 
-                                                $sqlrt = "SELECT * FROM user_role_type ";
+                                                $sqlrt = "SELECT * FROM user_role_type ORDER BY no ASC";
                                                 $resultrt = mysqli_query($con, $sqlrt);
                                                 while ($rowrt = mysqli_fetch_assoc($resultrt)) {
                                                     $idr = $rowrt['id'];
@@ -126,7 +126,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                                                     <tr>
 
-                                                        <td><?php echo $order++; ?></td>
+                                                        <td><?php echo $rowrt['no']; ?></td>
                                                         <td><label for="page"><?php echo $rowrt['name']; ?></label></td>
                                                         <td>
                                                             <a href="role_type_edit.php?id=<?php echo  $idr ?>" class="btn btn-warning"><i class="fas fa-edit"></a></i>&nbsp;
@@ -211,7 +211,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                 <div class="form-group">
                                                     <?php
 
-                                                    $sqlc = "SELECT * FROM user_role WHERE type = $row_type[id]  ";
+                                                    $sqlc = "SELECT * FROM user_role WHERE type = $row_type[id] ORDER BY no ASC ";
                                                     $resultc = mysqli_query($con, $sqlc);
                                                     while ($rowc = mysqli_fetch_assoc($resultc)) {
                                                         $idr = $rowc['id'];
@@ -219,7 +219,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                                                         <tr>
 
-                                                            <td><?php echo $order++; ?></td>
+                                                            <td><?php echo $rowc['no']; ?></td>
                                                             <td><label for="page"><?php echo $rowc['page']; ?></label></td>
                                                             <td>
                                                                 <?php if ($rowc['admin'] == '1') {

@@ -2,6 +2,29 @@
 @ini_set('display_errors', '0');
 require('../dbconnect.php');
 
+
+if(isset($_SESSION["name"]))  
+      {  
+           if((time() - $_SESSION['last_login_timestamp']) > 3000) // 900 = 15 * 60  
+           {  
+                header("location:logout.php");  
+           }  
+           else  
+           {  
+                $_SESSION['last_login_timestamp'] = time();  
+               /*  echo "<h1 align='center'>".$_SESSION["name"]."</h1>";  
+                echo '<h1 align="center">'.$_SESSION['last_login_timestamp'].'</h1>';  
+                echo "<p align='center'><a href='logout.php'>Logout</a></p>";   */
+           }  
+      }  
+      else  
+      {  
+           header('location:login.php');  
+      }  
+
+
+
+
 $id = $_SESSION['id'];
 if (empty($id)) {
     header('Location:login.php');
@@ -32,7 +55,7 @@ $sql_ur2 = "SELECT * FROM user_role  ";
 $result_ur2 = mysqli_query($con, $sql_ur2);
 
 
-$sql_urt = "SELECT * FROM user_role_type  ";
+$sql_urt = "SELECT * FROM user_role_type  ORDER BY no ASC ";
 
 $result_urt = mysqli_query($con, $sql_urt);
 
