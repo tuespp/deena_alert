@@ -227,12 +227,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                     <td style="max-width:20rem;"><?php echo $row_line['access_token']; ?></td>
 
 
-                                                    <td> <a title='วิว' type=button class="btn btn-warning view" name="view" value="วิว" id="<?php echo $row_line["oa_id"]; ?>">
-                                                            <i class="far fa-edit"></i></a>
-                                                        <a href="../backend/update_line_api.php?oa_id=<?php echo $row_line['oa_id']; ?>&name=<?php echo $row_line['name']; ?>" name="delete" class="btn btn-danger" onclick="return confirm('Are you sure to delete ?')"><i class="far fa-trash-alt"></i></a>
-
-                                                    </td>
-
+                                                 
+                                                    <td class="text-center">
+                                                                
+                                                                <div class="row">
+                                                                    <div class=" m-1 text-center">
+                                                                    <a title='วิว' type=button class="btn btn-warning view rounded-pill" name="view" value="วิว" id="<?php echo $row_line["oa_id"]; ?>"><i class="fas fa-edit"></i> แก้ไข </a>
+                                                                    </div>
+                                                                    <div class=" m-1 text-center">
+                                                                    <a href="../backend/update_line_api.php?oa_id=<?php echo $row_line['oa_id']; ?>&name=<?php echo $row_line['name']; ?>" name="delete" class="btn btn-danger rounded-pill" onclick="return confirm('Are you sure to delete ?')"><i class="fas fa-trash"></i> ลบ</a>
+                                                            </td>
                                                 </tr>
 
 

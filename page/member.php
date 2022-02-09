@@ -121,10 +121,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                 <td><?php echo $value['sub_name']; ?></td>
                                                 <td><?php echo $value['oa_id']; ?></td>
 
-                                                <td><a href="member_update_form.php?id=<?php echo $value['id']; ?>" class="btn btn-warning"><i class="fas fa-edit">
+                                                
 
-                                                </a></i>&nbsp;&nbsp;&nbsp;<a href="../backend/member_delete.php?id=<?php echo $value['id']; ?>&oa_id=<?php echo $value['oa_id']; ?>" class="btn btn-danger" onclick="return confirm('Are you sure to delete ?')"><i class="far fa-trash-alt"></i></a></td>
 
+                                                <td class="text-center">
+                                                    <div class="row">
+                                                        <div class=" m-1 text-center">
+                                                        <a href="member_update_form.php?id=<?php echo $value['id']; ?>" class="btn btn-warning rounded-pill"><i class="fas fa-edit"></i> แก้ไข</a>
+                                                        </div>
+                                                        <div class=" m-1 text-center">
+                                                        <a href="../backend/member_delete.php?id=<?php echo $value['id']; ?>&oa_id=<?php echo $value['oa_id']; ?>" class="btn btn-danger rounded-pill" onclick="return confirm('Are you sure to delete ?')"><i class="fas fa-trash"></i> ลบ</a>
+                                                </td>
                                             </tr>
 
 

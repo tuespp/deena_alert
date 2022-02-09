@@ -41,6 +41,19 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <link rel="stylesheet" href="../css/responsive.bootstrap4.min.css">
     <link rel="stylesheet" href="../css/buttons.bootstrap4.min.css">
     <link rel="stylesheet" href="../css/switch_insurance.css">
+
+    <style>
+        /* CSS */
+
+
+        .border{
+          
+            border-radius:999px;
+            font-size: 15px;
+            
+        }
+
+    </style>
 </head>
 
 <body class="hold-transition sidebar-mini">

@@ -270,7 +270,7 @@ if (isset($_POST['submit'])) {
 
     imagettftext($dest, $size, 0, 428, 840, $text_color, $font, number_format($price_ins1));
     imagettftext($dest, $size, 0, 870, 840, $text_color, $font, $installment2);
-
+    imagettftext($dest, $size, 0, 1240, 1645, $text_color, $font, $form_id);
     /* -------------------------------loop----------------------------- */
 
 
@@ -374,7 +374,7 @@ if (isset($_POST['submit'])) {
     imagettftext($dest2, $size, 0, 950, 180, $text_color, $font, $car_license);
     imagettftext($dest2, $size, 0, 270, 220, $text_color, $font, $car_insu);
     imagettftext($dest2, $size, 0, 480, 1607, $text_color, $font, $fullname);
-
+    imagettftext($dest2, $size, 0, 1240, 1645, $text_color, $font, $form_id);
     imagepng($dest2, '../img/test-form2.png');
     imagepng($dest2, '../page/myFile/'.$fullname.$random.'no2.png');
 
@@ -393,7 +393,7 @@ if (isset($_POST['submit'])) {
     imagettftext($dest3, $size, 0, 650, 474, $text_color, $font, $car_license);
     imagettftext($dest3, $size, 0, 250, 290, $text_color, $font, $car_insu);
     imagettftext($dest3, $size, 0, 630, 1240, $text_color, $font, $fullname);
-
+    imagettftext($dest3, $size, 0, 1240, 1645, $text_color, $font, $form_id);
 
 
 
@@ -408,6 +408,7 @@ if (isset($_POST['submit'])) {
     $size2 = 40;
     imagettftext($dest4, $size2, 0, 1680, 1905, $text_color, $font, $fullname);
     imagettftext($dest4, $size2, 0, 400, 3000, $text_color, $font, $fullname);
+    imagettftext($dest4, $size2, 0, 2400, 3500, $text_color, $font, $form_id);
 
 
     imagepng($dest4, '../img/test-form4.png');

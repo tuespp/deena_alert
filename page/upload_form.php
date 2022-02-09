@@ -52,7 +52,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <div class="col-sm-6">
                         <h1 style="text-transform: uppercase">จัดการเอกสาร</h1>
                     </div>
-                    
+
                 </div>
             </div><!-- /.container-fluid -->
         </section>
@@ -90,7 +90,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 <table id="example1" class="table table-bordered table-striped">
                                     <thead>
                                         <tr>
-                                            
+
                                             <th>ลำดับ</th>
                                             <th>ชื่อ</th>
                                             <th>รูป</th>
@@ -106,14 +106,23 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                 <td><?php echo $value['form_name']; ?></td>
                                                 <td><img src="../img/<?php echo $value['form_img'] ?>" alt="" width="100"></td>
 
-                                                
-                                                
-                                                
 
 
-                                                <td><a href="upload_form_edit.php?id=<?php echo $value['form_id']; ?>" class="btn btn-warning"><i class="far fa-edit"></a></i>&nbsp;&nbsp;&nbsp;
-                                                <a href="../backend/upload_delete.php?id=<?php echo $value['form_id']; ?>"class="btn btn-danger" onclick="return confirm('Are you sure to delete ?')"><i class="far fa-trash-alt"></i></a></td>
 
+
+
+
+
+
+
+                                                <td class="text-center">
+                                                    <div class="row">
+                                                        <div class=" m-1 text-center">
+                                                            <a href="upload_form_edit.php?id=<?php echo $value['form_id']; ?>" class="btn btn-warning rounded-pill"><i class="fas fa-edit"></i> แก้ไข</a>
+                                                        </div>
+                                                        <div class=" m-1 text-center">
+                                                            <a href="../backend/upload_delete.php?id=<?php echo $value['form_id']; ?>" class="btn btn-danger rounded-pill" onclick="return confirm('Are you sure to delete ?')"><i class="fas fa-trash"></i> ลบ</a>
+                                                </td>
                                             </tr>
 
 
@@ -172,8 +181,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             "responsive": true,
                             "lengthChange": true,
                             "autoWidth": false,
-/*                             "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
- */                        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+                            /*                             "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+                             */
+                        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
                         $('#example2').DataTable({
                             "paging": true,
                             "lengthChange": false,
@@ -185,7 +195,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         });
                     });
 
-                    
+
                     $(document).on('click', '.change', function() {
                         var status_id = $(this).attr("id");
                         if (status_id != '') {

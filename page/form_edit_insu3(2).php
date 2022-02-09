@@ -75,7 +75,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 style="text-transform: uppercase">ขอสินเชื่อเบี้ยประกัน รูปแบบที่ 3 (เขียวเหลือง)</h1>
+                        <h1 style="text-transform: uppercase">แก้ไข ขอสินเชื่อเบี้ยประกัน รูปแบบที่ 3 (เขียวเหลือง)</h1>
                     </div>
 
                 </div>
@@ -106,7 +106,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                             <form <?php if ($_GET['type'] == 'copy') { ?> action="../backend/form_insu_gen.php" <?php  } ?> <?php if ($_GET['type'] == 'edit') { ?> action="../backend/edit_insu.php?form_id=<?php echo $_GET['form_id'] ?>" <?php  } ?> method="POST">
                                 <div class="card-body">
-
+                                <label for="">เลขไอดี  <?php echo $row_ins['form_id'] ?>
+                                <br> <br>
 
                                     <div class="form-group ">
                                         <div class="mb-2">
@@ -637,8 +638,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     });
 
 
-                    $('#date').keyup(function() {
-
+                    $('#date').change(function() {
+                        console.log('asd');
                         $('#date2').val('');
                         $('#date3').val('');
                         $('#date4').val('');

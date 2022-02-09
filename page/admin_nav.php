@@ -5,7 +5,7 @@ require('../dbconnect.php');
 
 if(isset($_SESSION["name"]))  
       {  
-           if((time() - $_SESSION['last_login_timestamp']) > 3000) // 900 = 15 * 60  
+           if((time() - $_SESSION['last_login_timestamp']) > 3000) //   
            {  
                 header("location:logout.php");  
            }  
@@ -44,18 +44,18 @@ $line = $_SESSION['user_id'];
 
 
 
-$sql_ur = "SELECT * FROM user_role  ";
+$sql_ur = "SELECT * FROM user_role ORDER BY no ASC  ";
 
 $result_ur = mysqli_query($con, $sql_ur);
 $row_ur = mysqli_fetch_array($result_ur);
 
 
-$sql_ur2 = "SELECT * FROM user_role  ";
+$sql_ur2 = "SELECT * FROM user_role ORDER BY no ASC  ";
 
 $result_ur2 = mysqli_query($con, $sql_ur2);
 
 
-$sql_urt = "SELECT * FROM user_role_type  ORDER BY no ASC ";
+$sql_urt = "SELECT * FROM user_role_type   ";
 
 $result_urt = mysqli_query($con, $sql_urt);
 
@@ -217,8 +217,24 @@ $result5 = mysqli_query($con, $sql5);
                             }
 
                             if ($x == 1) {
+
+                                if($row2['name'] == 'แจ้งเตือนชำระเงิน'){
+
+                                    echo "  <li class='nav-item nav-link'>
+                                   <b style='color:black'><p>$row2[name]</p></b></li> ";
+                                }else
+                                if($row2['name'] == 'แจ้งเตือนต่อายุ'){
+                                    echo "  <li class='nav-item nav-link'>
+                                    <b style='color:black'><p>$row2[name]</p></b></li> ";
+                                }else 
+                                
+                                if($row2['name'] == 'แจ้งข่าวสารลูกค้า'){
+                                    echo "  <li class='nav-item nav-link'>
+                                    <b style='color:black'><p>$row2[name]</p></b></li> ";
+                                }else{
                                 echo "  <li class='nav-item nav-link'>
                                     <p>$row2[name]</p></li> ";
+                                }
                             }
 
 

@@ -75,7 +75,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 style="text-transform: uppercase">ขอสินเชื่อเบี้ยประกัน รูปแบบที่ 2</h1>
+                        <h1 style="text-transform: uppercase">แก้ไข ขอสินเชื่อเบี้ยประกัน รูปแบบที่ 2</h1>
                     </div>
 
                 </div>
@@ -121,6 +121,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     method="POST">
                                 <div class="card-body">
 
+                                <label for="">เลขไอดี  <?php echo $row_ins['form_id'] ?>
+                                <br> <br>
 
                                     <div class="form-group ">
                                         <div class="mb-2">

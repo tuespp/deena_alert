@@ -75,7 +75,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 style="text-transform: uppercase">ขอสินเชื่อเบี้ยประกัน รูปแบบที่ 3</h1>
+                        <h1 style="text-transform: uppercase">แก้ไข ขอสินเชื่อเบี้ยประกัน รูปแบบที่ 3</h1>
                     </div>
 
                 </div>
@@ -90,12 +90,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <div class="container-fluid ">
                 <div class="row">
                     <div class="offset-md-2 col-md-8">
-                    <div class="card card-warning">
+                        <div class="card card-warning">
                             <div class="card-header">
                                 <h3 class="card-title">รายละเอียด</h3>
                             </div>
                             <label for="" class="mt-3 ml-3">รูปแบบที่ 3 คือ กำหนดงวดแรกเป็นจำนวน งวดที่เหลือหารเท่ากัน </label>
-                    </div>
+                        </div>
                         <!-- general form elements -->
                         <div class="card card-warning">
                             <div class="card-header">
@@ -104,421 +104,408 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <!-- /.card-header -->
                             <!-- form start -->
 
-                            <form 
-                            
-                            <?php if ($_GET['type'] == 'copy') {?> 
-                                
-                                
-                                action="../backend/form_insu_gen.php" <?php  } ?>
-                                
-                                
-                                <?php if ($_GET['type'] == 'edit') { ?> 
-                                    
-                                    action="../backend/edit_insu.php?form_id=<?php echo $_GET['form_id'] ?>" <?php  } ?> 
-                                    
-                                    
-                                    
-                                    method="POST">
+                            <form <?php if ($_GET['type'] == 'copy') { ?> action="../backend/form_insu_gen.php" <?php  } ?> <?php if ($_GET['type'] == 'edit') { ?> action="../backend/edit_insu.php?form_id=<?php echo $_GET['form_id'] ?>" <?php  } ?> method="POST">
                                 <div class="card-body">
+                                    <label for="">เลขไอดี <?php echo $row_ins['form_id'] ?>
+                                        <br> <br>
+
+                                        <div class="form-group ">
+                                            <div class="mb-2">
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <label for="">วันที่เขียน <span class="red">*</span></label>
+                                                        <input type="date" name="date_create" id="date" placeholder="วันที่เขียน" class="form-control" value="<?php echo $row_ins['date_create'] ?>" required>
+                                                        <input type="hidden" name="ins_type" placeholder="วันที่เขียน" class="form-control" value="แบบ1 (% | หารเท่า)">
+
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <label for="">วันที่คุ้มครอง <span class="red">*</span> </label>
+                                                        <input type="date" name="date_start" placeholder="วันที่คุ้มครอง" class="form-control" value="<?php echo $row_ins['date_start'] ?>" required>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <label for="">ทะเบียนรถยนต์ <span class="red">*</span></label>
+                                                        <input type="text" name="car_license" placeholder="ทะเบียนรถยนต์" class="form-control" value="<?php echo $row_ins['car_license'] ?>" required>
+                                                    </div>
+                                                </div>
+                                            </div>
 
 
-                                    <div class="form-group ">
-                                        <div class="mb-2">
+
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputPassword1">ชื่อ - นามสกุล <span class="red">*</span></label>
+
+                                            <div class="col-md-12">
+                                                <input type="text" name="fullname" placeholder="ชื่อ-สกุล" class="form-control" value="<?php echo $row_ins['name'] ?>" required>
+                                            </div>
+
+
+                                        </div>
+                                        <div class="form-group">
                                             <div class="row">
-                                                <div class="col-md-4">
-                                                    <label for="">วันที่เขียน <span class="red">*</span></label>
-                                                    <input type="date" name="date_create" id="date" placeholder="วันที่เขียน" class="form-control" value="<?php echo $row_ins['date_create'] ?>" required>
-                                                    <input type="hidden" name="ins_type" placeholder="วันที่เขียน" class="form-control" value="แบบ1 (% | หารเท่า)">
+                                                <div class="col-md-6">
+                                                    <label for="exampleInputPassword1">บัตรประชาชน <span class="red">*</span></label>
 
+                                                    <input type="text" name="id_card" maxlength="13" placeholder="บัตรประชาชน" class="form-control" value="<?php echo $row_ins['id_card'] ?>" required>
                                                 </div>
-                                                <div class="col-md-4">
-                                                    <label for="">วันที่คุ้มครอง <span class="red">*</span> </label>
-                                                    <input type="date" name="date_start" placeholder="วันที่คุ้มครอง" class="form-control" value="<?php echo $row_ins['date_start'] ?>" required>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <label for="">ทะเบียนรถยนต์ <span class="red">*</span></label>
-                                                    <input type="text" name="car_license" placeholder="ทะเบียนรถยนต์" class="form-control" value="<?php echo $row_ins['car_license'] ?>" required>
+                                                <div class="col-md-6">
+                                                    <label for="exampleInputPassword1">วันเกิด <span class="red">*</span></label>
+
+                                                    <input type="date" name="birth_date" placeholder="วัน/เดือน/ปี เกิด" class="form-control" value="<?php echo $row_ins['birth_date'] ?>" required>
                                                 </div>
                                             </div>
                                         </div>
 
 
 
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputPassword1">ชื่อ - นามสกุล <span class="red">*</span></label>
+                                        <div class="form-group">
+                                            <label for="exampleInputPassword1">ที่อยู่ <span class="red">*</span></label>
+                                            <div class="row ">
+                                                <div class="col-md-12">
+                                                    <textarea type="text" name="address" placeholder="ที่อยู่" class="form-control" required><?php echo $row_ins['address'] ?></textarea>
+                                                </div>
 
-                                        <div class="col-md-12">
-                                            <input type="text" name="fullname" placeholder="ชื่อ-สกุล" class="form-control" value="<?php echo $row_ins['name'] ?>" required>
+                                            </div>
                                         </div>
 
 
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label for="exampleInputPassword1">บัตรประชาชน <span class="red">*</span></label>
 
-                                                <input type="text" name="id_card" maxlength="13" placeholder="บัตรประชาชน" class="form-control" value="<?php echo $row_ins['id_card'] ?>" required>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <label for="exampleInputPassword1">วันเกิด <span class="red">*</span></label>
+                                        <div class="form-group">
+                                            <label for="exampleInputPassword1">โทรศัพท์ <span class="red">*</span></label>
+                                            <div class="row ">
+                                                <div class="col-md-12">
+                                                    <input type="tel" name="tel" maxlength="10" placeholder="เบอร์โทร " class="form-control" value="<?php echo $row_ins['tel'] ?>" required>
 
-                                                <input type="date" name="birth_date" placeholder="วัน/เดือน/ปี เกิด" class="form-control" value="<?php echo $row_ins['birth_date'] ?>" required>
+
+                                                </div>
+
                                             </div>
                                         </div>
-                                    </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputPassword1">โทรศัพท์ สำรอง</label>
+                                            <div class="row ">
+                                                <div class="col-md-12">
+                                                    <input type="tel" name="tel3" maxlength="10" placeholder="เบอร์โทร " class="form-control" value="<?php echo $row_ins['tel1'] ?>">
 
 
+                                                </div>
 
-                                    <div class="form-group">
-                                        <label for="exampleInputPassword1">ที่อยู่ <span class="red">*</span></label>
-                                        <div class="row ">
-                                            <div class="col-md-12">
-                                                <textarea type="text" name="address" placeholder="ที่อยู่" class="form-control" required><?php echo $row_ins['address'] ?></textarea>
-                                            </div>
-
-                                        </div>
-                                    </div>
-
-
-
-                                    <div class="form-group">
-                                        <label for="exampleInputPassword1">โทรศัพท์ <span class="red">*</span></label>
-                                        <div class="row ">
-                                            <div class="col-md-12">
-                                                <input type="tel" name="tel" maxlength="10" placeholder="เบอร์โทร " class="form-control" value="<?php echo $row_ins['tel'] ?>" required>
-
-
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputPassword1">โทรศัพท์ สำรอง</label>
-                                        <div class="row ">
-                                            <div class="col-md-12">
-                                                <input type="tel" name="tel3" maxlength="10" placeholder="เบอร์โทร " class="form-control" value="<?php echo $row_ins['tel1'] ?>">
-
-
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                    <label class="mt-3" for="exampleInputPassword1">ที่อยู่อื่น </label>
-
-                                    <div class="form-group mt-3">
-                                        <label for="exampleInputPassword1">ที่อยู่</label>
-                                        <div class="row ">
-                                            <div class="col-md-12">
-                                                <textarea type="text" name="address2" placeholder="ที่อยู่" class="form-control"><?php echo $row_ins['address2'] ?></textarea>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputPassword1">โทรศัพท์</label>
-                                        <div class="row ">
-                                            <div class="col-md-12">
-                                                <input type="phone" name="tel2" maxlength="10" placeholder="เบอร์โทร" class="form-control" value="<?php echo $row_ins['tel2'] ?>">
-                                            </div>
-
-                                        </div>
-                                    </div>
-
-                                    <label class="mt-3" for="exampleInputPassword1">บุคคลติดต่อกรณีฉุกเฉิน</label>
-                                    <div class="form-group mt-3">
-                                        <div class="row">
-                                            <div class="col-md-4">
-                                                <label for="exampleInputPassword1">ชื่อ - นามสกุล</label>
-
-                                                <input type="text" name="name_grt" placeholder="ชื่อ-สกุล" class="form-control" value="<?php echo $row_ins['name_grt'] ?>">
-                                            </div>
-                                            <div class="col-md-4">
-                                                <label for="exampleInputPassword1">ความสัมพันธ์</label>
-
-                                                <input type="text" name="relation_grt" placeholder="ความสัมพันธ์" class="form-control" value="<?php echo $row_ins['relation_grt'] ?>">
-                                            </div>
-                                            <div class="col-md-4">
-                                                <label for="exampleInputPassword1">โทรศัพท์</label>
-
-                                                <input type="text" name="tel_grt" placeholder="โทรศัพท์" class="form-control" value="<?php echo $row_ins['tel_grt'] ?>">
                                             </div>
                                         </div>
-                                    </div>
+                                        <label class="mt-3" for="exampleInputPassword1">ที่อยู่อื่น </label>
 
+                                        <div class="form-group mt-3">
+                                            <label for="exampleInputPassword1">ที่อยู่</label>
+                                            <div class="row ">
+                                                <div class="col-md-12">
+                                                    <textarea type="text" name="address2" placeholder="ที่อยู่" class="form-control"><?php echo $row_ins['address2'] ?></textarea>
+                                                </div>
 
-                                    <div id="divv">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputPassword1">โทรศัพท์</label>
+                                            <div class="row ">
+                                                <div class="col-md-12">
+                                                    <input type="phone" name="tel2" maxlength="10" placeholder="เบอร์โทร" class="form-control" value="<?php echo $row_ins['tel2'] ?>">
+                                                </div>
 
-                                        <label class="mt-3" for="exampleInputPassword1">ผลิดภัณฑ์ประกันรถยนต์ที่ขอผ่อน <span class="red">*</span> </label>
+                                            </div>
+                                        </div>
+
+                                        <label class="mt-3" for="exampleInputPassword1">บุคคลติดต่อกรณีฉุกเฉิน</label>
                                         <div class="form-group mt-3">
                                             <div class="row">
                                                 <div class="col-md-4">
-                                                    <select name="car_type" class="custom-select" id="car_type" required>
-                                                        <option value="" class="text-center" selected disabled>กรุณาเลือกประเภท</option>
-                                                        <?php while ($row = mysqli_fetch_array($resultt)) {
+                                                    <label for="exampleInputPassword1">ชื่อ - นามสกุล</label>
 
-                                                            if ($row['type_name'] == $row_ins['car_type']) { ?>
-
-                                                                <option value="<?php echo $row_ins['car_type'] ?>" selected class="text-center"> <?php echo $row_ins['car_type'] ?> </option>
-
-                                                            <?php } else {  ?>
-                                                                <option value="<?php echo $row['type_name'] ?>" class="text-center"> <?php echo $row['type_name'] ?> </option>
-
-                                                            <?php  } ?>
-
-                                                        <?php  } ?>
-                                                    </select>
+                                                    <input type="text" name="name_grt" placeholder="ชื่อ-สกุล" class="form-control" value="<?php echo $row_ins['name_grt'] ?>">
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <select name="car_insu" class="custom-select" id="car_type" required>
-                                                        <option value="" class="text-center" selected disabled>กรุณาเลือกประเภท</option>
-                                                        <?php while ($row = mysqli_fetch_array($resultc)) {
+                                                    <label for="exampleInputPassword1">ความสัมพันธ์</label>
 
-                                                            if ($row['comp_name'] == $row_ins['car_insu']) { ?>
-
-                                                                <option value="<?php echo $row_ins['car_insu'] ?>" selected class="text-center"> <?php echo $row_ins['car_insu'] ?> </option>
-
-                                                            <?php } else {  ?>
-                                                                <option value="<?php echo $row['comp_name'] ?>" class="text-center"> <?php echo $row['comp_name'] ?></option>
-
-                                                            <?php  } ?>
-
-
-
-
-                                                        <?php  } ?>
-                                                    </select>
+                                                    <input type="text" name="relation_grt" placeholder="ความสัมพันธ์" class="form-control" value="<?php echo $row_ins['relation_grt'] ?>">
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <div class="input-group mb-2">
-                                                        <input type="text" name="car_price" id="ins_price" placeholder="จำนวน" class="form-control" value="<?php echo $row_ins['car_price'] ?>" required>
-                                                        <div class="input-group-prepend">
-                                                            <div class="input-group-text">บาท</div>
-                                                        </div>
-                                                    </div>
+                                                    <label for="exampleInputPassword1">โทรศัพท์</label>
+
+                                                    <input type="text" name="tel_grt" placeholder="โทรศัพท์" class="form-control" value="<?php echo $row_ins['tel_grt'] ?>">
                                                 </div>
                                             </div>
+                                        </div>
 
 
-                                            <div class="row">
-                                                <div class="col-md-4">
+                                        <div id="divv">
 
-                                                    <select name="car_type2" class="custom-select" id="car_type" required>
-                                                        <option value="" class="text-center" selected disabled>กรุณาเลือกประเภท</option>
-                                                        <?php while ($row = mysqli_fetch_array($resultt2)) {
-
-
-                                                            if ($row['type_name'] == $row_ins['car_type2']) { ?>
-
-                                                                <option value="<?php echo $row_ins['car_type2'] ?>" selected class="text-center"> <?php echo $row_ins['car_type2'] ?> </option>
-
-                                                            <?php } else {  ?>
-                                                                <option value="<?php echo $row['type_name'] ?>" class="text-center"> <?php echo $row['type_name'] ?> </option>
-
-                                                            <?php  } ?>
-                                                        <?php  } ?>
-                                                    </select>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <select name="car_insu2" class="custom-select" id="car_type" required>
-                                                        <option class="text-center" value="" selected disabled>กรุณาเลือกประเภท</option>
-                                                        <?php while ($row = mysqli_fetch_array($resultc2)) {
-
-                                                            if ($row['comp_name'] == $row_ins['car_insu2']) { ?>
-
-                                                                <option value="<?php echo $row_ins['car_insu2'] ?>" selected class="text-center"> <?php echo $row_ins['car_insu2'] ?> </option>
-
-                                                            <?php } else {  ?>
-                                                                <option value="<?php echo $row['comp_name'] ?>" class="text-center"> <?php echo $row['comp_name'] ?></option>
-
-                                                            <?php  } ?>
-
-                                                        <?php  } ?>
-                                                    </select>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <div class="input-group mb-2">
-                                                        <input type="text" name="car_price2" id="ins_price2" placeholder="จำนวน" class="form-control" value="<?php echo $row_ins['car_price2'] ?>" required>
-                                                        <div class="input-group-prepend">
-                                                            <div class="input-group-text">บาท</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-
-                                            <label class="mt-3" for="exampleInputPassword1">ผ่อนชำระ</label>
+                                            <label class="mt-3" for="exampleInputPassword1">ผลิดภัณฑ์ประกันรถยนต์ที่ขอผ่อน <span class="red">*</span> </label>
                                             <div class="form-group mt-3">
                                                 <div class="row">
-                                                    <div class="col-md-6">
-                                                        <label class="mt-3" for="exampleInputPassword1">รวมจำนวนเงินค่าเบี้ยประกันภัยที่ขอผ่อน <span class="red">*</span></label>
+                                                    <div class="col-md-4">
+                                                        <select name="car_type" class="custom-select" id="car_type" required>
+                                                            <option value="" class="text-center" selected disabled>กรุณาเลือกประเภท</option>
+                                                            <?php while ($row = mysqli_fetch_array($resultt)) {
 
+                                                                if ($row['type_name'] == $row_ins['car_type']) { ?>
+
+                                                                    <option value="<?php echo $row_ins['car_type'] ?>" selected class="text-center"> <?php echo $row_ins['car_type'] ?> </option>
+
+                                                                <?php } else {  ?>
+                                                                    <option value="<?php echo $row['type_name'] ?>" class="text-center"> <?php echo $row['type_name'] ?> </option>
+
+                                                                <?php  } ?>
+
+                                                            <?php  } ?>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <select name="car_insu" class="custom-select" id="car_type" required>
+                                                            <option value="" class="text-center" selected disabled>กรุณาเลือกประเภท</option>
+                                                            <?php while ($row = mysqli_fetch_array($resultc)) {
+
+                                                                if ($row['comp_name'] == $row_ins['car_insu']) { ?>
+
+                                                                    <option value="<?php echo $row_ins['car_insu'] ?>" selected class="text-center"> <?php echo $row_ins['car_insu'] ?> </option>
+
+                                                                <?php } else {  ?>
+                                                                    <option value="<?php echo $row['comp_name'] ?>" class="text-center"> <?php echo $row['comp_name'] ?></option>
+
+                                                                <?php  } ?>
+
+
+
+
+                                                            <?php  } ?>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-md-4">
                                                         <div class="input-group mb-2">
-
-                                                            <input type="text" name="total" id="price" placeholder="จำนวนเงิน" class="form-control" value="<?php echo $row_ins['total'] ?>" required>
+                                                            <input type="text" name="car_price" id="ins_price" placeholder="จำนวน" class="form-control" value="<?php echo $row_ins['car_price'] ?>" required>
                                                             <div class="input-group-prepend">
                                                                 <div class="input-group-text">บาท</div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-6"> <label class="mt-3" for="exampleInputPassword1">ขอผ่อนชำระทั้งหมด <span class="red">*</span></label>
+                                                </div>
+
+
+                                                <div class="row">
+                                                    <div class="col-md-4">
+
+                                                        <select name="car_type2" class="custom-select" id="car_type" required>
+                                                            <option value="" class="text-center" selected disabled>กรุณาเลือกประเภท</option>
+                                                            <?php while ($row = mysqli_fetch_array($resultt2)) {
+
+
+                                                                if ($row['type_name'] == $row_ins['car_type2']) { ?>
+
+                                                                    <option value="<?php echo $row_ins['car_type2'] ?>" selected class="text-center"> <?php echo $row_ins['car_type2'] ?> </option>
+
+                                                                <?php } else {  ?>
+                                                                    <option value="<?php echo $row['type_name'] ?>" class="text-center"> <?php echo $row['type_name'] ?> </option>
+
+                                                                <?php  } ?>
+                                                            <?php  } ?>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <select name="car_insu2" class="custom-select" id="car_type" required>
+                                                            <option class="text-center" value="" selected disabled>กรุณาเลือกประเภท</option>
+                                                            <?php while ($row = mysqli_fetch_array($resultc2)) {
+
+                                                                if ($row['comp_name'] == $row_ins['car_insu2']) { ?>
+
+                                                                    <option value="<?php echo $row_ins['car_insu2'] ?>" selected class="text-center"> <?php echo $row_ins['car_insu2'] ?> </option>
+
+                                                                <?php } else {  ?>
+                                                                    <option value="<?php echo $row['comp_name'] ?>" class="text-center"> <?php echo $row['comp_name'] ?></option>
+
+                                                                <?php  } ?>
+
+                                                            <?php  } ?>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="input-group mb-2">
+                                                            <input type="text" name="car_price2" id="ins_price2" placeholder="จำนวน" class="form-control" value="<?php echo $row_ins['car_price2'] ?>" required>
+                                                            <div class="input-group-prepend">
+                                                                <div class="input-group-text">บาท</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                                <label class="mt-3" for="exampleInputPassword1">ผ่อนชำระ</label>
+                                                <div class="form-group mt-3">
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <label class="mt-3" for="exampleInputPassword1">รวมจำนวนเงินค่าเบี้ยประกันภัยที่ขอผ่อน <span class="red">*</span></label>
+
+                                                            <div class="input-group mb-2">
+
+                                                                <input type="text" name="total" id="price" placeholder="จำนวนเงิน" class="form-control" value="<?php echo $row_ins['total'] ?>" required>
+                                                                <div class="input-group-prepend">
+                                                                    <div class="input-group-text">บาท</div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6"> <label class="mt-3" for="exampleInputPassword1">ขอผ่อนชำระทั้งหมด <span class="red">*</span></label>
+
+                                                            <div class="input-group mb-2">
+                                                                <input type="text" name="installment" id="installment" placeholder="งวด" class="form-control" value="<?php echo $row_ins['installment_total'] ?>" required>
+                                                                <div class="input-group-prepend">
+                                                                    <div class="input-group-text">งวด</div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+
+
+
+                                                <div class="row">
+
+                                                    <div class="col-md-6 "> <label class="mt-3" for="exampleInputPassword1">ชำระงวดแรกเป็นเงิน <span class="red">*</span></label>
 
                                                         <div class="input-group mb-2">
-                                                            <input type="text" name="installment" id="installment" placeholder="งวด" class="form-control" value="<?php echo $row_ins['installment_total'] ?>" required>
+
+                                                            <input type="text" name="price_ins1" id="ins1" placeholder="จำนวนเงิน" class="form-control" value="<?php echo $row_m['ins1'] ?>">
+                                                            <div class="input-group-prepend">
+                                                                <div class="input-group-text">บาท</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-6 "> <label class="mt-3" for="exampleInputPassword1">คงเหลืองวดที่ต้องชำระ<span class="red">*</span></label>
+
+                                                        <div class="input-group mb-2">
+
+                                                            <input type="text" name="installment2" id="installment2" placeholder="งวดที่เหลือ" class="form-control" value="<?php echo $row_ins['installment_total'] - 1 ?>">
                                                             <div class="input-group-prepend">
                                                                 <div class="input-group-text">งวด</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+
+
+
+                                                    <div class="col-md-6 mt-2">
+                                                        <label class="mt-3" for="exampleInputPassword1">ชำระงวดที่ 2 เป็นจำนวนเงิน</label>
+                                                        <div class="input-group mb-2">
+
+                                                            <input type="text" name="price_ins2" id="ins2" placeholder="installment 2" class="form-control" value="<?php echo $row_m['ins2'] ?>">
+                                                            <div class="input-group-prepend">
+                                                                <div class="input-group-text">บาท</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 mt-2">
+                                                        <label class="mt-3" for="exampleInputPassword1">ชำระไม่เกินวันที่</label>
+
+                                                        <div class="input-group mb-2">
+
+                                                            <input type="date" name="date1" id="date1" placeholder="installment 2" class="form-control" value="<?php echo $row_m['date2'] ?>">
+                                                            <div class="input-group-prepend">
+                                                                <div class="input-group-text">วันที่</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 mt-2">
+                                                        <label class="mt-3" for="exampleInputPassword1">ชำระงวดที่ 3 เป็นจำนวนเงิน</label>
+
+                                                        <div class="input-group mb-2">
+
+                                                            <input type="text" name="price_ins3" id="ins3" placeholder="installment 3" class="form-control" value="<?php echo $row_m['ins3'] ?>">
+                                                            <div class="input-group-prepend">
+                                                                <div class="input-group-text">บาท</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 mt-2">
+                                                        <label class="mt-3" for="exampleInputPassword1">ชำระไม่เกินวันที่</label>
+
+                                                        <div class="input-group mb-2">
+
+                                                            <input type="date" name="date2" id="date2" placeholder="installment 2" class="form-control" value="<?php echo $row_m['date3'] ?>">
+                                                            <div class="input-group-prepend">
+                                                                <div class="input-group-text">วันที่</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 mt-2">
+                                                        <label class="mt-3" for="exampleInputPassword1">ชำระงวดที่ 4 เป็นจำนวนเงิน</label>
+
+                                                        <div class="input-group mb-2">
+
+                                                            <input type="text" name="price_ins4" id="ins4" placeholder="installment 4" class="form-control" value="<?php echo $row_m['ins4'] ?>">
+                                                            <div class="input-group-prepend">
+                                                                <div class="input-group-text">บาท</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 mt-2">
+                                                        <label class="mt-3" for="exampleInputPassword1">ชำระไม่เกินวันที่</label>
+
+                                                        <div class="input-group mb-2">
+
+                                                            <input type="date" name="date3" id="date3" placeholder="installment 2" class="form-control" value="<?php echo $row_m['date4'] ?>">
+                                                            <div class="input-group-prepend">
+                                                                <div class="input-group-text">วันที่</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 mt-2">
+                                                        <label class="mt-3" for="exampleInputPassword1">ชำระงวดที่ 5 เป็นจำนวนเงิน</label>
+
+                                                        <div class="input-group mb-2">
+
+                                                            <input type="text" name="price_ins5" id="ins5" placeholder="installment 5" class="form-control" value="<?php echo $row_m['ins5'] ?>">
+                                                            <div class="input-group-prepend">
+                                                                <div class="input-group-text">บาท</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 mt-2">
+                                                        <label class="mt-3" for="exampleInputPassword1">ชำระไม่เกินวันที่</label>
+
+                                                        <div class="input-group mb-2">
+
+                                                            <input type="date" name="date4" id="date4" placeholder="installment 2" class="form-control" value="<?php echo $row_m['date5'] ?>">
+                                                            <div class="input-group-prepend">
+                                                                <div class="input-group-text">วันที่</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 mt-2">
+                                                        <label class="mt-3" for="exampleInputPassword1">ชำระงวดที่ 6 เป็นจำนวนเงิน</label>
+
+                                                        <div class="input-group mb-2">
+
+                                                            <input type="text" name="price_ins6" id="ins6" placeholder="installment 6" class="form-control" value="<?php echo $row_m['ins6'] ?>">
+                                                            <div class="input-group-prepend">
+                                                                <div class="input-group-text">บาท</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 mt-2">
+                                                        <label class="mt-3" for="exampleInputPassword1">ชำระไม่เกินวันที่</label>
+
+                                                        <div class="input-group mb-2">
+
+                                                            <input type="date" name="date5" id="date5" placeholder="installment 2" class="form-control" value="<?php echo $row_m['date6'] ?>">
+                                                            <div class="input-group-prepend">
+                                                                <div class="input-group-text">วันที่</div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
 
-
-
-
-
-                                            <div class="row">
-                                                
-                                                <div class="col-md-6 "> <label class="mt-3" for="exampleInputPassword1">ชำระงวดแรกเป็นเงิน <span class="red">*</span></label>
-
-                                                    <div class="input-group mb-2">
-
-                                                        <input type="text" name="price_ins1" id="ins1" placeholder="จำนวนเงิน" class="form-control" value="<?php echo $row_m['ins1'] ?>">
-                                                        <div class="input-group-prepend">
-                                                            <div class="input-group-text">บาท</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-md-6 "> <label class="mt-3" for="exampleInputPassword1">คงเหลืองวดที่ต้องชำระ<span class="red">*</span></label>
-
-                                                    <div class="input-group mb-2">
-
-                                                        <input type="text" name="installment2" id="installment2" placeholder="งวดที่เหลือ" class="form-control" value="<?php echo $row_ins['installment_total'] - 1 ?>">
-                                                        <div class="input-group-prepend">
-                                                            <div class="input-group-text">งวด</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-
-
-
-
-                                                <div class="col-md-6 mt-2">
-                                                    <label class="mt-3" for="exampleInputPassword1">ชำระงวดที่ 2 เป็นจำนวนเงิน</label>
-                                                    <div class="input-group mb-2">
-
-                                                        <input type="text" name="price_ins2" id="ins2" placeholder="installment 2" class="form-control" value="<?php echo $row_m['ins2'] ?>">
-                                                        <div class="input-group-prepend">
-                                                            <div class="input-group-text">บาท</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6 mt-2">
-                                                    <label class="mt-3" for="exampleInputPassword1">ชำระไม่เกินวันที่</label>
-
-                                                    <div class="input-group mb-2">
-
-                                                        <input type="date" name="date1" id="date1" placeholder="installment 2" class="form-control" value="<?php echo $row_m['date2'] ?>">
-                                                        <div class="input-group-prepend">
-                                                            <div class="input-group-text">วันที่</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6 mt-2">
-                                                    <label class="mt-3" for="exampleInputPassword1">ชำระงวดที่ 3 เป็นจำนวนเงิน</label>
-
-                                                    <div class="input-group mb-2">
-
-                                                        <input type="text" name="price_ins3" id="ins3" placeholder="installment 3" class="form-control" value="<?php echo $row_m['ins3'] ?>">
-                                                        <div class="input-group-prepend">
-                                                            <div class="input-group-text">บาท</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6 mt-2">
-                                                    <label class="mt-3" for="exampleInputPassword1">ชำระไม่เกินวันที่</label>
-
-                                                    <div class="input-group mb-2">
-
-                                                        <input type="date" name="date2" id="date2" placeholder="installment 2" class="form-control" value="<?php echo $row_m['date3'] ?>">
-                                                        <div class="input-group-prepend">
-                                                            <div class="input-group-text">วันที่</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6 mt-2">
-                                                    <label class="mt-3" for="exampleInputPassword1">ชำระงวดที่ 4 เป็นจำนวนเงิน</label>
-
-                                                    <div class="input-group mb-2">
-
-                                                        <input type="text" name="price_ins4" id="ins4" placeholder="installment 4" class="form-control" value="<?php echo $row_m['ins4'] ?>">
-                                                        <div class="input-group-prepend">
-                                                            <div class="input-group-text">บาท</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6 mt-2">
-                                                    <label class="mt-3" for="exampleInputPassword1">ชำระไม่เกินวันที่</label>
-
-                                                    <div class="input-group mb-2">
-
-                                                        <input type="date" name="date3" id="date3" placeholder="installment 2" class="form-control" value="<?php echo $row_m['date4'] ?>">
-                                                        <div class="input-group-prepend">
-                                                            <div class="input-group-text">วันที่</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6 mt-2">
-                                                    <label class="mt-3" for="exampleInputPassword1">ชำระงวดที่ 5 เป็นจำนวนเงิน</label>
-
-                                                    <div class="input-group mb-2">
-
-                                                        <input type="text" name="price_ins5" id="ins5" placeholder="installment 5" class="form-control" value="<?php echo $row_m['ins5'] ?>">
-                                                        <div class="input-group-prepend">
-                                                            <div class="input-group-text">บาท</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6 mt-2">
-                                                    <label class="mt-3" for="exampleInputPassword1">ชำระไม่เกินวันที่</label>
-
-                                                    <div class="input-group mb-2">
-
-                                                        <input type="date" name="date4" id="date4" placeholder="installment 2" class="form-control" value="<?php echo $row_m['date5'] ?>">
-                                                        <div class="input-group-prepend">
-                                                            <div class="input-group-text">วันที่</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6 mt-2">
-                                                    <label class="mt-3" for="exampleInputPassword1">ชำระงวดที่ 6 เป็นจำนวนเงิน</label>
-
-                                                    <div class="input-group mb-2">
-
-                                                        <input type="text" name="price_ins6" id="ins6" placeholder="installment 6" class="form-control" value="<?php echo $row_m['ins6'] ?>">
-                                                        <div class="input-group-prepend">
-                                                            <div class="input-group-text">บาท</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6 mt-2">
-                                                    <label class="mt-3" for="exampleInputPassword1">ชำระไม่เกินวันที่</label>
-
-                                                    <div class="input-group mb-2">
-
-                                                        <input type="date" name="date5" id="date5" placeholder="installment 2" class="form-control" value="<?php echo $row_m['date6'] ?>">
-                                                        <div class="input-group-prepend">
-                                                            <div class="input-group-text">วันที่</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
                                         </div>
-
-                                    </div>
                                 </div>
                                 <!-- /.card-body -->
 
@@ -656,87 +643,87 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                     $('#installment').keyup(function() {
 
-$('#date2').val('');
-$('#date3').val('');
-$('#date4').val('');
-$('#date5').val('');
+                        $('#date2').val('');
+                        $('#date3').val('');
+                        $('#date4').val('');
+                        $('#date5').val('');
 
-var installment = $('#installment').val();
-var installment2 = installment - 1;
-var date1 = $('#date').val();
+                        var installment = $('#installment').val();
+                        var installment2 = installment - 1;
+                        var date1 = $('#date').val();
 
-/* $('#date2').val(date1); */
+                        /* $('#date2').val(date1); */
 
 
 
 
-var y = 1;
+                        var y = 1;
 
-for (var i = 1; i <= installment2; i++) {
+                        for (var i = 1; i <= installment2; i++) {
 
 
-    var today = new Date(date1);
-    var dd = String(today.getDate()).padStart(2, '0');
-    var mm = String(today.getMonth() + (1 + i)).padStart(2, '0'); //January is 0!
-    var yyyy = today.getFullYear();
+                            var today = new Date(date1);
+                            var dd = String(today.getDate()).padStart(2, '0');
+                            var mm = String(today.getMonth() + (1 + i)).padStart(2, '0'); //January is 0!
+                            var yyyy = today.getFullYear();
 
 
 
-    today = yyyy + '-' + mm + '-' + dd;
+                            today = yyyy + '-' + mm + '-' + dd;
 
 
-    if (mm == '02' && dd >= 29) {
+                            if (mm == '02' && dd >= 29) {
 
 
 
-        today_new2 = yyyy + '-' + mm + '-' + 28;
-        $('#date' + (i)).val(today_new2);
-        console.log(today_new2);
+                                today_new2 = yyyy + '-' + mm + '-' + 28;
+                                $('#date' + (i)).val(today_new2);
+                                console.log(today_new2);
 
 
-    } else if (dd >= '31' && mm == '04' || dd >= '31' && mm == '06' || dd >= '31' && mm == '09' || dd >= '31' && mm == '11') {
+                            } else if (dd >= '31' && mm == '04' || dd >= '31' && mm == '06' || dd >= '31' && mm == '09' || dd >= '31' && mm == '11') {
 
 
 
-        today_new4 = yyyy + '-' + mm + '-' + 30;
-        $('#date' + (i)).val(today_new4);
+                                today_new4 = yyyy + '-' + mm + '-' + 30;
+                                $('#date' + (i)).val(today_new4);
 
-    } else {
+                            } else {
 
-        $('#date' + (i)).val(today);
+                                $('#date' + (i)).val(today);
 
-    }
+                            }
 
 
 
 
-    if (mm >= 13) {
+                            if (mm >= 13) {
 
-        yyyy = yyyy + 1;
+                                yyyy = yyyy + 1;
 
 
 
-        var today2 = new Date("2021-01-02");
+                                var today2 = new Date("2021-01-02");
 
 
-        var mm2 = String(today2.getMonth() + (0 + y)).padStart(2, '0'); //January is 0!
+                                var mm2 = String(today2.getMonth() + (0 + y)).padStart(2, '0'); //January is 0!
 
 
-        var today_new = yyyy + '-' + mm2 + '-' + dd;
+                                var today_new = yyyy + '-' + mm2 + '-' + dd;
 
-        if (mm2 == '02' && dd >= 29) {
+                                if (mm2 == '02' && dd >= 29) {
 
 
-            today_new3 = yyyy + '-' + mm2 + '-' + 28;
-            $('#date' + (i)).val(today_new3);
+                                    today_new3 = yyyy + '-' + mm2 + '-' + 28;
+                                    $('#date' + (i)).val(today_new3);
 
 
-        } else if (dd >= '31' && mm2 == '04' || dd >= '31' && mm2 == '06' || dd >= '31' && mm2 == '09' || dd >= '31' && mm2 == '11') {
+                                } else if (dd >= '31' && mm2 == '04' || dd >= '31' && mm2 == '06' || dd >= '31' && mm2 == '09' || dd >= '31' && mm2 == '11') {
 
 
 
-            today_new3 = yyyy + '-' + mm2 + '-' + 30;
-            $('#date' + (i)).val(today_new3);
+                                    today_new3 = yyyy + '-' + mm2 + '-' + 30;
+                                    $('#date' + (i)).val(today_new3);
 
 
 
@@ -745,27 +732,27 @@ for (var i = 1; i <= installment2; i++) {
 
 
 
-        } else {
+                                } else {
 
-            $('#date' + (i)).val(today_new);
+                                    $('#date' + (i)).val(today_new);
 
-        }
+                                }
 
 
-        /*  $('#date' + (1 + i)).val(today_new);
-         */
-        y = y + 1;
+                                /*  $('#date' + (1 + i)).val(today_new);
+                                 */
+                                y = y + 1;
 
 
 
 
 
-    } else {
-        /* $('#date' + (1 + i)).val(today); */
-    }
+                            } else {
+                                /* $('#date' + (1 + i)).val(today); */
+                            }
 
 
-}
+                        }
 
 
                     });
@@ -775,8 +762,8 @@ for (var i = 1; i <= installment2; i++) {
 
 
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script type="text/javascript" src="ajax-script.js"></script>
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+                <script type="text/javascript" src="ajax-script.js"></script>
 </body>
 
 </html>

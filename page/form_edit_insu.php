@@ -72,7 +72,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 style="text-transform: uppercase">ขอสินเชื่อเบี้ยประกัน รูปแบบที่ 1</h1>
+                        <h1 style="text-transform: uppercase">แก้ไข ขอสินเชื่อเบี้ยประกัน รูปแบบที่ 1</h1>
                     </div>
 
                 </div>
@@ -101,28 +101,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <!-- /.card-header -->
                             <!-- form start -->
 
-                            <form 
-                            
-                            <?php if ($_GET['type'] == 'copy') {?> 
-                                
-                                
-                                action="../backend/form_insu_gen.php" <?php  } ?>
-                                
-                                
-                                <?php if ($_GET['type'] == 'edit') { ?> 
-                                    
-                                    action="../backend/edit_insu.php?form_id=<?php echo $_GET['form_id'] ?>" <?php  } ?> 
-                                    
-                                    
-                                    
-                                    method="POST">
+                            <form <?php if ($_GET['type'] == 'copy') { ?> action="../backend/form_insu_gen.php" <?php  } ?> <?php if ($_GET['type'] == 'edit') { ?> action="../backend/edit_insu.php?form_id=<?php echo $_GET['form_id'] ?>" <?php  } ?> method="POST">
                                 <div class="card-body">
 
-
+                                <label for="">เลขไอดี  <?php echo $row_ins['form_id'] ?>
+                                <br> <br>
                                     <div class="form-group ">
                                         <div class="mb-2">
                                             <div class="row">
                                                 <div class="col-md-4">
+                                                   
+
                                                     <label for="">วันที่เขียน <span class="red">*</span></label>
                                                     <input type="date" name="date_create" id="date" placeholder="วันที่เขียน" class="form-control" value="<?php echo $row_ins['date_create'] ?>" required>
                                                     <input type="hidden" name="ins_type" placeholder="วันที่เขียน" class="form-control" value="แบบ1 (% | หารเท่า)">
@@ -382,11 +371,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                                                         <input type="text" name="percent" id="percent" placeholder="จำนวนเปอร์เซ็น" class="form-control" value="<?php
 
-                                                             echo ($row_m['ins1'] * 100) / $row_ins['total'];
+                                                                                                                                                                echo ($row_m['ins1'] * 100) / $row_ins['total'];
 
 
 
-                                                            ?>" required>
+                                                                                                                                                                ?>" required>
 
 
                                                         <div class="input-group-prepend">

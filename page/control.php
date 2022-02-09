@@ -91,62 +91,68 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
                         <div class="modal fade" id="exampleModalCenter2" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLongTitle">หมวดหมู่</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModalCenter">
-                                        เพิ่มหมวดหมู่
-                                    </button>
-                                    <table id="example1" class="table table-bordered table-hover text-md-center">
-                                        <thead>
-                                            <tr>
-                                                <th>ลำดับ</th>
-                                                <th width="300">หน้า</th>
-                                                <th>จัดการ</th>
+                            <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLongTitle">หมวดหมู่</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModalCenter">
+                                            เพิ่มหมวดหมู่
+                                        </button>
+                                        <table id="example1" class="table table-bordered table-hover text-md-center">
+                                            <thead>
+                                                <tr>
+                                                    <th>ลำดับ</th>
+                                                    <th width="300">หน้า</th>
+                                                    <th>จัดการ</th>
 
 
 
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <div class="form-group">
-                                                <?php
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <div class="form-group">
+                                                    <?php
 
-                                                $sqlrt = "SELECT * FROM user_role_type ORDER BY no ASC";
-                                                $resultrt = mysqli_query($con, $sqlrt);
-                                                while ($rowrt = mysqli_fetch_assoc($resultrt)) {
-                                                    $idr = $rowrt['id'];
-                                                ?>
+                                                    $sqlrt = "SELECT * FROM user_role_type ORDER BY no ASC";
+                                                    $resultrt = mysqli_query($con, $sqlrt);
+                                                    while ($rowrt = mysqli_fetch_assoc($resultrt)) {
+                                                        $idr = $rowrt['id'];
+                                                    ?>
 
-                                                    <tr>
+                                                        <tr>
 
-                                                        <td><?php echo $rowrt['no']; ?></td>
-                                                        <td><label for="page"><?php echo $rowrt['name']; ?></label></td>
-                                                        <td>
-                                                            <a href="role_type_edit.php?id=<?php echo  $idr ?>" class="btn btn-warning"><i class="fas fa-edit"></a></i>&nbsp;
-                                                            <a href="../backend/role_type_delete.php?id=<?php echo  $idr ?>" onclick="return confirm('Are you sure to delete ?')" class="btn btn-danger"><i class="fas fa-trash"></i></a>
-                                                        </td>
+                                                            <td><?php echo $rowrt['no']; ?></td>
+                                                            <td><label for="page"><?php echo $rowrt['name']; ?></label></td>
+                                                            
+                                                            <td class="text-center">
+                                                                
+                                                                <div class="row">
+                                                                    <div class=" m-1 text-center">
+                                                                    <a href="role_type_edit.php?id=<?php echo  $idr ?>" class="btn btn-warning rounded-pill"><i class="fas fa-edit"></i> แก้ไข </a>
+                                                                    </div>
+                                                                    <div class=" m-1 text-center">
+                                                                    <a href="../backend/role_type_delete.php?id=<?php echo  $idr ?>" class="btn btn-danger rounded-pill" onclick="return confirm('Are you sure to delete ?')"><i class="fas fa-trash"></i> ลบ</a>
+                                                            </td>
 
-                                                    </tr>
-                                                <?php  } ?>
+                                                        </tr>
+                                                    <?php  } ?>
 
-                                            </div>
-                                        </tbody>
-                                        <div>
-                                            <!--                                                 <input type="submit" name="but_update" class="btn btn-danger " value="บันทึก">
+                                                </div>
+                                            </tbody>
+                                            <div>
+                                                <!--                                                 <input type="submit" name="but_update" class="btn btn-danger " value="บันทึก">
  -->
-                                            <br> <br>
-                                    </table>
+                                                <br> <br>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
 
 
@@ -179,7 +185,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     </div>
 
 
-                    
+
                     <?php
 
                     while ($row_type = mysqli_fetch_array($result_type)) {
@@ -267,10 +273,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                                                             </td>
 
-                                                            <td>
-                                                                <a href="tab_edit.php?id=<?php echo  $idr ?>" class="btn btn-warning"><i class="fas fa-edit"></a></i>&nbsp;
-                                                                <a href="../backend/tab_delete.php?id=<?php echo  $idr ?>" onclick="return confirm('Are you sure to delete ?')" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+
+                                                            <td class="text-center">
+                                                                <div class="row">
+                                                                    <div class=" m-1 text-center">
+                                                                        <a href="tab_edit.php?id=<?php echo  $idr ?>" class="btn btn-warning rounded-pill"><i class="fas fa-edit"></i> แก้ไข </a>
+                                                                    </div>
+                                                                    <div class=" m-1 text-center">
+                                                                        <a href="../backend/tab_delete.php?id=<?php echo  $idr ?>" class="btn btn-danger rounded-pill" onclick="return confirm('Are you sure to delete ?')"><i class="fas fa-trash"></i> ลบ</a>
                                                             </td>
+
 
                                                         </tr>
                                                     <?php  } ?>

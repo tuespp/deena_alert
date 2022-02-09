@@ -53,7 +53,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <div class="col-sm-6">
                         <h1 style="text-transform: uppercase">แจ้งชำระ</h1>
                     </div>
-                    
+
                 </div>
             </div><!-- /.container-fluid -->
         </section>
@@ -148,114 +148,121 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                                                 <td><?php echo $row['note']; ?></td>
 
-                                                <td><a href="payment_edit_form.php?id=<?php echo $row['id']; ?>" class="btn btn-warning"><i class="far fa-edit"></a></i>&nbsp;&nbsp;&nbsp;
-                                                <a href="../backend/payment_delete.php?id=<?php echo $row['id']; ?>" class="btn btn-danger" onclick="return confirm('Are you sure to delete ?')"><i class="far fa-trash-alt"></i></a></td>
-
-                                            </tr>
-                                        <?php  } ?>
-                                    </tbody>
-
-                                </table>
+                                                <td class="text-center">
+                                                    <div class="row">
+                                                        <div class=" m-1 text-center">
+                                                            <a href="payment_edit_form.php?id=<?php echo $row['id']; ?>" class="btn btn-warning rounded-pill"><i class="fas fa-edit"> </i>แก้ไข</a>
+                                                        </div>
+                                                        <div class=" m-1 text-center">
+                                                            <a href="../backend/payment_delete.php?id=<?php echo $row['id']; ?>" class="btn btn-danger rounded-pill" onclick="return confirm('Are you sure to delete ?')"><i class="fas fa-trash"></i> ลบ</a>
+                                                </td>
                             </div>
-                            <!-- /.card-body -->
                         </div>
-                        <!-- /.card -->
+                        </tr>
+                    <?php  } ?>
+                    </tbody>
+
+                    </table>
                     </div>
-                    <!-- /.content-wrapper -->
-
-                    <!-- Control Sidebar -->
-                    <aside class="control-sidebar control-sidebar-dark">
-                        <!-- Control sidebar content goes here -->
-                        <div class="p-3">
-                            <h5>Title</h5>
-                            <p>Sidebar content</p>
-                        </div>
-                    </aside>
-                    <!-- /.control-sidebar -->
-
-                    <!-- Main Footer -->
+                    <!-- /.card-body -->
                 </div>
-                <!-- ./wrapper -->
+                <!-- /.card -->
+            </div>
+            <!-- /.content-wrapper -->
 
-                <!-- REQUIRED SCRIPTS -->
+            <!-- Control Sidebar -->
+            <aside class="control-sidebar control-sidebar-dark">
+                <!-- Control sidebar content goes here -->
+                <div class="p-3">
+                    <h5>Title</h5>
+                    <p>Sidebar content</p>
+                </div>
+            </aside>
+            <!-- /.control-sidebar -->
 
-                <!-- jQuery -->
-                <script src="../js/jquery.min.js"></script>
-                <!-- Bootstrap 4 -->
-                <script src="../js/bootstrap.bundle.min.js"></script>
-                <!-- AdminLTE App -->
-                <script src="../js/adminlte.min.js"></script>
+            <!-- Main Footer -->
+    </div>
+    <!-- ./wrapper -->
 
-                <script src="../js/jquery.dataTables.min.js"></script>
-                <script src="../js/dataTables.bootstrap4.min.js"></script>
-                <script src="../js/dataTables.responsive.min.js"></script>
-                <script src="../js/responsive.bootstrap4.min.js"></script>
-                <script src="../js/dataTables.buttons.min.js"></script>
-                <script src="../js/buttons.bootstrap4.min.js"></script>
-                <script src="../js/jszip/jszip.min.js"></script>
-                <script src="../js/pdfmake.min.js"></script>
-                <script src="../js/vfs_fonts.js"></script>
-                <script src="../js/buttons.html5.min.js"></script>
-                <script src="../js/buttons.print.min.js"></script>
-                <script src="../js/buttons.colVis.min.js"></script>
+    <!-- REQUIRED SCRIPTS -->
 
-                <script>
-                    $(function() {
-                        $("#example1").DataTable({
-                            "responsive": true,
-                            "lengthChange": true,
-                            "autoWidth": false
-                            /* "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"] */
-                        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-                        $('#example2').DataTable({
-                            "paging": true,
-                            "lengthChange": false,
-                            "searching": false,
-                            "ordering": true,
-                            "info": true,
-                            "autoWidth": false,
-                            "responsive": true,
-                        });
-                    });
+    <!-- jQuery -->
+    <script src="../js/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="../js/bootstrap.bundle.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="../js/adminlte.min.js"></script>
 
+    <script src="../js/jquery.dataTables.min.js"></script>
+    <script src="../js/dataTables.bootstrap4.min.js"></script>
+    <script src="../js/dataTables.responsive.min.js"></script>
+    <script src="../js/responsive.bootstrap4.min.js"></script>
+    <script src="../js/dataTables.buttons.min.js"></script>
+    <script src="../js/buttons.bootstrap4.min.js"></script>
+    <script src="../js/jszip/jszip.min.js"></script>
+    <script src="../js/pdfmake.min.js"></script>
+    <script src="../js/vfs_fonts.js"></script>
+    <script src="../js/buttons.html5.min.js"></script>
+    <script src="../js/buttons.print.min.js"></script>
+    <script src="../js/buttons.colVis.min.js"></script>
 
-
-                    $(document).on('click', '.change', function() {
-                        var status_id = $(this).attr("id");
-                        if (status_id != '') {
-                            $.ajax({
-                                url: "../backend/update_status.php",
-                                method: "POST",
-                                data: {
-                                    status_id: status_id
-                                },
-                                success: function(data) {
-
-                                    console.log(data);
-                                }
-                            });
-                        }
-                    });
+    <script>
+        $(function() {
+            $("#example1").DataTable({
+                "responsive": true,
+                "lengthChange": true,
+                "autoWidth": false
+                /* "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"] */
+            }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+            $('#example2').DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": false,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false,
+                "responsive": true,
+            });
+        });
 
 
 
-                    $(document).on('click', '.change2', function() {
-                        var status_id = $(this).attr("id");
-                        if (status_id != '') {
-                            $.ajax({
-                                url: "../backend/update_status_sms.php",
-                                method: "POST",
-                                data: {
-                                    status_id: status_id
-                                },
-                                success: function(data) {
+        $(document).on('click', '.change', function() {
+            var status_id = $(this).attr("id");
+            if (status_id != '') {
+                $.ajax({
+                    url: "../backend/update_status.php",
+                    method: "POST",
+                    data: {
+                        status_id: status_id
+                    },
+                    success: function(data) {
 
-                                    console.log(data);
-                                }
-                            });
-                        }
-                    });
-                </script>
+                        console.log(data);
+                    }
+                });
+            }
+        });
+
+
+
+        $(document).on('click', '.change2', function() {
+            var status_id = $(this).attr("id");
+            if (status_id != '') {
+                $.ajax({
+                    url: "../backend/update_status_sms.php",
+                    method: "POST",
+                    data: {
+                        status_id: status_id
+                    },
+                    success: function(data) {
+
+                        console.log(data);
+                    }
+                });
+            }
+        });
+    </script>
 </body>
 
 </html>

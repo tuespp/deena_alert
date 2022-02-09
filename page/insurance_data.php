@@ -160,8 +160,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                                                 <td><?php echo $row['note']; ?></td>
 
-                                                <td><a href="insurance_edit.php?id=<?php echo $row['id']; ?>" class="btn btn-warning"><i class="far fa-edit"></a></i>&nbsp;&nbsp;&nbsp;
-                                                    <a href="../backend/insurabce_delete.php?id=<?php echo $row['id']; ?>" class="btn btn-danger" onclick="return confirm('Are you sure to delete ?')"><i class="far fa-trash-alt"></i></a>
+
+
+
+                                                <td class="text-center">
+                                                    <div class="row">
+                                                        <div class=" m-1 text-center">
+                                                        <a href="insurance_edit.php?id=<?php echo $row['id']; ?>" class="btn btn-warning rounded-pill"><i class="fas fa-edit"> </i>แก้ไข</a>
+                                                        </div>
+                                                        <div class=" m-1 text-center">
+                                                        <a href="../backend/insurabce_delete.php?id=<?php echo $row['id']; ?>" class="btn btn-danger rounded-pill" onclick="return confirm('Are you sure to delete ?')"><i class="fas fa-trash"></i> ลบ</a>
                                                 </td>
 
                                             </tr>
