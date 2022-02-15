@@ -12,33 +12,30 @@ $row = mysqli_fetch_assoc($result);
 $sqlp = "SELECT * FROM user_role  ";
 $resultp = mysqli_query($con, $sqlp);
 
-if(isset($_POST['reset_pass'])){
-   
+if (isset($_POST['reset_pass'])) {
+
     $new_pass = $_POST['new_pass'];
     $new_pass2 = $_POST['new_pass2'];
-  
+
     $id = $_POST['ids'];
 
-   if($new_pass == $new_pass2){
-       $sql = "SELECT * FROM users_info WHERE id = '".$id."'";
-       $result = $con->query($sql);
-       $row = $result->fetch_assoc();
+    if ($new_pass == $new_pass2) {
+        $sql = "SELECT * FROM users_info WHERE id = '" . $id . "'";
+        $result = $con->query($sql);
+        $row = $result->fetch_assoc();
 
-     
-          $sql_pw = "UPDATE users_info SET password = '$new_pass' WHERE id = $id "; 
 
-          $result_pw = $con->query($sql_pw) or die($con->error);
-          if($result_pw){
-            echo'<script> alert("เปลี่ยนรหัสผ่านใหม่สำเร็จ")</script>';
+        $sql_pw = "UPDATE users_info SET password = '$new_pass' WHERE id = $id ";
+
+        $result_pw = $con->query($sql_pw) or die($con->error);
+        if ($result_pw) {
+            echo '<script> alert("เปลี่ยนรหัสผ่านใหม่สำเร็จ")</script>';
             header('Refresh:0; url= ../page/member.php');
-          }
-
-
-   }else{
-       echo'<script> alert("รหัสผ่านใหม่ไม่ตรงกัน")</script>';
-       header('Refresh:0; url= ../page/member.php');
-   }
-
+        }
+    } else {
+        echo '<script> alert("รหัสผ่านใหม่ไม่ตรงกัน")</script>';
+        header('Refresh:0; url= ../page/member.php');
+    }
 }
 
 ?>
@@ -277,170 +274,170 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </div>
 
                 <div class="offset-3 col-md-6">
-                        <div class="card card-warning">
-                            <div class="card-header ">
-                                <h3 class="card-title">แก้ไขข้อรหัสผ่าน</li>
-                            </div><!-- /.card-header -->
-                            <div class="card-body">
-                                <div class="tab-content">
-                                    <div class="active tab-pane" id="activity">
-                                        <!-- Post -->
+                    <div class="card card-warning">
+                        <div class="card-header ">
+                            <h3 class="card-title">แก้ไขข้อรหัสผ่าน</li>
+                        </div><!-- /.card-header -->
+                        <div class="card-body">
+                            <div class="tab-content">
+                                <div class="active tab-pane" id="activity">
+                                    <!-- Post -->
 
-                                        <div class="tab-pane" id="settings">
-                                            <form class="form-horizontal" action="" method="post">
+                                    <div class="tab-pane" id="settings">
+                                        <form class="form-horizontal" action="" method="post">
                                             <input type="text" class="form-control" id="exampleInputEmail1" name="ids" value="<?php echo $row['id']; ?>" hidden placeholder="Insurance Name">
 
-                                                <div class="form-group row">
-                                                    <label for="inputEmail" class="col-sm-3 col-form-label"><strong>รหัสผ่านใหม่</strong></label>
-                                                    <div class="col-sm-9">
-                                                        <input type="password" class="form-control" name="new_pass" id="new_pass" value="">
-                                                    </div>
+                                            <div class="form-group row">
+                                                <label for="inputEmail" class="col-sm-3 col-form-label"><strong>รหัสผ่านใหม่</strong></label>
+                                                <div class="col-sm-9">
+                                                    <input type="password" class="form-control" name="new_pass" id="new_pass" value="">
                                                 </div>
-                                                <div class="form-group row">
-                                                    <label for="inputEmail" class="col-sm-3 col-form-label"><strong> ยืนยันรหัสผ่านใหม่</strong></label>
-                                                    <div class="col-sm-9">
-                                                        <input type="password" class="form-control" name="new_pass2" id="new_pass2" value="">
-                                                    </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="inputEmail" class="col-sm-3 col-form-label"><strong> ยืนยันรหัสผ่านใหม่</strong></label>
+                                                <div class="col-sm-9">
+                                                    <input type="password" class="form-control" name="new_pass2" id="new_pass2" value="">
                                                 </div>
+                                            </div>
 
 
 
-                                                <div class="form-group row">
-                                                    <div class="offset-5 col-6">
-                                                        <button type="submit" name="reset_pass" class="btn btn-danger">Submit</button>
-                                                    </div>
+                                            <div class="form-group row">
+                                                <div class="offset-5 col-6">
+                                                    <button type="submit" name="reset_pass" class="btn btn-danger">Submit</button>
                                                 </div>
-                                            </form>
-                                        </div>
-                                        <!-- /.tab-pane -->
+                                            </div>
+                                        </form>
                                     </div>
-                                    <!-- /.tab-content -->
-                                </div><!-- /.card-body -->
-                            </div>
-                            <!-- /.card -->
+                                    <!-- /.tab-pane -->
+                                </div>
+                                <!-- /.tab-content -->
+                            </div><!-- /.card-body -->
                         </div>
-                        <!-- /.col -->
+                        <!-- /.card -->
                     </div>
+                    <!-- /.col -->
+                </div>
             </div>
-                <!-- /.content-wrapper -->
+            <!-- /.content-wrapper -->
 
-                <!-- Control Sidebar -->
-                <aside class="control-sidebar control-sidebar-dark">
-                    <!-- Control sidebar content goes here -->
-                    <div class="p-3">
-                        <h5>Title</h5>
-                        <p>Sidebar content</p>
-                    </div>
-                </aside>
-                <!-- /.control-sidebar -->
+            <!-- Control Sidebar -->
+            <aside class="control-sidebar control-sidebar-dark">
+                <!-- Control sidebar content goes here -->
+                <div class="p-3">
+                    <h5>Title</h5>
+                    <p>Sidebar content</p>
+                </div>
+            </aside>
+            <!-- /.control-sidebar -->
 
-                <!-- Main Footer -->
-            </div>
-            <!-- ./wrapper -->
+            <!-- Main Footer -->
+    </div>
+    <!-- ./wrapper -->
 
-            <!-- REQUIRED SCRIPTS -->
+    <!-- REQUIRED SCRIPTS -->
 
-            <!-- jQuery -->
-            <script src="../js/jquery.min.js"></script>
-            <!-- Bootstrap 4 -->
-            <script src="../js/bootstrap.bundle.min.js"></script>
-            <!-- AdminLTE App -->
-            <script src="../js/adminlte.min.js"></script>
+    <!-- jQuery -->
+    <script src="../js/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="../js/bootstrap.bundle.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="../js/adminlte.min.js"></script>
 
-            <script src="../js/jquery.dataTables.min.js"></script>
-            <script src="../js/dataTables.bootstrap4.min.js"></script>
-            <script src="../js/dataTables.responsive.min.js"></script>
-            <script src="../js/responsive.bootstrap4.min.js"></script>
-            <script src="../js/dataTables.buttons.min.js"></script>
-            <script src="../js/buttons.bootstrap4.min.js"></script>
-            <script src="../js/jszip/jszip.min.js"></script>
-            <script src="../js/pdfmake.min.js"></script>
-            <script src="../js/vfs_fonts.js"></script>
-            <script src="../js/buttons.html5.min.js"></script>
-            <script src="../js/buttons.print.min.js"></script>
-            <script src="../js/buttons.colVis.min.js"></script>
+    <script src="../js/jquery.dataTables.min.js"></script>
+    <script src="../js/dataTables.bootstrap4.min.js"></script>
+    <script src="../js/dataTables.responsive.min.js"></script>
+    <script src="../js/responsive.bootstrap4.min.js"></script>
+    <script src="../js/dataTables.buttons.min.js"></script>
+    <script src="../js/buttons.bootstrap4.min.js"></script>
+    <script src="../js/jszip/jszip.min.js"></script>
+    <script src="../js/pdfmake.min.js"></script>
+    <script src="../js/vfs_fonts.js"></script>
+    <script src="../js/buttons.html5.min.js"></script>
+    <script src="../js/buttons.print.min.js"></script>
+    <script src="../js/buttons.colVis.min.js"></script>
 
-            <script>
-                $(function() {
-                    $("#example1").DataTable({
-                        "responsive": true,
-                        "lengthChange": false,
-                        "autoWidth": false,
-                        "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-                    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-                    $('#example2').DataTable({
-                        "paging": true,
-                        "lengthChange": false,
-                        "searching": false,
-                        "ordering": true,
-                        "info": true,
-                        "autoWidth": false,
-                        "responsive": true,
-                    });
-                });
+    <script>
+        $(function() {
+            $("#example1").DataTable({
+                "responsive": true,
+                "lengthChange": false,
+                "autoWidth": false,
+                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+            }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+            $('#example2').DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": false,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false,
+                "responsive": true,
+            });
+        });
 
-                function updateTextView(_obj) {
-                    var num = getNumber(_obj.val());
-                    if (num == 0) {
-                        _obj.val('');
-                    } else {
-                        _obj.val(num.toLocaleString());
-                    }
+        function updateTextView(_obj) {
+            var num = getNumber(_obj.val());
+            if (num == 0) {
+                _obj.val('');
+            } else {
+                _obj.val(num.toLocaleString());
+            }
+        }
+
+        function getNumber(_str) {
+            var arr = _str.split('');
+            var out = new Array();
+            for (var cnt = 0; cnt < arr.length; cnt++) {
+                if (isNaN(arr[cnt]) == false) {
+                    out.push(arr[cnt]);
                 }
+            }
+            return Number(out.join(''));
+        }
+        $(document).ready(function() {
+            $('#interest').on('keyup', function() {
+                updateTextView($(this));
+            });
+        });
 
-                function getNumber(_str) {
-                    var arr = _str.split('');
-                    var out = new Array();
-                    for (var cnt = 0; cnt < arr.length; cnt++) {
-                        if (isNaN(arr[cnt]) == false) {
-                            out.push(arr[cnt]);
-                        }
-                    }
-                    return Number(out.join(''));
+
+        $('#status').change(function() {
+
+            var id = $(this).val();
+
+            $.ajax({
+                type: "post",
+                url: "../backend/member_select.php",
+                data: {
+                    status_id: id
+                },
+
+                success: function(data) {
+
+                    console.log(data);
+                    $('#sub_name').html(data);
+
                 }
-                $(document).ready(function() {
-                    $('#interest').on('keyup', function() {
-                        updateTextView($(this));
-                    });
-                });
+            });
+        });
+    </script>
 
+    <script>
+        $('.custom-file-input').on('change', function() { //selecter class custom และ ดักจับ event(change)
+            var fileName = $(this).val().split('\\').pop(); //ดึงค่าข้อมูลของตัว path และแยกข้อมูลด้วย split และใช้ pop ในการแยกข้อมูลด้านหลังสุดของ array
+            $(this).siblings('.custom-file-label').html(fileName) //siblings(เลือกทุกอย่างยกเว้นตัวเอง แต่จะเลือกตัวlabel) html(แสดงในส่วนของข้อความออกมา)
+            if (this.files[0]) { //ถ้ามีการรับค่าจาก array ของ file
+                var reader = new FileReader() //สร้างฟังก์ชันขึ้นใหม่
+                $('.figure').addClass('d-block') //selecter ไปที่ class figure , add class 'd-block' เพื่อโชว์รูปภาพ
+                reader.onload = function(e) { //เรียกค่าข้อมูลของ file
+                    $('#imageUpload').attr('src', e.target.result).width(240) //selecter id ของ img และเซ็ต attr ของข้อมูล
 
-                $('#status').change(function() {
-
-                    var id = $(this).val();
-
-                    $.ajax({
-                        type: "post",
-                        url: "../backend/member_select.php",
-                        data: {
-                            status_id: id
-                        },
-
-                        success: function(data) {
-
-                            console.log(data);
-                            $('#sub_name').html(data);
-
-                        }
-                    });
-                });
-            </script>
-
-            <script>
-                $('.custom-file-input').on('change', function() { //selecter class custom และ ดักจับ event(change)
-                    var fileName = $(this).val().split('\\').pop(); //ดึงค่าข้อมูลของตัว path และแยกข้อมูลด้วย split และใช้ pop ในการแยกข้อมูลด้านหลังสุดของ array
-                    $(this).siblings('.custom-file-label').html(fileName) //siblings(เลือกทุกอย่างยกเว้นตัวเอง แต่จะเลือกตัวlabel) html(แสดงในส่วนของข้อความออกมา)
-                    if (this.files[0]) { //ถ้ามีการรับค่าจาก array ของ file
-                        var reader = new FileReader() //สร้างฟังก์ชันขึ้นใหม่
-                        $('.figure').addClass('d-block') //selecter ไปที่ class figure , add class 'd-block' เพื่อโชว์รูปภาพ
-                        reader.onload = function(e) { //เรียกค่าข้อมูลของ file
-                            $('#imageUpload').attr('src', e.target.result).width(240) //selecter id ของ img และเซ็ต attr ของข้อมูล
-
-                        }
-                        reader.readAsDataURL(this.files[0]) //อ่านค่าของ array file
-                    }
-                })
-            </script>
+                }
+                reader.readAsDataURL(this.files[0]) //อ่านค่าของ array file
+            }
+        })
+    </script>
 </body>
 
 </html>

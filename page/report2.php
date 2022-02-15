@@ -87,7 +87,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             $row_line = mysqli_fetch_array($result_line);
 
                             ?>
-                            <form action="../backend/send_group.php" method="POST">
+                            <form action="../page/report_detail2.php" method="POST">
 
                                 <div class="card-body">
                                     <div class="col-sm-12">
@@ -122,16 +122,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label>ข้อความ</label>
-                                        <textarea class="form-control" id="myTextarea" name="text" rows="3" required placeholder="Enter ..."></textarea>
-                                    </div>
+                                    
                                 </div>
                                 <!-- /.card-body -->
 
 
                                 <div class="card-footer">
-                                    <button type="submit" class="btn btn-danger d-block m-auto">ส่ง</button>
+                                    <button type="submit" name="line_status" class="btn btn-danger d-block m-auto">ถัดไป</button>
                                 </div>
 
                             </form>
@@ -270,7 +267,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             var sub_id = $(this).val();
                             console.log(sub_id);
 
-                            $('#detail').show();
+                            
 
 
                             var id = $(this).val();

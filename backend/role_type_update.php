@@ -8,10 +8,6 @@ require('../dbconnect.php');
                 $no = $_POST['no'];
 
 
-                
-               
-
-
                 $sql2 = "UPDATE user_role_type
                 SET no = '$no',name = '$name'
                  WHERE id = '$ids' ";

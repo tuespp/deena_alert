@@ -16,8 +16,9 @@
 
 
             echo "<script> window.location.href='../page/line_login_new.php'</script>";
+            
         } else {
-
+            $_SESSION['last_login_timestamp'] = time();
             $_SESSION["id"] = $row["id"];
             $_SESSION["username"] = $row["username"];
             $_SESSION["name"] = $row["name"];

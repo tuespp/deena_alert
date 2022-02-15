@@ -28,7 +28,7 @@ while ($row = mysqli_fetch_array($result2)) {
             $sql = "SELECT * FROM users_info WHERE user_id='$userid' AND oa_id ='$oa_id' ";
             $result = mysqli_query($con, $sql);
             $row2 = mysqli_fetch_array($result);
-
+            $_SESSION['last_login_timestamp'] = time();
             $_SESSION["id"] = $row2["id"];
             $_SESSION["username"] = $row2["username"];
             $_SESSION["name"] = $row2["name"];
@@ -83,7 +83,7 @@ if ($x != 1) {
             $sql = "SELECT * FROM users_info WHERE user_id='$userid' AND oa_id ='$oa_id' ";
             $result = mysqli_query($con, $sql);
             $row = mysqli_fetch_array($result);
-
+            $_SESSION['last_login_timestamp'] = time();
             $_SESSION["id"] = $row["id"];
             $_SESSION["username"] = $row["username"];
             $_SESSION["name"] = $row["name"];
