@@ -370,10 +370,10 @@ if (isset($_POST['submit'])) {
 
 
     /* ----------------------------ข้อมูล-------------------------------- */
-    imagettftext($dest2, $size, 0, 200, 180, $text_color, $font, $fullname);
+    imagettftext($dest2, $size, 0, 210, 180, $text_color, $font, $fullname);
     imagettftext($dest2, $size, 0, 950, 180, $text_color, $font, $car_license);
-    imagettftext($dest2, $size, 0, 270, 220, $text_color, $font, $car_insu);
-    imagettftext($dest2, $size, 0, 500, 1607, $text_color, $font, $fullname);
+    imagettftext($dest2, $size, 0, 290, 220, $text_color, $font, $car_insu);
+    imagettftext($dest2, $size, 0, 520, 1607, $text_color, $font, $fullname);
     imagettftext($dest2, $size, 0, 1220, 1625, $text_color, $font, $form_id);
     imagepng($dest2, '../img/test-form2.png');
     imagepng($dest2, '../page/myFile/'.$fullname.$random.'no2.png');
