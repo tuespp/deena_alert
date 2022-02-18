@@ -225,7 +225,7 @@ if (isset($_POST['submit'])) {
 
 
     // Create image instances
-    $dest = imagecreatefromjpeg('../form/form1.jpg');
+    $dest = imagecreatefrompng('../form/form1(last).png');
 
 
 
@@ -237,40 +237,40 @@ if (isset($_POST['submit'])) {
     $size = 17;
 
     /* ----------------------------ข้อมูล-------------------------------- */
-    imagettftext($dest, $size, 0, 197, 125, $text_color, $font, $date_create2);
-    imagettftext($dest, $size, 0, 470, 125, $text_color, $font, $date_start2);
-    imagettftext($dest, $size, 0, 800, 125, $text_color, $font, $car_license);
-    imagettftext($dest, $size, 0, 500, 178, $text_color, $font, $fullname);
-    imagettftext($dest, $size, 0, 440, 1355, $text_color, $font, $fullname);
+    imagettftext($dest, $size, 0, 297, 125, $text_color, $font, $date_create2);
+    imagettftext($dest, $size, 0, 570, 125, $text_color, $font, $date_start2);
+    imagettftext($dest, $size, 0, 900, 125, $text_color, $font, $car_license);
+    imagettftext($dest, $size, 0, 600, 178, $text_color, $font, $fullname);
+    imagettftext($dest, $size, 0, 590, 1355, $text_color, $font, $fullname);
 
-    imagettftext($dest, $size, 0, 250, 213, $text_color, $font, $id_card);
-    imagettftext($dest, $size, 0, 800, 213, $text_color, $font, $birth_date2);
-    imagettftext($dest, $size, 0, 250, 250, $text_color, $font, $address);
-    imagettftext($dest, $size, 0, 250, 317, $text_color, $font, $tel);
-    imagettftext($dest, $size, 0, 350, 317, $text_color, $font, ',' . $tel3);
+    imagettftext($dest, $size, 0, 350, 213, $text_color, $font, $id_card);
+    imagettftext($dest, $size, 0, 900, 213, $text_color, $font, $birth_date2);
+    imagettftext($dest, $size, 0, 350, 250, $text_color, $font, $address);
+    imagettftext($dest, $size, 0, 350, 317, $text_color, $font, $tel);
+    imagettftext($dest, $size, 0, 450, 317, $text_color, $font, ',' . $tel3);
 
-    imagettftext($dest, $size, 0, 250, 447, $text_color, $font, $address2);
-    imagettftext($dest, $size, 0, 250, 512, $text_color, $font, $tel2);
+    imagettftext($dest, $size, 0, 350, 447, $text_color, $font, $address2);
+    imagettftext($dest, $size, 0, 350, 512, $text_color, $font, $tel2);
     /* ----------------------------ติดต่อฉุกเฉิน-------------------------------- */
-    imagettftext($dest, $size, 0, 237, 594, $text_color, $font, $name_grt);
-    imagettftext($dest, $size, 0, 637, 594, $text_color, $font, $relation_grt);
-    imagettftext($dest, $size, 0, 900, 594, $text_color, $font, $tel_grt);
+    imagettftext($dest, $size, 0, 337, 594, $text_color, $font, $name_grt);
+    imagettftext($dest, $size, 0, 737, 594, $text_color, $font, $relation_grt);
+    imagettftext($dest, $size, 0, 1000, 594, $text_color, $font, $tel_grt);
     /* -------------------------------ข้อมูลรถ----------------------------- */
-    imagettftext($dest, $size, 0, 155, 683, $text_color, $font, $car_type);
-    imagettftext($dest, $size, 0, 370, 683, $text_color, $font, $car_insu);
-    imagettftext($dest, $size, 0, 790, 683, $text_color, $font, number_format($car_price));
+    imagettftext($dest, $size, 0, 290, 683, $text_color, $font, $car_type);
+    imagettftext($dest, $size, 0, 500, 683, $text_color, $font, $car_insu);
+    imagettftext($dest, $size, 0, 927, 683, $text_color, $font, number_format($car_price));
 
-    imagettftext($dest, $size, 0, 155, 719, $text_color, $font, $car_type2);
-    imagettftext($dest, $size, 0, 370, 719, $text_color, $font, $car_insu2);
-    imagettftext($dest, $size, 0, 790, 719, $text_color, $font, number_format($car_price2));
+    imagettftext($dest, $size, 0, 290, 719, $text_color, $font, $car_type2);
+    imagettftext($dest, $size, 0, 500, 719, $text_color, $font, $car_insu2);
+    imagettftext($dest, $size, 0, 927, 719, $text_color, $font, number_format($car_price2));
 
     /* -------------------------------ข้อมูลผ่อน----------------------------- */
-    imagettftext($dest, $size, 0, 428, 784, $text_color, $font, number_format($total));
-    imagettftext($dest, $size, 0, 870, 784, $text_color, $font, $installment);
+    imagettftext($dest, $size, 0, 528, 784, $text_color, $font, number_format($total));
+    imagettftext($dest, $size, 0, 990, 784, $text_color, $font, $installment);
 
-    imagettftext($dest, $size, 0, 428, 840, $text_color, $font, number_format($price_ins1));
-    imagettftext($dest, $size, 0, 870, 840, $text_color, $font, $installment2);
-    imagettftext($dest, $size, 0, 1240, 1645, $text_color, $font, $form_id);
+    imagettftext($dest, $size, 0, 528, 840, $text_color, $font, number_format($price_ins1));
+    imagettftext($dest, $size, 0, 970, 840, $text_color, $font, $installment2);
+    imagettftext($dest, $size, 0, 1200,1625, $text_color, $font, $form_id);
     /* -------------------------------loop----------------------------- */
 
 
@@ -307,11 +307,11 @@ if (isset($_POST['submit'])) {
 
 
         $text1 = 'ชำระงวดที่ ' . $i . ' เป็นจำนวนเงิน';
-        imagettftext($dest, $size, 0, 92, $h, $text_color, $font, $text1);
-        imagettftext($dest, $size, 0, 428, $h, $text_color, $font, number_format($row_loop['ins' . $i]));
-        imagettftext($dest, $size, 0, 577, $h, $text_color, $font, $text2);
-        imagettftext($dest, $size, 0, 635, $h, $text_color, $font, $text3);
-        imagettftext($dest, $size, 0, 817, $h, $text_color, $font, $date);
+        imagettftext($dest, $size, 0, 213, $h, $text_color, $font, $text1);
+        imagettftext($dest, $size, 0, 528, $h, $text_color, $font, number_format($row_loop['ins' . $i]));
+        imagettftext($dest, $size, 0, 700, $h, $text_color, $font, $text2);
+        imagettftext($dest, $size, 0, 760, $h, $text_color, $font, $text3);
+        imagettftext($dest, $size, 0, 920, $h, $text_color, $font, $date);
 
         $h = $h + 40;
     }
@@ -361,7 +361,7 @@ if (isset($_POST['submit'])) {
     imagepng($dest, 'img/'.$img_name . '.png'); */
 
 
-    $dest2 = imagecreatefromjpeg('../form/form2.jpg');
+    $dest2 = imagecreatefrompng('../form/form2(last).png');
 
 
 
@@ -373,14 +373,14 @@ if (isset($_POST['submit'])) {
     imagettftext($dest2, $size, 0, 200, 180, $text_color, $font, $fullname);
     imagettftext($dest2, $size, 0, 950, 180, $text_color, $font, $car_license);
     imagettftext($dest2, $size, 0, 270, 220, $text_color, $font, $car_insu);
-    imagettftext($dest2, $size, 0, 480, 1607, $text_color, $font, $fullname);
-    imagettftext($dest2, $size, 0, 1240, 1645, $text_color, $font, $form_id);
+    imagettftext($dest2, $size, 0, 500, 1607, $text_color, $font, $fullname);
+    imagettftext($dest2, $size, 0, 1220, 1625, $text_color, $font, $form_id);
     imagepng($dest2, '../img/test-form2.png');
     imagepng($dest2, '../page/myFile/'.$fullname.$random.'no2.png');
 
 
 
-    $dest3 = imagecreatefromjpeg('../form/form3.jpg');
+    $dest3 = imagecreatefrompng('../form/form8.png');
 
 
 
@@ -392,8 +392,8 @@ if (isset($_POST['submit'])) {
     imagettftext($dest3, $size, 0, 370, 428, $text_color, $font, $fullname);
     imagettftext($dest3, $size, 0, 650, 474, $text_color, $font, $car_license);
     imagettftext($dest3, $size, 0, 250, 290, $text_color, $font, $car_insu);
-    imagettftext($dest3, $size, 0, 630, 1240, $text_color, $font, $fullname);
-    imagettftext($dest3, $size, 0, 1240, 1645, $text_color, $font, $form_id);
+    imagettftext($dest3, $size, 0, 650, 1240, $text_color, $font, $fullname);
+    imagettftext($dest3, $size, 0, 1220, 1625, $text_color, $font, $form_id);
 
 
 
@@ -408,7 +408,7 @@ if (isset($_POST['submit'])) {
     $size2 = 40;
     imagettftext($dest4, $size2, 0, 1680, 1905, $text_color, $font, $fullname);
     imagettftext($dest4, $size2, 0, 400, 3000, $text_color, $font, $fullname);
-    imagettftext($dest4, $size2, 0, 2400, 3500, $text_color, $font, $form_id);
+    imagettftext($dest4, $size2, 0, 2380, 3480, $text_color, $font, $form_id);
 
 
     imagepng($dest4, '../img/test-form4.png');

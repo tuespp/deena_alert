@@ -18,4 +18,14 @@ if(isset($_POST['report_type'])){
     $result = mysqli_query($con,$sql);
 }
 
+
+if(isset($_POST['status_name'])){
+
+    $status_name =  $_POST['status_name'];
+
+    $sql = "INSERT INTO `status`(`status_name`) VALUES ('$status_name')";
+    $result = mysqli_query($con,$sql);
+}
+
+
 ?>

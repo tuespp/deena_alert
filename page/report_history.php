@@ -323,6 +323,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                             <?php foreach ($query as $value) { ?>
 
+
                                 <?php if ($value['report_text'] !== '') { ?>
                                     <li class="clearfix">
                                         <div class="message-data text-right">
@@ -344,7 +345,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         <div class="message other-message float-right"> <img src="../img/<?php echo $value['report_img'] ?>" width="200" alt=""> </div>
                                     </li>
                                 <?php }  ?>
-
+                               
                             <?php } ?>
                         </ul>
                     </div>

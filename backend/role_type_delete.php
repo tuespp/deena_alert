@@ -27,4 +27,18 @@ if(isset($_GET['report_type_id'])){
     }
     }
 
+    if(isset($_GET['status_id'])){
+        $status_id = $_GET['status_id'];
+        
+        $sql ="DELETE FROM status WHERE id = $status_id";
+        $result = mysqli_query($con,$sql);
+        
+        if($result){
+            echo '<script> window.location.href = "../page/status_manage.php";</script>';
+        
+        }
+        }
+    
+
+
 ?>
